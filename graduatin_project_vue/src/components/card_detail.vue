@@ -5,6 +5,7 @@
   <div>
     <p>就诊时间：{{showData.clinic_time}}</p>
     <p>就诊地点：{{showData.clinic_place}}</p>
+    <br>
     <p>基础信息</p>
     <hr>
     <p>姓名：{{showData.name}}</p>
@@ -16,6 +17,7 @@
     <p>工作单位：{{showData.work_unit}}</p>
     <p>住址：{{showData.address}}</p>
     <p>药物过敏史：{{showData.allergy_history}}</p>
+    <br>
     <p>主诉信息</p>
     <hr>
     <p>科别：{{showData.division}}</p>
@@ -23,6 +25,7 @@
     <p>现病史：{{showData.present_illness}}</p>
     <p>既往史：{{showData.history_illness}}</p>
     <p>辅助检查结果：{{showData.examine}}</p>
+    <br>
     <p>医师诊断</p>
     <hr>
     <p>诊断意见：{{showData.diagnose}}</p>

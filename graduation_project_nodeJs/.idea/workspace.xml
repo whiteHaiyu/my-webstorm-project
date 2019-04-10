@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="" />
+    <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_detail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/forget.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_forget.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/modify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_modify.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/signin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_signin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myproject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="71" column="13" lean-forward="true" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+            <state relative-caret-position="335">
+              <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="110" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -30,6 +42,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -44,6 +59,7 @@
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -64,6 +80,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../graduatin_project_vue" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -93,12 +110,12 @@
       <updated>1554698810253</updated>
       <workItem from="1554698811424" duration="3833000" />
       <workItem from="1554774886973" duration="3236000" />
-      <workItem from="1554858412051" duration="5202000" />
+      <workItem from="1554858412051" duration="6977000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12271000" />
+    <option name="totallyTimeSpent" value="14046000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -116,7 +133,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17659806" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17678958" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -129,8 +146,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myproject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="71" column="13" lean-forward="true" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+        <state relative-caret-position="335">
+          <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="110" selection-end-column="76" />
         </state>
       </provider>
     </entry>

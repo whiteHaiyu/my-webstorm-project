@@ -3,12 +3,12 @@ import Router from 'vue-router'
 
 import welcome from '@/components/welcome'
 import home from '@/components/homepage'
-import login from '@/components/login'
-import signin from '@/components/signin'
-import forget from '@/components/forget'
-import detail from '@/components/detail'
-import create from '@/components/create'
-import modify from '@/components/modify'
+import login from '@/components/user_login'
+import signin from '@/components/user_signin'
+import forget from '@/components/user_forget'
+import detail from '@/components/card_detail'
+import create from '@/components/card_create'
+import modify from '@/components/card_modify'
 
 Vue.use(Router)
 

@@ -74,18 +74,6 @@ app.post('/signin',function(req,res) {
     })
 })
 
-// signin postmanTest
-// app.post('/signin',function(req,res) {
-//     sql.query('insert into gp_user(user,pwd,mail) values(?,?,?)',[req.query.user,req.query.pwd,req.query.mail],function(error,results) {
-//         if(error){
-//             console.log('error')
-//         }else{
-//             console.log('success')
-//             res.send({info:'signin success',user:req.query.user})
-//         }
-//     })
-// })
-
 // 忘记密码，post方式接收，{mail:'mail'}，通过邮件方式将账号密码发送到指定邮箱
 app.post('/findpwd',function(req,res) {
     req.on('data',function(data) {
@@ -120,7 +108,7 @@ app.post('/findpwd',function(req,res) {
 app.post('/getinfo',function (req,res) {
     req.on('data',function (data) {
         let obj = JSON.parse(data)
-        sql.query('select * from gp_info where user = ?',[obj.user],function(error,results) {
+        sql.query('select * from gp_info where user = ? order by clinic_time desc',[obj.user],function(error,results) {
             if(error){
                 res.send('404')
             }else{
@@ -150,13 +138,26 @@ app.post('/create',function(req,res) {
 //删除用户病历，post方式发送数据
 app.post('/delete',function(req,res) {
     req.on('data',function(data) {
-        let obj = (JSON.parse(data))
-        console.log(obj)
+        let obj = JSON.parse(data)
         sql.query('DELETE FROM gp_info where id= ?',[obj.id],function(error,results) {
             if(error){
                 res.send('delete info error')
             }else{
                 res.send('delete success')
+            }
+        })
+    })
+})
+
+// 修改用户病历数据，post方式发送
+app.post('/modify',function(req,res) {
+    req.on('data',function (data) {
+        let obj = JSON.parse(data)
+        sql.query('update gp_info set user=?,clinic_time=?,clinic_place=?,name=?,sex=?,birth=?,nation=?,marry=?,job=?,work_unit=?,address=?,allergy_history=?,division=?,main_suit=?,present_illness=?,history_illness=?,examine=?,diagnose=?,cure=?,advice=?,doctor=? where id=?',[obj.user,obj.clinic_time,obj.clinic_place,obj.name,obj.sex,obj.birth,obj.nation,obj.marry,obj.job,obj.work_unit,obj.address,obj.allergy_history,obj.division,obj.main_suit,obj.present_illness,obj.history_illness,obj.examine,obj.diagnose,obj.cure,obj.advice,obj.doctor,obj.id],function(error,results){
+            if(error){
+                res.send('modify error')
+            }else{
+                res.send('modify success')
             }
         })
     })
