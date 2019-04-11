@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/forget.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_forget.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/modify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_modify.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/signin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_signin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/welcome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/welcome.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
     </list>
@@ -28,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myproject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="110" selection-end-column="76" />
+            <state relative-caret-position="587">
+              <caret line="223" column="18" lean-forward="true" selection-start-line="223" selection-start-column="18" selection-end-line="223" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -82,7 +77,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../graduatin_project_vue" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -110,18 +105,22 @@
       <updated>1554698810253</updated>
       <workItem from="1554698811424" duration="3833000" />
       <workItem from="1554774886973" duration="3236000" />
-      <workItem from="1554858412051" duration="6977000" />
+      <workItem from="1554858412051" duration="8059000" />
+      <workItem from="1554890304951" duration="622000" />
+      <workItem from="1554898498120" duration="1017000" />
+      <workItem from="1554948422242" duration="1201000" />
+      <workItem from="1554966873694" duration="2263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14046000" />
+    <option name="totallyTimeSpent" value="20231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.098524764" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -133,7 +132,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17678958" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.16594361" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -146,8 +145,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myproject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="110" selection-end-column="76" />
+        <state relative-caret-position="587">
+          <caret line="223" column="18" lean-forward="true" selection-start-line="223" selection-start-column="18" selection-end-line="223" selection-end-column="18" />
         </state>
       </provider>
     </entry>

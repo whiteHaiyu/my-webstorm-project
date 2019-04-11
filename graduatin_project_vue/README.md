@@ -48,6 +48,7 @@ npm run build --report
 未完成功能：
 #病历分享，输入对方账号将病历分享
 #拍摄图片识别图片文字
+  直接input type：file上传图片了...
   调用手机摄像头功能，使用canvas截取屏幕信息，保存文件转码base64保存，blob对象
   1、调用百度API，发送base64格式图片，返回图片中文字信息
   2、Node+OCR图片文字识别

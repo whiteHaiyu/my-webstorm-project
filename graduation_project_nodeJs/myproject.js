@@ -163,6 +163,71 @@ app.post('/modify',function(req,res) {
     })
 })
 
+// 获取病历广场的内容，post方式接收请求
+app.post('/square',function(req,res) {
+    sql.query('select * from gp_info where share = 1',[],function(error,results) {
+        if(error){
+            res.send('askinfo error')
+        }else{
+            res.send(results)
+        }
+    })
+})
+
+// 改变当前病历是否分享，post接收请求，接收当前病历的id
+app.post('/share',function(req,res) {
+    req.on('data',function (data) {
+        let obj = JSON.parse(data)
+        sql.query('update gp_info set share = 1 where id = ?',[obj.id],function(error,results){
+            if(error){
+                res.send('change share error')
+            }else{
+                res.send('share success')
+            }
+        })
+    })
+})
+app.post('/unshare',function (req,res) {
+    req.on('data',function (data) {
+        let obj = JSON.parse(data)
+        sql.query('update gp_info set share = 0 where id = ?',[obj.id],function(error,results){
+            if(error){
+                res.send('change share error')
+            }else{
+                res.send('unshare success')
+            }
+        })
+    })
+})
+
+// 查看留言，post方式接收,接收当前用户名
+app.post('/askmsg',function (req,res) {
+    req.on('data', function (data) {
+        let obj = JSON.parse(data)
+        sql.query('select * from gp_msg where user_to = ?', [obj.user], function (error, results) {
+            if (error) {
+                res.send('get msg error')
+            }else{
+                res.send(results)
+            }
+        })
+    })
+})
+
+// 创建留言，post方式接收,其中留言信息最多200字，前端限制
+app.post('/askmsg',function (req,res) {
+    req.on('data', function (data) {
+        let obj = JSON.parse(data)
+        sql.query('insert into gp_msg(user_from,user_to,msg,time) values(?,?,?,?)', [obj.user_from,obj.user_to,obj.msg,obj.data], function (error, results) {
+            if (error) {
+                res.send('set msg error')
+            }else{
+                res.send('set msg success')
+            }
+        })
+    })
+})
+
 app.listen(3000,function () {
     console.log('nodeJs服务启动')
 })

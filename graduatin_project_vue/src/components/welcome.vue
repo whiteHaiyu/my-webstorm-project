@@ -1,10 +1,10 @@
 <!--启动展示页面，标题、登录选项、注册选项-->
 
 <template>
-    <div>
-      <p>欢迎使用医疗信息记录系统</p>
-      <mt-button type="primary" @click="login">登录</mt-button>
-      <mt-button type="default" @click="signin">注册</mt-button>
+    <div class="container">
+      <p class="title">欢迎使用医疗信息记录系统</p>
+      <button type="primary" @click="login">登录</button>
+      <button type="default" @click="signin">注册</button>
     </div>
 </template>
 
@@ -14,7 +14,7 @@
       name: "welcome",
       data(){
           return{
-
+ 
           }
       },
 
@@ -32,5 +32,13 @@
 </script>
 
 <style scoped>
+  .container{
+    position: relative;
+  }
 
+  .title{
+    font-size: 16px;
+    position: absolute;
+    top: 3rem;
+  }
 </style>
