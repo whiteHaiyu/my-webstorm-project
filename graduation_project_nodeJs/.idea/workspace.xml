@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_forget.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_forget.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_signin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_signin.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/welcome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/welcome.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/myproject.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="587">
-              <caret line="223" column="18" lean-forward="true" selection-start-line="223" selection-start-column="18" selection-end-line="223" selection-end-column="18" />
+              <caret line="223" column="18" selection-start-line="223" selection-start-column="18" selection-end-line="223" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -109,18 +110,19 @@
       <workItem from="1554890304951" duration="622000" />
       <workItem from="1554898498120" duration="1017000" />
       <workItem from="1554948422242" duration="1201000" />
-      <workItem from="1554966873694" duration="2263000" />
+      <workItem from="1554966873694" duration="2954000" />
+      <workItem from="1555030201770" duration="1200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20231000" />
+    <option name="totallyTimeSpent" value="22122000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.098524764" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07060063" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -132,7 +134,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.16594361" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.15509762" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -146,7 +148,7 @@
     <entry file="file://$PROJECT_DIR$/myproject.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
-          <caret line="223" column="18" lean-forward="true" selection-start-line="223" selection-start-column="18" selection-end-line="223" selection-end-column="18" />
+          <caret line="223" column="18" selection-start-line="223" selection-start-column="18" selection-end-line="223" selection-end-column="18" />
         </state>
       </provider>
     </entry>
