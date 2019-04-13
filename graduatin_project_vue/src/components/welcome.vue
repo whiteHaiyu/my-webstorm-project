@@ -15,12 +15,6 @@
     <p class="copyright">copyright © w_haiyu</p>
   </div>
 
-
-<!--    <div class="container">-->
-<!--      <p class="title">欢迎使用医疗信息记录系统</p>-->
-<!--      <button type="primary" @click="login">登录</button>-->
-<!--      <button type="default" @click="signin">注册</button>-->
-<!--    </div>-->
 </template>
 
 <script>

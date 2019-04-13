@@ -29,13 +29,6 @@
         <p class="copyright">copyright © w_haiyu</p>
       </div>
 
-
-<!--      <p>账户：<input type="text" v-model="user"></p>-->
-<!--      <p>密码：<input type="password" v-model="pwd"></p>-->
-<!--      <p>确认密码：<input type="password" v-model="repwd"></p>-->
-<!--      <p>邮箱：<input type="text" v-model="mail"></p>-->
-<!--      <mt-button type="primary" @click="submit">确认</mt-button>-->
-<!--      <mt-button type="primary" @click="back">返回</mt-button>-->
     </div>
 </template>
 
@@ -74,7 +67,7 @@
                   console.log(res)
                   if (res.data.info == 'signin success') {
                     this.$store.commit('change', this.user)
-                    this.$router.push('/home')
+                    this.$router.push('/guide')
                     Toast({
                       message:'注册成功',
                       duration:1000
@@ -105,11 +98,6 @@
 </script>
 
 <style scoped>
-  .contain{
-    height: 100%;
-    background-color: rgb(252, 252, 252);
-  }
-
   .close{
     height: 0.6rem;
     width: 0.6rem;

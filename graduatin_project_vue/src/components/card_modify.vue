@@ -3,6 +3,7 @@
 
 <template>
   <div>
+    <input type="button" value="cancle" @click="jump">
     <p>就诊时间：<input type="text" v-model="addData.clinic_time"></p>
     <p>就诊地点：<input type="text" v-model="addData.clinic_place"></p>
     <br>
@@ -87,6 +88,10 @@
     },
 
     methods:{
+
+      jump(){
+        this.$router.push('/')
+      },
 
       modify(){
         this.$axios({

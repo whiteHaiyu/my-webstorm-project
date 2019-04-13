@@ -51,7 +51,7 @@
                 console.log(res)
                 if(res.data == 'login success'){
                   this.$store.commit('change',this.user)
-                  this.$router.push('/home')
+                  this.$router.push('/guide')
                   Toast({
                     message:'登录成功',
                     duration:1000
@@ -98,11 +98,6 @@
 </script>
 
 <style scoped>
-  .contain{
-    height: 100%;
-    background-color: rgb(252, 252, 252);
-  }
-
   .close{
     height: 0.6rem;
     width: 0.6rem;
@@ -191,6 +186,7 @@
   }
 
   .forget{
+    z-index: 3;
     position: absolute;
     right: 0.45rem;
     top: 3.75rem;

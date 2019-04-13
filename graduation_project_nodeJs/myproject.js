@@ -163,9 +163,33 @@ app.post('/modify',function(req,res) {
     })
 })
 
+// 是否分享到广场，post接收参数，{id：当前病历id；states：当前分享状态}
+app.post('/share',function(req,res){
+    req.on('data',function(data) {
+        let obj = JSON.parse(data)
+        if(obj.status == '分享到广场'){
+            sql.query('update gp_info set share = "未分享到广场" where id = ?',[obj.id],function(error,results) {
+                if(error){
+                    res.send('error')
+                }else{
+                    res.send('success')
+                }
+            })
+        }else{
+            sql.query('update gp_info set share = "分享到广场" where id = ?',[obj.id],function(error,results) {
+                if(error){
+                    res.send('error')
+                }else{
+                    res.send('success')
+                }
+            })
+        }
+    })
+})
+
 // 获取病历广场的内容，post方式接收请求
 app.post('/square',function(req,res) {
-    sql.query('select * from gp_info where share = 1',[],function(error,results) {
+    sql.query('select * from gp_info where share = "分享到广场"',[],function(error,results) {
         if(error){
             res.send('askinfo error')
         }else{

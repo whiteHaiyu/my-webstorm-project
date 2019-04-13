@@ -18,13 +18,6 @@
     <p class="copyright">copyright © w_haiyu</p>
   </div>
 
-
-<!--    <div>-->
-<!--      <p>忘记密码</p>-->
-<!--      <p>邮箱：<input type="text"></p>-->
-<!--      <mt-button type="primary" @click="submit">确定</mt-button>-->
-<!--      <mt-button type="primary" @click="back">取消</mt-button>-->
-<!--    </div>-->
 </template>
 
 <script>
@@ -73,11 +66,6 @@
 </script>
 
 <style scoped>
-  .contain{
-    height: 100%;
-    background-color: rgb(252, 252, 252);
-  }
-
   .close{
     height: 0.6rem;
     width: 0.6rem;
