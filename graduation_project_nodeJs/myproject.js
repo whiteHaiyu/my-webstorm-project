@@ -119,6 +119,20 @@ app.post('/getinfo',function (req,res) {
     })
 })
 
+// 获取当前用户的全部病历记录中name项
+app.post('/namelist',function(req,res) {
+    req.on('data',function(data) {
+        let obj = JSON.parse(data)
+        sql.query('select name from gp_info where user = ?',[obj.user],function(error,results) {
+            if(error){
+                res.send('404')
+            }else{
+                res.send(results)
+            }
+        })
+    })
+})
+
 // 创建用户病历，post方式发送数据
 app.post('/create',function(req,res) {
     req.on('data',function(data) {
@@ -167,7 +181,7 @@ app.post('/modify',function(req,res) {
 app.post('/share',function(req,res){
     req.on('data',function(data) {
         let obj = JSON.parse(data)
-        if(obj.status == '分享到广场'){
+        if(obj.status == '已分享到广场'){
             sql.query('update gp_info set share = "未分享到广场" where id = ?',[obj.id],function(error,results) {
                 if(error){
                     res.send('error')
@@ -176,7 +190,7 @@ app.post('/share',function(req,res){
                 }
             })
         }else{
-            sql.query('update gp_info set share = "分享到广场" where id = ?',[obj.id],function(error,results) {
+            sql.query('update gp_info set share = "已分享到广场" where id = ?',[obj.id],function(error,results) {
                 if(error){
                     res.send('error')
                 }else{
@@ -189,7 +203,7 @@ app.post('/share',function(req,res){
 
 // 获取病历广场的内容，post方式接收请求
 app.post('/square',function(req,res) {
-    sql.query('select * from gp_info where share = "分享到广场"',[],function(error,results) {
+    sql.query('select * from gp_info where share = "已分享到广场"',[],function(error,results) {
         if(error){
             res.send('askinfo error')
         }else{
