@@ -138,7 +138,7 @@ app.post('/create',function(req,res) {
     req.on('data',function(data) {
         let obj = JSON.parse(data)
         console.log(obj)
-        sql.query('insert into gp_info(id,user,clinic_time,clinic_place,name,sex,birth,nation,marry,job,work_unit,address,allergy_history,division,main_suit,present_illness,history_illness,examine,diagnose,cure,advice,doctor) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[obj.id,obj.user,obj.clinic_time,obj.clinic_place,obj.name,obj.sex,obj.birth,obj.nation,obj.marry,obj.job,obj.work_unit,obj.address,obj.allergy_history,obj.division,obj.main_suit,obj.present_illness,obj.history_illness,obj.examine,obj.diagnose,obj.cure,obj.advice,obj.doctor],function(error,results) {
+        sql.query('insert into gp_info(id,user,clinic_time,clinic_place,name,sex,birth,nation,marry,job,work_unit,address,allergy_history,division,main_suit,present_illness,history_illness,examine,diagnose,cure,advice,doctor,share) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[obj.id,obj.user,obj.clinic_time,obj.clinic_place,obj.name,obj.sex,obj.birth,obj.nation,obj.marry,obj.job,obj.work_unit,obj.address,obj.allergy_history,obj.division,obj.main_suit,obj.present_illness,obj.history_illness,obj.examine,obj.diagnose,obj.cure,obj.advice,obj.doctor,obj.share],function(error,results) {
             if(error){
                 console.log(error)
                 res.send('create record error')

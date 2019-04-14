@@ -1,47 +1,47 @@
 <template>
     <div>
-      <img src="../assets/card_bg.png" class="background">
+      <img class="background" src="../assets/card_bg.png">
       <div class="jump2body">病历模型</div>
-      <div class="showname" @click="show_dialog = true">{{name}}&nbsp;></div>
+      <div @click="show_dialog = true" class="showname">{{name}}&nbsp;></div>
       <img :src=icon_src class="icon">
 
       <ul class="container">
-        <div v-if="name == '超级医疗欢迎您'" class="card">
+        <div class="card" v-if="name == '超级医疗欢迎您'">
           <p class="remind">点击右下角创建病历~</p>
         </div>
-        <li v-for="(items,index) in showData" v-show="items.name == name" :key="index" @click="showDetails(index)" class="card">
+        <li :key="index" @click="showDetails(index)" class="card" v-for="(items,index) in showData" v-show="items.name == name">
           <p class="time">时间：{{items.clinic_time}}</p>
           <div class="line_top"></div>
           <p class="suit">主要症状：{{items.main_suit}}</p>
           <div class="line_mid"></div>
           <p class="cure">诊断意见：{{items.cure}}</p>
           <div class="line_bom"></div>
-          <p class="share" @click.stop="share(index)">分享到广场：{{items.share}}&nbsp;></p>
+          <p @click.stop="share(index)" class="share">分享到广场：{{items.share}}&nbsp;></p>
         </li>
       </ul>
 
-      <img src="../assets/refresh.png" class="refresh" @click="getinfo">
-      <img src="../assets/add.png" class="add" @click.stop="add_dialog = true">
+      <img @click="getinfo" class="refresh" src="../assets/refresh.png">
+      <img @click.stop="add_dialog = true" class="add" src="../assets/add.png">
 
-      <div class="dialog" v-show="show_dialog" @click="show_dialog = false">
+      <div @click="show_dialog = false" class="dialog" v-show="show_dialog">
         <ul class="dialog_container">
-          <li class="dialog_item" v-for="(items,index) in namelist" :key="index" @click.stop="choose(index)">
+          <li :key="index" @click.stop="choose(index)" class="dialog_item" v-for="(items,index) in namelist">
             {{items.name}}
           </li>
         </ul>
       </div>
 
-      <div class="dialog" v-show="add_dialog" @click="add_dialog = false">
-        <div class="add_card" @click.stop>
-          <div class="upload" @click="upload">
-            <img src="../assets/camera.png" class="camera">
+      <div @click="add_dialog = false" class="dialog" v-show="add_dialog">
+        <div @click.stop class="add_card">
+          <div @click="upload" class="upload">
+            <img class="camera" src="../assets/camera.png">
             <p class="camera_text">上传病历图片</p>
           </div>
-          <div class="fill" @click="fill">
-            <img src="../assets/font.png" class="font">
+          <div @click="fill" class="fill">
+            <img class="font" src="../assets/font.png">
             <p class="font_text">手动填写病历</p>
           </div>
-          <img src="../assets/cancel.png" class="cancel" @click="add_dialog = false">
+          <img @click="add_dialog = false" class="cancel" src="../assets/cancel.png">
         </div>
       </div>
 
@@ -132,13 +132,16 @@
         fill(){
           console.log('手动录入')
           this.add_dialog = false
+          this.$router.push('/create')
         },
         showDetails(e){
           console.log(e)
+          this.$store.commit('getIndex',e)
+          this.$router.push('/detail')
         },
 
         choose(e){
-          this.name = this.namelist[e]
+          this.name = this.namelist[e].name
           this.icon_src = '../../static/icon'+e+'.png'
           this.show_dialog = false
         },
@@ -189,7 +192,6 @@
           })
         }
       }
-
     }
 </script>
 

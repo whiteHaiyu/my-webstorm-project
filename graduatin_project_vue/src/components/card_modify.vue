@@ -3,39 +3,90 @@
 
 <template>
   <div>
-    <input type="button" value="cancle" @click="jump">
-    <p>就诊时间：<input type="text" v-model="addData.clinic_time"></p>
-    <p>就诊地点：<input type="text" v-model="addData.clinic_place"></p>
-    <br>
-    <p>基础信息</p>
-    <hr>
-    <p>姓名：<input type="text" v-model="addData.name"></p>
-    <p>性别：<input type="text" v-model="addData.sex"></p>
-    <p>出生年月：<input type="text" v-model="addData.birth"></p>
-    <p>民族：<input type="text" v-model="addData.nation"></p>
-    <p>婚姻状况：<input type="text" v-model="addData.marry"></p>
-    <p>职业：<input type="text" v-model="addData.job"></p>
-    <p>工作单位：<input type="text" v-model="addData.work_unit"></p>
-    <p>住址：<input type="text" v-model="addData.address"></p>
-    <p>药物过敏史：<input type="text" v-model="addData.allergy_history"></p>
-    <br>
-    <p>主诉信息</p>
-    <hr>
-    <p>科别：<input type="text" v-model="addData.division"></p>
-    <p>主诉：<input type="text" v-model="addData.main_suit"></p>
-    <p>现病史：<input type="text" v-model="addData.present_illness"></p>
-    <p>既往史：<input type="text" v-model="addData.history_illness"></p>
-    <p>辅助检查结果：<input type="text" v-model="addData.examine"></p>
-    <br>
-    <p>医师诊断</p>
-    <hr>
-    <p>诊断意见：<input type="text" v-model="addData.diagnose"></p>
-    <p>治疗意见：<input type="text" v-model="addData.cure"></p>
-    <p>医嘱：<input type="text" v-model="addData.advice"></p>
-    <p>医师：<input type="text" v-model="addData.doctor"></p>
+    <img class="background" src="../assets/card_bg.png">
 
-    <input type="button" value="modify" @click="modify">
-    <input type="button" value="cancle" @click="cancle">
+    <img @click="back" class="back" src="../assets/back.png">
+
+    <div @click="modify" class="more">确定</div>
+
+    <div class="details">
+      <div class="items">
+        <span class="item_title">就诊时间</span><input type="textarea" v-model="addData.clinic_time" class="item_input" placeholder="请输入就诊时间">
+      </div>
+      <div class="items">
+        <span class="item_title">就诊地点</span><input type="textarea" v-model="addData.clinic_place" class="item_input" placeholder="请输入就诊地点">
+      </div>
+
+      <div class="basic_info">
+        <p class="info_title">基本信息</p>
+      </div>
+
+      <div class="items">
+        <span class="item_title">姓名</span><input class="item_input" type="textarea" v-model="addData.name">
+      </div>
+      <div class="items">
+        <span class="item_title">性别</span><input class="item_input" type="textarea" v-model="addData.sex">
+      </div>
+      <div class="items">
+        <span class="item_title">出生年月</span><input class="item_input" placeholder="请输入出生年月" type="textarea" v-model="addData.birth">
+      </div>
+      <div class="items">
+        <span class="item_title">民族</span><input class="item_input" placeholder="请输入民族" type="textarea" v-model="addData.nation">
+      </div>
+      <div class="items">
+        <span class="item_title">婚姻状况</span><input class="item_input" placeholder="请输入婚姻状况" type="textarea" v-model="addData.marry">
+      </div>
+      <div class="items">
+        <span class="item_title">职业</span><input class="item_input" placeholder="请输入职业" type="textarea" v-model="addData.job">
+      </div>
+      <div class="items">
+        <span class="item_title">工作单位</span><input class="item_input" placeholder="请输入工作单位" type="textarea" v-model="addData.work_unit">
+      </div>
+      <div class="items">
+        <span class="item_title">住址</span><input class="item_input" placeholder="请输入住址" type="textarea" v-model="addData.address">
+      </div>
+      <div class="items">
+        <span class="item_title">药物过敏史</span><input class="item_input" placeholder="请输入药物过敏史" type="textarea" v-model="addData.allergy_history">
+      </div>
+
+      <div class="basic_info">
+        <p class="info_title">主诉信息</p>
+      </div>
+
+      <div class="items">
+        <span class="item_title">科别</span><input class="item_input" placeholder="请输入科别" type="textarea" v-model="addData.division">
+      </div>
+      <div class="items">
+        <span class="item_title">主诉</span><input class="item_input" placeholder="请输入主诉" type="textarea" v-model="addData.main_suit">
+      </div>
+      <div class="items">
+        <span class="item_title">现病史</span><input class="item_input" placeholder="请输入现病史" type="textarea" v-model="addData.present_illness">
+      </div>
+      <div class="items">
+        <span class="item_title">既往史</span><input class="item_input" placeholder="请输入既往史" type="textarea" v-model="addData.history_illness">
+      </div>
+      <div class="items">
+        <span class="item_title">辅助检查结果</span><input class="item_input" placeholder="请输入辅助检查结果" type="textarea" v-model="addData.examine">
+      </div>
+
+      <div class="basic_info">
+        <p class="info_title">医师诊断</p>
+      </div>
+
+      <div class="items">
+        <span class="item_title">诊断意见</span><input class="item_input" placeholder="请输入诊断意见" type="textarea" v-model="addData.diagnose">
+      </div>
+      <div class="items">
+        <span class="item_title">治疗意见</span><input class="item_input" placeholder="请输入治疗意见" type="textarea" v-model="addData.cure">
+      </div>
+      <div class="items">
+        <span class="item_title">医嘱</span><input class="item_input" placeholder="请输入医嘱" type="textarea" v-model="addData.advice">
+      </div>
+      <div class="items">
+        <span class="item_title">医师</span><input class="item_input" placeholder="请输入医师" type="textarea" v-model="addData.doctor">
+      </div>
+      <div class="blank"></div>
+    </div>
   </div>
 </template>
 
@@ -89,10 +140,6 @@
 
     methods:{
 
-      jump(){
-        this.$router.push('/')
-      },
-
       modify(){
         this.$axios({
           method: 'post',
@@ -129,7 +176,7 @@
         })
       },
 
-      cancle(){
+      back(){
         this.$router.push('/detail')
       }
     }
@@ -137,5 +184,104 @@
 </script>
 
 <style scoped>
+  .background{
+    width: 7.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
 
+  .back{
+    width: 0.6rem;
+    height: 0.6rem;
+    position: absolute;
+    top: 0.8rem;
+    left: 0.4rem;
+    z-index: 2;
+  }
+
+  .more{
+    width: 1.4rem;
+    height: 0.6rem;
+    position: absolute;
+    top: 0.8rem;
+    right: 0.4rem;
+    z-index: 2;
+    border-radius: 0.6rem;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(255,255,255,0.3);
+    text-align: center;
+    line-height: 0.6rem;
+  }
+
+  .details{
+    width: 100%;
+    position: absolute;
+    top: 1.9rem;
+    border-radius: 0.2rem 0.2rem 0 0;
+    z-index: 2;
+    background-color: #fff;
+  }
+
+  .items{
+    width: 100%;
+    height: auto;
+    line-height: 0.7rem;
+    font-size: 16px;
+    color: rgb(155, 155, 155);
+    text-align: right;
+    box-sizing: border-box;
+    padding-left: 2rem;
+    padding-right: 0.4rem;
+    position: relative;
+  }
+  .item_title{
+    width: 2.1rem;
+    height: 0.7rem;
+    font-size: 16px;
+    color: rgb(53, 53, 53);
+    position: absolute;
+    left: 0.4rem;
+    top: 0;
+    text-align: left;
+  }
+
+  .basic_info{
+    width: 100%;
+    height: 0.7rem;
+    border-top: solid 0.2rem #f5f5f5;
+    padding-top: 0.2rem;
+    padding-left: 0.8rem;
+  }
+  .info_title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .info_title::after{
+    content: '';
+    width: 0;
+    font-size: 10px;
+    border: 3px solid rgb(46, 112, 247);
+    position: relative;
+    left: -1.8rem;
+    top: -0.01rem;
+    border-radius: 3px;
+  }
+
+  .item_input{
+    border: none;
+    outline: 0 none;
+    font-size: 16px;
+    color: rgb(157, 157, 157);
+    width: 4.5rem;
+    height: auto;
+    text-align: right;
+  }
+
+  .blank{
+    width: 100%;
+    height: 0.5rem;
+  }
 </style>
