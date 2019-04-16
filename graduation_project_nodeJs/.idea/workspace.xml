@@ -6,7 +6,12 @@
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_detail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_modify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_modify.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mine.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mine.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_signin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_signin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
     </list>
@@ -24,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myproject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2599">
-              <caret line="140" column="230" selection-start-line="140" selection-start-column="230" selection-end-line="140" selection-end-column="230" />
+            <state relative-caret-position="302">
+              <caret line="261" column="153" selection-start-line="261" selection-start-column="153" selection-end-line="261" selection-end-column="153" />
             </state>
           </provider>
         </entry>
@@ -116,11 +121,15 @@
       <workItem from="1555151595565" duration="4097000" />
       <workItem from="1555206457025" duration="621000" />
       <workItem from="1555245314183" duration="2952000" />
+      <workItem from="1555288252923" duration="648000" />
+      <workItem from="1555294132495" duration="964000" />
+      <workItem from="1555331989727" duration="596000" />
+      <workItem from="1555374092821" duration="7880000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31655000" />
+    <option name="totallyTimeSpent" value="41743000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -137,7 +146,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.37635574" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.28416485" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -150,8 +159,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myproject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2599">
-          <caret line="140" column="230" selection-start-line="140" selection-start-column="230" selection-end-line="140" selection-end-column="230" />
+        <state relative-caret-position="302">
+          <caret line="261" column="153" selection-start-line="261" selection-start-column="153" selection-end-line="261" selection-end-column="153" />
         </state>
       </provider>
     </entry>

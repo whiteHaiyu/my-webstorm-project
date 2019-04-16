@@ -8,6 +8,8 @@ import forget from '@/components/user_forget'
 import detail from '@/components/card_detail'
 import create from '@/components/card_create'
 import modify from '@/components/card_modify'
+import squaredetail from '@/components/square_detail'
+import mymsg from '@/components/mymsg'
 
 import card from '@/components/card'
 import square from '@/components/square'
@@ -53,6 +55,16 @@ export default new Router({
       path: '/modify',
       name: 'modify',
       component: modify
+    },
+    {
+      path: '/square_detail',
+      name: squaredetail,
+      component: squaredetail
+    },
+    {
+      path: '/mymsg',
+      name: mymsg,
+      component: mymsg
     },
     {
       path: '/guide',

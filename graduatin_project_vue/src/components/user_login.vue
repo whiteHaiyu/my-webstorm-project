@@ -49,8 +49,9 @@
                 }
               }).then(res => {
                 console.log(res)
-                if(res.data == 'login success'){
+                if(res.data.status == 'login success'){
                   this.$store.commit('change',this.user)
+                  this.$store.commit('getIcon',res.data.info.head_portrait)
                   this.$router.push('/guide')
                   Toast({
                     message:'登录成功',

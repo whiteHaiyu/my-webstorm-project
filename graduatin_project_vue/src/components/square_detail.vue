@@ -3,20 +3,19 @@
 
 <template>
   <div>
-    <img src="../assets/card_bg.png" class="background">
+    <img src="../assets/square_bg.png" class="background">
 
     <img src="../assets/back.png" class="back" @click="back">
 
-    <div class="more" @click="show_more = true">更多</div>
-
-    <div class="dialog_more" @click="show_more = false" v-if="show_more">
-      <ul class="container">
-        <li class="item" @click="modify">修改</li>
-        <li class="item" @click="deleteCard">删除</li>
-      </ul>
-    </div>
+    <p class="title">留言</p>
+    <p class="detail">与大家讨论治疗过程中的艰辛</p>
 
     <div class="details">
+      <div class="header">
+        <img :src="'../../static/icon'+showData.user_icon+'.png'" class="user_icon">
+        <p class="user_name">{{showData.user}}</p>
+        <p class="release">创建于{{showData.release_time}}</p>
+      </div>
       <div class="items">
         <span class="item_title">就诊时间</span>{{showData.clinic_time}}
       </div>
@@ -35,25 +34,7 @@
         <span class="item_title">性别</span>{{showData.sex}}
       </div>
       <div class="items">
-        <span class="item_title">出生年月</span>{{showData.birth}}
-      </div>
-      <div class="items">
-        <span class="item_title">民族</span>{{showData.nation}}
-      </div>
-      <div class="items">
-        <span class="item_title">婚姻状况</span>{{showData.marry}}
-      </div>
-      <div class="items">
         <span class="item_title">职业</span>{{showData.job}}
-      </div>
-      <div class="items">
-        <span class="item_title">工作单位</span>{{showData.work_unit}}
-      </div>
-      <div class="items">
-        <span class="item_title">住址</span>{{showData.address}}
-      </div>
-      <div class="items">
-        <span class="item_title">药物过敏史</span>{{showData.allergy_history}}
       </div>
 
       <div class="basic_info">
@@ -65,12 +46,6 @@
       </div>
       <div class="items">
         <span class="item_title">主诉</span>{{showData.main_suit}}
-      </div>
-      <div class="items">
-        <span class="item_title">现病史</span>{{showData.present_illness}}
-      </div>
-      <div class="items">
-        <span class="item_title">既往史</span>{{showData.history_illness}}
       </div>
       <div class="items">
         <span class="item_title">辅助检查结果</span>{{showData.examine}}
@@ -92,6 +67,12 @@
       <div class="items">
         <span class="item_title">医师</span>{{showData.doctor}}
       </div>
+      <div class="blank"></div>
+    </div>
+
+    <div class="tab">
+      <input type="text" class="message" placeholder="给广场主的留言" v-model="message">
+      <div class="submit" @click="postmessage">留言</div>
     </div>
   </div>
 </template>
@@ -103,6 +84,8 @@
     name:'detail',
     data(){
       return{
+        current_time:'',
+        message:'',
         show_more:false,
         showData:{
           user:'',
@@ -127,7 +110,9 @@
           cure:'',
           advice:'',
           doctor:'',
-          share:''
+          share:'',
+          user_icon:'0',
+          release_time:''
         },
       }
     },
@@ -153,32 +138,39 @@
         this.$router.push('/guide/card')
       },
 
-      modify(){
-        this.$router.push('/modify')
-      },
-
-      deleteCard(){
-        // console.log('delete')
-        this.$axios({
-          method: 'post',
-          url:'http://localhost:3000/delete',
-          data:{
-            id:this.showData.id
-          }
-        }).then(res => {
-          console.log(res)
-          if(res.data == 'delete success'){
-            Toast({
-              message:'删除成功',
-              duration:1000
-            })
-            this.$router.push('/guide')
-          }
-        }).catch(err => {
-          console.log(err)
-        })
-      },
-
+      postmessage(){
+        let mydate = new Date()
+        // console.log(mydate.toLocaleDateString())
+        if(this.message != ''){
+          this.$axios({
+            method:'post',
+            url:'http://localhost:3000/createmsg',
+            data:{
+              user_from:this.$store.state.loginState,
+              user_to:this.showData.user,
+              msg:this.message,
+              time:mydate.toLocaleDateString(),
+              user_icon:this.$store.state.user_icon
+            }
+          }).then(res => {
+            console.log(res)
+            if(res.data == 'set msg success'){
+              Toast({
+                message:'留言成功',
+                duration:1000
+              })
+              this.message = ''
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        }else{
+          Toast({
+            message: '请输入留言内容',
+            duration:1000
+          })
+        }
+      }
     }
   }
 
@@ -202,28 +194,23 @@
     z-index: 2;
   }
 
-  .more{
-    width: 1.4rem;
-    height: 0.6rem;
-    position: absolute;
-    top: 0.8rem;
-    right: 0.4rem;
-    z-index: 2;
-    border-radius: 0.6rem;
-    font-size: 16px;
-    color: white;
-    background-color: rgba(255,255,255,0.3);
-    text-align: center;
-    line-height: 0.6rem;
-  }
-
   .details{
     width: 100%;
     position: absolute;
-    top: 1.9rem;
+    left: 0;
+    top: 3.5rem;
     border-radius: 0.2rem 0.2rem 0 0;
     z-index: 2;
     background-color: #fff;
+  }
+
+  .header{
+    width: 100%;
+    height: 1.5rem;
+    line-height: 0.7rem;
+    font-size: 16px;
+    box-sizing: border-box;
+    position: relative;
   }
 
   .items{
@@ -272,34 +259,84 @@
     border-radius: 3px;
   }
 
-  .dialog_more{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.3);
-    z-index: 10;
-  }
-  .container{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-radius: 0.2rem 0.2rem 0 0;
-    width: 100%;
-    height: 3rem;
-    z-index: 20;
-    background-color: #fff;
-  }
-  .item{
-    list-style: none;
-    font-size: 16px;
-    color: rgb(105, 105, 105);
-    width: 100%;
+  .user_icon{
+    width: 1rem;
     height: 1rem;
-    line-height: 1rem;
-    text-align: center;
-    z-index: 30;
+    position: absolute;
+    left: 0.4rem;
+    top:0.2rem;
+    border-radius: 50%;
+  }
+  .user_name{
+    position: absolute;
+    left: 1.7rem;
+    top: 0.1rem;
+    color: black;
+    font-weight: bold;
+  }
+  .release{
+    position: absolute;
+    left: 1.7rem;
+    top: 0.5rem;
+    color: rgb(155, 155, 155);
   }
 
+  .blank{
+    position: relative;
+    width: 100%;
+    height: 1rem;
+  }
+
+  .tab{
+    width: 100%;
+    height: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+    font-size: 16px;
+  }
+  .message{
+    width: 4.2rem;
+    height: 0.6rem;
+    border: none;
+    outline: 0 none;
+    position: absolute;
+    left: 0.4rem;
+    top: 0.2rem;
+    border-radius: 0.6rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    background-color: rgb(244, 244, 244);
+  }
+  .submit{
+    width: 1.5rem;
+    height: 0.6rem;
+    position: absolute;
+    right: 0.4rem;
+    top: 0.2rem;
+    line-height: 0.6rem;
+    text-align: center;
+    border-radius: 0.6rem;
+    background-color: rgb(46, 112, 247);
+    color: white;
+  }
+
+  .title{
+    position: absolute;
+    top: 2rem;
+    left: 0.4rem;
+    font-size: 32px;
+    color: white;
+  }
+  .detail{
+    position: absolute;
+    top: 2.8rem;
+    left: 0.4rem;
+    font-size: 16px;
+    color: white;
+  }
 </style>

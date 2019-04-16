@@ -125,13 +125,13 @@
     mounted(){
       this.$axios({
         method:'post',
-        url:'http://localhost:3000/getinfo',
+        url:'http://localhost:3000/selectid',
         data:{
-          user:this.$store.state.loginState
+          id:this.$store.state.detailsId
         }
       }).then(res => {
         // console.log(res)
-        this.addData=res.data[this.$store.state.detailIndex]
+        this.addData=res.data[0]
         console.log(this.addData)
       }).catch(err => {
         console.log(err)
@@ -250,10 +250,11 @@
 
   .basic_info{
     width: 100%;
-    height: 0.7rem;
+    height: 1rem;
     border-top: solid 0.2rem #f5f5f5;
     padding-top: 0.2rem;
     padding-left: 0.8rem;
+    box-sizing: border-box;
   }
   .info_title{
     font-size: 20px;
@@ -274,7 +275,7 @@
     border: none;
     outline: 0 none;
     font-size: 16px;
-    color: rgb(157, 157, 157);
+    color: rgb(129, 163, 234);
     width: 4.5rem;
     height: auto;
     text-align: right;

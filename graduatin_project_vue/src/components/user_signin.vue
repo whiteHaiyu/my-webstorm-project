@@ -47,6 +47,7 @@
       },
       methods:{
           submit(){
+            let randomNum = Math.floor(Math.random()*8)
             if(this.user != '' && this.pwd != '' && this.repwd != '' && this.mail != '')
             {
               if(this.pwd !== this.repwd){
@@ -61,12 +62,14 @@
                   data: {
                     user: this.user,
                     pwd: this.pwd,
-                    mail: this.mail
+                    mail: this.mail,
+                    head: randomNum
                   }
                 }).then(res => {
                   console.log(res)
                   if (res.data.info == 'signin success') {
                     this.$store.commit('change', this.user)
+                    this.$store.commit('getIcon',randomNum)
                     this.$router.push('/guide')
                     Toast({
                       message:'注册成功',

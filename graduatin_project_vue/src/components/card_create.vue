@@ -149,46 +149,58 @@
 
       // 创建病历记录，使用ajax将数据发送到后端记录
       createRecord() {
-        this.$axios({
-          method: 'post',
-          url: 'http://localhost:3000/create',
-          data: {
-            user: this.addData.user,
-            id: this.addData.id,
-            clinic_time: this.addData.clinic_time,
-            clinic_place: this.addData.clinic_place,
-            name: this.addData.name,
-            sex: this.addData.sex,
-            birth: this.addData.birth,
-            nation: this.addData.nation,
-            marry: this.addData.marry,
-            job: this.addData.job,
-            work_unit: this.addData.work_unit,
-            address: this.addData.address,
-            allergy_history: this.addData.allergy_history,
-            division: this.addData.division,
-            main_suit: this.addData.main_suit,
-            present_illness: this.addData.present_illness,
-            history_illness: this.addData.history_illness,
-            examine: this.addData.examine,
-            diagnose: this.addData.diagnose,
-            cure: this.addData.cure,
-            advice: this.addData.advice,
-            doctor: this.addData.doctor,
-            share: '未分享到广场'
-          }
-        }).then(res => {
-          console.log(res)
-          if(res.data = 'create success'){
-            this.$router.push('/guide')
-            Toast({
-              message:'创建病历成功',
-              duration:1000
-            })
-          }
-        }).catch(err => {
-          console.log(err)
-        })
+        let mydate = new Date()
+        if(this.addData.clinic_place!='' && this.addData.clinic_time!= '' && this.addData.name != '' && this.addData.birth != ''){
+          this.$axios({
+            method: 'post',
+            url: 'http://localhost:3000/create',
+            data: {
+              user: this.addData.user,
+              id: this.addData.id,
+              clinic_time: this.addData.clinic_time,
+              clinic_place: this.addData.clinic_place,
+              name: this.addData.name,
+              sex: this.addData.sex,
+              birth: this.addData.birth,
+              nation: this.addData.nation,
+              marry: this.addData.marry,
+              job: this.addData.job,
+              work_unit: this.addData.work_unit,
+              address: this.addData.address,
+              allergy_history: this.addData.allergy_history,
+              division: this.addData.division,
+              main_suit: this.addData.main_suit,
+              present_illness: this.addData.present_illness,
+              history_illness: this.addData.history_illness,
+              examine: this.addData.examine,
+              diagnose: this.addData.diagnose,
+              cure: this.addData.cure,
+              advice: this.addData.advice,
+              doctor: this.addData.doctor,
+              share: '未分享到广场',
+              release_time : mydate.toLocaleDateString(),
+              user_icon : this.$store.state.user_icon
+
+            }
+          }).then(res => {
+            console.log(res)
+            if(res.data = 'create success'){
+              this.$router.push('/guide')
+              Toast({
+                message:'创建病历成功',
+                duration:1000
+              })
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        }else{
+          Toast({
+            message:'请输入完整信息',
+            duration:1000
+          })
+        }
+
       }
     }
   }
@@ -261,10 +273,11 @@
 
   .basic_info{
     width: 100%;
-    height: 0.7rem;
+    height: 1rem;
     border-top: solid 0.2rem #f5f5f5;
     padding-top: 0.2rem;
     padding-left: 0.8rem;
+    box-sizing: border-box;
   }
   .info_title{
     font-size: 20px;

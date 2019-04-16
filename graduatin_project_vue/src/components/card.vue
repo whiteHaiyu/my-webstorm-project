@@ -3,7 +3,7 @@
       <img class="background" src="../assets/card_bg.png">
       <div class="jump2body">病历模型</div>
       <div @click="show_dialog = true" class="showname">{{name}}&nbsp;></div>
-      <img :src=icon_src class="icon">
+      <img :src="'../../static/icon'+this.$store.state.user_icon+'.png'" class="icon">
 
       <ul class="container">
         <div class="card" v-if="name == '超级医疗欢迎您'">
@@ -56,7 +56,6 @@
         name: "card",
       data(){
             return{
-              icon_src:'../../static/icon0.png',
               show_dialog:false,
               add_dialog:false,
               name:'超级医疗欢迎您',
@@ -136,7 +135,7 @@
         },
         showDetails(e){
           console.log(e)
-          this.$store.commit('getIndex',e)
+          this.$store.commit('getId',this.showData[e].id)
           this.$router.push('/detail')
         },
 
@@ -322,7 +321,7 @@
   }
 
   .refresh{
-    position: absolute;
+    position: fixed;
     z-index: 100;
     right: 0.5rem;
     bottom: 3.1rem;
@@ -331,7 +330,7 @@
   }
 
   .add{
-    position: absolute;
+    position: fixed;
     z-index: 100;
     right: 0.5rem;
     bottom: 1.7rem;

@@ -41,18 +41,27 @@ app.all('*', function (req, res, next) {
 app.post('/login',function (req,res) {
     req.on('data',function (data) {
         let obj = JSON.parse(data)
-        sql.query('select pwd from gp_user where user = ?',[obj.user],function (error,results) {
+        sql.query('select * from gp_user where user = ?',[obj.user],function (error,results) {
             if(error){
-                res.send('login error')
+                res.send({
+                    status:'login error'
+                })
             }else{
                 if(results[0] == undefined){
-                    res.send('no user')
+                    res.send({
+                        status:'no user'
+                    })
                 }else{
                     if(results[0].pwd == obj.pwd){
                         console.log('用户'+obj.user+'登录系统成功')
-                        res.send('login success')
+                        res.send({
+                            status:'login success',
+                            info:results[0]
+                        })
                     }else{
-                        res.send('pwd error')
+                        res.send({
+                            status:'pwd error'
+                        })
                     }
                 }
             }
@@ -60,11 +69,13 @@ app.post('/login',function (req,res) {
     })
 })
 
-// 接收注册请求，post方式传输，{user:'user';pwd:'pwd';mail:'mail'}，三条数据非空，user为主键不能重复，后端插入直接返回结果；前端验证邮箱格式
+// 接收注册请求，post方式传输，{user:'user';pwd:'pwd';mail:'mail';head:'head'}，三条数据非空，user为主键不能重复，后端插入直接返回结果；前端验证邮箱格式
+//其中head为前端随机生成，表示头像
 app.post('/signin',function(req,res) {
     req.on('data',function(data) {
         let obj = JSON.parse(data)
-        sql.query('insert into gp_user(user,pwd,mail) values(?,?,?)',[obj.user,obj.pwd,obj.mail],function(error,results) {
+        console.log(obj)
+        sql.query('insert into gp_user(user,pwd,mail,head_portrait) values(?,?,?,?)',[obj.user,obj.pwd,obj.mail,obj.head],function(error,results) {
             if(error){
                 res.send('signin error')
             }else{
@@ -119,11 +130,26 @@ app.post('/getinfo',function (req,res) {
     })
 })
 
+// 通过病历id返回信息，post方式接收，{id:'id'}
+app.post('/selectid',function (req,res) {
+    req.on('data',function (data) {
+        let obj = JSON.parse(data)
+        sql.query('select * from gp_info where id = ?',[obj.id],function(error,results) {
+            if(error){
+                res.send('404')
+            }else{
+                // console.log(results)
+                res.send(results)
+            }
+        })
+    })
+})
+
 // 获取当前用户的全部病历记录中name项
 app.post('/namelist',function(req,res) {
     req.on('data',function(data) {
         let obj = JSON.parse(data)
-        sql.query('select name from gp_info where user = ?',[obj.user],function(error,results) {
+        sql.query('select distinct name from gp_info where user = ?',[obj.user],function(error,results) {
             if(error){
                 res.send('404')
             }else{
@@ -138,7 +164,7 @@ app.post('/create',function(req,res) {
     req.on('data',function(data) {
         let obj = JSON.parse(data)
         console.log(obj)
-        sql.query('insert into gp_info(id,user,clinic_time,clinic_place,name,sex,birth,nation,marry,job,work_unit,address,allergy_history,division,main_suit,present_illness,history_illness,examine,diagnose,cure,advice,doctor,share) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[obj.id,obj.user,obj.clinic_time,obj.clinic_place,obj.name,obj.sex,obj.birth,obj.nation,obj.marry,obj.job,obj.work_unit,obj.address,obj.allergy_history,obj.division,obj.main_suit,obj.present_illness,obj.history_illness,obj.examine,obj.diagnose,obj.cure,obj.advice,obj.doctor,obj.share],function(error,results) {
+        sql.query('insert into gp_info(id,user,clinic_time,clinic_place,name,sex,birth,nation,marry,job,work_unit,address,allergy_history,division,main_suit,present_illness,history_illness,examine,diagnose,cure,advice,doctor,share,release_time,user_icon) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[obj.id,obj.user,obj.clinic_time,obj.clinic_place,obj.name,obj.sex,obj.birth,obj.nation,obj.marry,obj.job,obj.work_unit,obj.address,obj.allergy_history,obj.division,obj.main_suit,obj.present_illness,obj.history_illness,obj.examine,obj.diagnose,obj.cure,obj.advice,obj.doctor,obj.share,obj.release_time,obj.user_icon],function(error,results) {
             if(error){
                 console.log(error)
                 res.send('create record error')
@@ -212,31 +238,7 @@ app.post('/square',function(req,res) {
     })
 })
 
-// 改变当前病历是否分享，post接收请求，接收当前病历的id
-app.post('/share',function(req,res) {
-    req.on('data',function (data) {
-        let obj = JSON.parse(data)
-        sql.query('update gp_info set share = 1 where id = ?',[obj.id],function(error,results){
-            if(error){
-                res.send('change share error')
-            }else{
-                res.send('share success')
-            }
-        })
-    })
-})
-app.post('/unshare',function (req,res) {
-    req.on('data',function (data) {
-        let obj = JSON.parse(data)
-        sql.query('update gp_info set share = 0 where id = ?',[obj.id],function(error,results){
-            if(error){
-                res.send('change share error')
-            }else{
-                res.send('unshare success')
-            }
-        })
-    })
-})
+
 
 // 查看留言，post方式接收,接收当前用户名
 app.post('/askmsg',function (req,res) {
@@ -253,10 +255,11 @@ app.post('/askmsg',function (req,res) {
 })
 
 // 创建留言，post方式接收,其中留言信息最多200字，前端限制
-app.post('/askmsg',function (req,res) {
+app.post('/createmsg',function (req,res) {
     req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('insert into gp_msg(user_from,user_to,msg,time) values(?,?,?,?)', [obj.user_from,obj.user_to,obj.msg,obj.data], function (error, results) {
+        console.log(obj)
+        sql.query('insert into gp_msg(user_from,user_to,msg,time,user_icon) values(?,?,?,?,?)', [obj.user_from,obj.user_to,obj.msg,obj.time,obj.user_icon], function (error, results) {
             if (error) {
                 res.send('set msg error')
             }else{
