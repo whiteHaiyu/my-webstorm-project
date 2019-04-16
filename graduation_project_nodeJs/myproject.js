@@ -269,6 +269,20 @@ app.post('/createmsg',function (req,res) {
     })
 })
 
+//删除用户病历，post方式发送数据
+app.post('/deletemsg',function(req,res) {
+    req.on('data',function(data) {
+        let obj = JSON.parse(data)
+        sql.query('DELETE FROM gp_msg where id= ?',[obj.id],function(error,results) {
+            if(error){
+                res.send('delete info error')
+            }else{
+                res.send('delete success')
+            }
+        })
+    })
+})
+
 app.listen(3000,function () {
     console.log('nodeJs服务启动')
 })
