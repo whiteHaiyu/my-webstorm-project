@@ -100,77 +100,77 @@
   import {Toast} from 'mint-ui'
 
   export default {
-    name:'detail',
-    data(){
-      return{
-        show_more:false,
-        showData:{
-          user:'',
-          id:'',
-          clinic_time:'',
-          clinic_place:'',
-          name:'',
-          sex:'',
-          birth:'',
-          nation:'',
-          marry:'',
-          job:'',
-          work_unit:'',
-          address:'',
-          allergy_history:'',
-          division:'',
-          main_suit:'',
-          present_illness:'',
-          history_illness:'',
-          examine:'',
-          diagnose:'',
-          cure:'',
-          advice:'',
-          doctor:'',
-          share:''
+    name: 'detail',
+    data() {
+      return {
+        show_more: false,
+        showData: {
+          user: '',
+          id: '',
+          clinic_time: '',
+          clinic_place: '',
+          name: '',
+          sex: '',
+          birth: '',
+          nation: '',
+          marry: '',
+          job: '',
+          work_unit: '',
+          address: '',
+          allergy_history: '',
+          division: '',
+          main_suit: '',
+          present_illness: '',
+          history_illness: '',
+          examine: '',
+          diagnose: '',
+          cure: '',
+          advice: '',
+          doctor: '',
+          share: ''
         },
       }
     },
 
-    mounted(){
+    mounted() {
       this.$axios({
-        method:'post',
-        url:'http://localhost:3000/selectid',
-        data:{
-          id:this.$store.state.detailsId
+        method: 'post',
+        url: 'http://localhost:3000/selectid',
+        data: {
+          id: this.$store.state.detailsId
         }
       }).then(res => {
         console.log(res)
-        this.showData=res.data[0]
+        this.showData = res.data[0]
         console.log(this.showData)
       }).catch(err => {
         console.log(err)
       })
     },
 
-    methods:{
-      back(){
+    methods: {
+      back() {
         this.$router.push('/guide/card')
       },
 
-      modify(){
+      modify() {
         this.$router.push('/modify')
       },
 
-      deleteCard(){
+      deleteCard() {
         // console.log('delete')
         this.$axios({
           method: 'post',
-          url:'http://localhost:3000/delete',
-          data:{
-            id:this.showData.id
+          url: 'http://localhost:3000/delete',
+          data: {
+            id: this.showData.id
           }
         }).then(res => {
           console.log(res)
-          if(res.data == 'delete success'){
+          if (res.data == 'delete success') {
             Toast({
-              message:'删除成功',
-              duration:1000
+              message: '删除成功',
+              duration: 1000
             })
             this.$router.push('/guide')
           }
@@ -185,7 +185,7 @@
 </script>
 
 <style scoped>
-  .background{
+  .background {
     width: 7.5rem;
     position: absolute;
     top: 0;
@@ -193,7 +193,7 @@
     z-index: 0;
   }
 
-  .back{
+  .back {
     width: 0.6rem;
     height: 0.6rem;
     position: absolute;
@@ -202,7 +202,7 @@
     z-index: 2;
   }
 
-  .more{
+  .more {
     width: 1.4rem;
     height: 0.6rem;
     position: absolute;
@@ -212,12 +212,12 @@
     border-radius: 0.6rem;
     font-size: 16px;
     color: white;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     text-align: center;
     line-height: 0.6rem;
   }
 
-  .details{
+  .details {
     width: 100%;
     position: absolute;
     top: 1.9rem;
@@ -226,7 +226,7 @@
     background-color: #fff;
   }
 
-  .items{
+  .items {
     width: 100%;
     height: auto;
     line-height: 0.7rem;
@@ -238,7 +238,8 @@
     padding-right: 0.4rem;
     position: relative;
   }
-  .item_title{
+
+  .item_title {
     width: 2.1rem;
     height: 0.7rem;
     font-size: 16px;
@@ -249,7 +250,7 @@
     text-align: left;
   }
 
-  .basic_info{
+  .basic_info {
     width: 100%;
     height: 1rem;
     border-top: solid 0.2rem #f5f5f5;
@@ -257,11 +258,13 @@
     padding-left: 0.8rem;
     box-sizing: border-box;
   }
-  .info_title{
+
+  .info_title {
     font-size: 20px;
     font-weight: bold;
   }
-  .info_title::after{
+
+  .info_title::after {
     content: '';
     width: 0;
     font-size: 10px;
@@ -272,16 +275,17 @@
     border-radius: 3px;
   }
 
-  .dialog_more{
+  .dialog_more {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 10;
   }
-  .container{
+
+  .container {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -291,7 +295,8 @@
     z-index: 20;
     background-color: #fff;
   }
-  .item{
+
+  .item {
     list-style: none;
     font-size: 16px;
     color: rgb(105, 105, 105);

@@ -81,93 +81,93 @@
   import {Toast} from 'mint-ui'
 
   export default {
-    name:'detail',
-    data(){
-      return{
-        current_time:'',
-        message:'',
-        show_more:false,
-        showData:{
-          user:'',
-          id:'',
-          clinic_time:'',
-          clinic_place:'',
-          name:'',
-          sex:'',
-          birth:'',
-          nation:'',
-          marry:'',
-          job:'',
-          work_unit:'',
-          address:'',
-          allergy_history:'',
-          division:'',
-          main_suit:'',
-          present_illness:'',
-          history_illness:'',
-          examine:'',
-          diagnose:'',
-          cure:'',
-          advice:'',
-          doctor:'',
-          share:'',
-          user_icon:'0',
-          release_time:''
+    name: 'detail',
+    data() {
+      return {
+        current_time: '',
+        message: '',
+        show_more: false,
+        showData: {
+          user: '',
+          id: '',
+          clinic_time: '',
+          clinic_place: '',
+          name: '',
+          sex: '',
+          birth: '',
+          nation: '',
+          marry: '',
+          job: '',
+          work_unit: '',
+          address: '',
+          allergy_history: '',
+          division: '',
+          main_suit: '',
+          present_illness: '',
+          history_illness: '',
+          examine: '',
+          diagnose: '',
+          cure: '',
+          advice: '',
+          doctor: '',
+          share: '',
+          user_icon: '0',
+          release_time: ''
         },
       }
     },
 
-    mounted(){
+    mounted() {
       this.$axios({
-        method:'post',
-        url:'http://localhost:3000/selectid',
-        data:{
-          id:this.$store.state.detailsId
+        method: 'post',
+        url: 'http://localhost:3000/selectid',
+        data: {
+          id: this.$store.state.detailsId
         }
       }).then(res => {
         console.log(res)
-        this.showData=res.data[0]
+        this.showData = res.data[0]
         console.log(this.showData)
       }).catch(err => {
         console.log(err)
       })
     },
 
-    methods:{
-      back(){
+    methods: {
+      back() {
         this.$router.push('/guide/card')
       },
 
-      postmessage(){
+      postmessage() {
         let mydate = new Date()
         // console.log(mydate.toLocaleDateString())
-        if(this.message != ''){
+        if (this.message != '') {
           this.$axios({
-            method:'post',
-            url:'http://localhost:3000/createmsg',
-            data:{
-              user_from:this.$store.state.loginState,
-              user_to:this.showData.user,
-              msg:this.message,
-              time:mydate.toLocaleDateString(),
-              user_icon:this.$store.state.user_icon
+            method: 'post',
+            url: 'http://localhost:3000/createmsg',
+            data: {
+              user_from: this.$store.state.loginState,
+              user_to: this.showData.user,
+              msg: this.message,
+              time: mydate.toLocaleDateString(),
+              user_icon: this.$store.state.user_icon
             }
           }).then(res => {
             console.log(res)
-            if(res.data == 'set msg success'){
+            if (res.data == 'set msg success') {
               Toast({
-                message:'留言成功',
-                duration:1000
+                message: '留言成功',
+                duration: 1000
               })
               this.message = ''
             }
           }).catch(err => {
             console.log(err)
           })
-        }else{
+        } else {
           Toast({
             message: '请输入留言内容',
-            duration:1000
+            duration: 1000
           })
         }
       }
@@ -177,7 +177,7 @@
 </script>
 
 <style scoped>
-  .background{
+  .background {
     width: 7.5rem;
     position: absolute;
     top: 0;
@@ -185,7 +185,7 @@
     z-index: 0;
   }
 
-  .back{
+  .back {
     width: 0.6rem;
     height: 0.6rem;
     position: absolute;
@@ -194,7 +194,7 @@
     z-index: 2;
   }
 
-  .details{
+  .details {
     width: 100%;
     position: absolute;
     left: 0;
@@ -204,7 +204,7 @@
     background-color: #fff;
   }
 
-  .header{
+  .header {
     width: 100%;
     height: 1.5rem;
     line-height: 0.7rem;
@@ -213,7 +213,7 @@
     position: relative;
   }
 
-  .items{
+  .items {
     width: 100%;
     height: auto;
     line-height: 0.7rem;
@@ -225,7 +225,8 @@
     padding-right: 0.4rem;
     position: relative;
   }
-  .item_title{
+
+  .item_title {
     width: 2.1rem;
     height: 0.7rem;
     font-size: 16px;
@@ -236,7 +237,7 @@
     text-align: left;
   }
 
-  .basic_info{
+  .basic_info {
     width: 100%;
     height: 1rem;
     border-top: solid 0.2rem #f5f5f5;
@@ -244,11 +245,13 @@
     padding-left: 0.8rem;
     box-sizing: border-box;
   }
-  .info_title{
+
+  .info_title {
     font-size: 20px;
     font-weight: bold;
   }
-  .info_title::after{
+
+  .info_title::after {
     content: '';
     width: 0;
     font-size: 10px;
@@ -259,35 +262,37 @@
     border-radius: 3px;
   }
 
-  .user_icon{
+  .user_icon {
     width: 1rem;
     height: 1rem;
     position: absolute;
     left: 0.4rem;
-    top:0.2rem;
+    top: 0.2rem;
     border-radius: 50%;
   }
-  .user_name{
+
+  .user_name {
     position: absolute;
     left: 1.7rem;
     top: 0.1rem;
     color: black;
     font-weight: bold;
   }
-  .release{
+
+  .release {
     position: absolute;
     left: 1.7rem;
     top: 0.5rem;
     color: rgb(155, 155, 155);
   }
 
-  .blank{
+  .blank {
     position: relative;
     width: 100%;
     height: 1rem;
   }
 
-  .tab{
+  .tab {
     width: 100%;
     height: 1rem;
     position: fixed;
@@ -295,11 +300,12 @@
     left: 0;
     box-sizing: border-box;
     background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     z-index: 100;
     font-size: 16px;
   }
-  .message{
+
+  .message {
     width: 4.2rem;
     height: 0.6rem;
     border: none;
@@ -312,7 +318,8 @@
     padding-right: 0.3rem;
     background-color: rgb(244, 244, 244);
   }
-  .submit{
+
+  .submit {
     width: 1.5rem;
     height: 0.6rem;
     position: absolute;
@@ -325,14 +332,15 @@
     color: white;
   }
 
-  .title{
+  .title {
     position: absolute;
     top: 2rem;
     left: 0.4rem;
     font-size: 32px;
     color: white;
   }
-  .detail{
+
+  .detail {
     position: absolute;
     top: 2.8rem;
     left: 0.4rem;

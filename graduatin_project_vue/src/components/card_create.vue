@@ -11,10 +11,12 @@
 
     <div class="details">
       <div class="items">
-        <span class="item_title">就诊时间</span><input type="textarea" v-model="addData.clinic_time" class="item_input" placeholder="请输入就诊时间">
+        <span class="item_title">就诊时间</span><input type="textarea" v-model="addData.clinic_time" class="item_input"
+                                                   placeholder="请输入就诊时间">
       </div>
       <div class="items">
-        <span class="item_title">就诊地点</span><input type="textarea" v-model="addData.clinic_place" class="item_input" placeholder="请输入就诊地点">
+        <span class="item_title">就诊地点</span><input type="textarea" v-model="addData.clinic_place" class="item_input"
+                                                   placeholder="请输入就诊地点">
       </div>
 
       <div class="basic_info">
@@ -22,31 +24,40 @@
       </div>
 
       <div class="items">
-        <span class="item_title">姓名</span><input type="textarea" v-model="addData.name" class="item_input" placeholder="请输入姓名">
+        <span class="item_title">姓名</span><input type="textarea" v-model="addData.name" class="item_input"
+                                                 placeholder="请输入姓名">
       </div>
       <div class="items">
-        <span class="item_title">性别</span><input type="textarea" v-model="addData.sex" class="item_input" placeholder="请输入性别">
+        <span class="item_title">性别</span><input type="textarea" v-model="addData.sex" class="item_input"
+                                                 placeholder="请输入性别">
       </div>
       <div class="items">
-        <span class="item_title">出生年月</span><input type="textarea" v-model="addData.birth" class="item_input" placeholder="请输入出生年月">
+        <span class="item_title">出生年月</span><input type="textarea" v-model="addData.birth" class="item_input"
+                                                   placeholder="请输入出生年月">
       </div>
       <div class="items">
-        <span class="item_title">民族</span><input type="textarea" v-model="addData.nation" class="item_input" placeholder="请输入民族">
+        <span class="item_title">民族</span><input type="textarea" v-model="addData.nation" class="item_input"
+                                                 placeholder="请输入民族">
       </div>
       <div class="items">
-        <span class="item_title">婚姻状况</span><input type="textarea" v-model="addData.marry" class="item_input" placeholder="请输入婚姻状况">
+        <span class="item_title">婚姻状况</span><input type="textarea" v-model="addData.marry" class="item_input"
+                                                   placeholder="请输入婚姻状况">
       </div>
       <div class="items">
-        <span class="item_title">职业</span><input type="textarea" v-model="addData.job" class="item_input" placeholder="请输入职业">
+        <span class="item_title">职业</span><input type="textarea" v-model="addData.job" class="item_input"
+                                                 placeholder="请输入职业">
       </div>
       <div class="items">
-        <span class="item_title">工作单位</span><input type="textarea" v-model="addData.work_unit" class="item_input" placeholder="请输入工作单位">
+        <span class="item_title">工作单位</span><input type="textarea" v-model="addData.work_unit" class="item_input"
+                                                   placeholder="请输入工作单位">
       </div>
       <div class="items">
-        <span class="item_title">住址</span><input type="textarea" v-model="addData.address" class="item_input" placeholder="请输入住址">
+        <span class="item_title">住址</span><input type="textarea" v-model="addData.address" class="item_input"
+                                                 placeholder="请输入住址">
       </div>
       <div class="items">
-        <span class="item_title">药物过敏史</span><input type="textarea" v-model="addData.allergy_history" class="item_input" placeholder="请输入药物过敏史">
+        <span class="item_title">药物过敏史</span><input type="textarea" v-model="addData.allergy_history" class="item_input"
+                                                    placeholder="请输入药物过敏史">
       </div>
 
       <div class="basic_info">
@@ -54,19 +65,24 @@
       </div>
 
       <div class="items">
-        <span class="item_title">科别</span><input type="textarea" v-model="addData.division" class="item_input" placeholder="请输入科别">
+        <span class="item_title">科别</span><input type="textarea" v-model="addData.division" class="item_input"
+                                                 placeholder="请输入科别">
       </div>
       <div class="items">
-        <span class="item_title">主诉</span><input type="textarea" v-model="addData.main_suit" class="item_input" placeholder="请输入主诉">
+        <span class="item_title">主诉</span><input type="textarea" v-model="addData.main_suit" class="item_input"
+                                                 placeholder="请输入主诉">
       </div>
       <div class="items">
-        <span class="item_title">现病史</span><input type="textarea" v-model="addData.present_illness" class="item_input" placeholder="请输入现病史">
+        <span class="item_title">现病史</span><input type="textarea" v-model="addData.present_illness" class="item_input"
+                                                  placeholder="请输入现病史">
       </div>
       <div class="items">
-        <span class="item_title">既往史</span><input type="textarea" v-model="addData.history_illness" class="item_input" placeholder="请输入既往史">
+        <span class="item_title">既往史</span><input type="textarea" v-model="addData.history_illness" class="item_input"
+                                                  placeholder="请输入既往史">
       </div>
       <div class="items">
-        <span class="item_title">辅助检查结果</span><input type="textarea" v-model="addData.examine" class="item_input" placeholder="请输入辅助检查结果">
+        <span class="item_title">辅助检查结果</span><input type="textarea" v-model="addData.examine" class="item_input"
+                                                     placeholder="请输入辅助检查结果">
       </div>
 
       <div class="basic_info">
@@ -74,16 +90,20 @@
       </div>
 
       <div class="items">
-        <span class="item_title">诊断意见</span><input type="textarea" v-model="addData.diagnose" class="item_input" placeholder="请输入诊断意见">
+        <span class="item_title">诊断意见</span><input type="textarea" v-model="addData.diagnose" class="item_input"
+                                                   placeholder="请输入诊断意见">
       </div>
       <div class="items">
-        <span class="item_title">治疗意见</span><input type="textarea" v-model="addData.cure" class="item_input" placeholder="请输入治疗意见">
+        <span class="item_title">治疗意见</span><input type="textarea" v-model="addData.cure" class="item_input"
+                                                   placeholder="请输入治疗意见">
       </div>
       <div class="items">
-        <span class="item_title">医嘱</span><input type="textarea" v-model="addData.advice" class="item_input" placeholder="请输入医嘱">
+        <span class="item_title">医嘱</span><input type="textarea" v-model="addData.advice" class="item_input"
+                                                 placeholder="请输入医嘱">
       </div>
       <div class="items">
-        <span class="item_title">医师</span><input type="textarea" v-model="addData.doctor" class="item_input" placeholder="请输入医师">
+        <span class="item_title">医师</span><input type="textarea" v-model="addData.doctor" class="item_input"
+                                                 placeholder="请输入医师">
       </div>
       <div class="blank"></div>
     </div>
@@ -143,14 +163,14 @@
         return id;
       },
 
-      back(){
+      back() {
         this.$router.push('/guide')
       },
 
       // 创建病历记录，使用ajax将数据发送到后端记录
       createRecord() {
         let mydate = new Date()
-        if(this.addData.clinic_place!='' && this.addData.clinic_time!= '' && this.addData.name != '' && this.addData.birth != ''){
+        if (this.addData.clinic_place != '' && this.addData.clinic_time != '' && this.addData.name != '' && this.addData.birth != '') {
           this.$axios({
             method: 'post',
             url: 'http://localhost:3000/create',
@@ -178,26 +198,26 @@
               advice: this.addData.advice,
               doctor: this.addData.doctor,
               share: '未分享到广场',
-              release_time : mydate.toLocaleDateString(),
-              user_icon : this.$store.state.user_icon
+              release_time: mydate.toLocaleDateString(),
+              user_icon: this.$store.state.user_icon
 
             }
           }).then(res => {
             console.log(res)
-            if(res.data = 'create success'){
+            if (res.data = 'create success') {
               this.$router.push('/guide')
               Toast({
-                message:'创建病历成功',
-                duration:1000
+                message: '创建病历成功',
+                duration: 1000
               })
             }
           }).catch(err => {
             console.log(err)
           })
-        }else{
+        } else {
           Toast({
-            message:'请输入完整信息',
-            duration:1000
+            message: '请输入完整信息',
+            duration: 1000
           })
         }
 
@@ -207,7 +227,7 @@
 </script>
 
 <style scoped>
-  .background{
+  .background {
     width: 7.5rem;
     position: absolute;
     top: 0;
@@ -215,7 +235,7 @@
     z-index: 0;
   }
 
-  .back{
+  .back {
     width: 0.6rem;
     height: 0.6rem;
     position: absolute;
@@ -224,7 +244,7 @@
     z-index: 2;
   }
 
-  .more{
+  .more {
     width: 1.4rem;
     height: 0.6rem;
     position: absolute;
@@ -234,12 +254,12 @@
     border-radius: 0.6rem;
     font-size: 16px;
     color: white;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     text-align: center;
     line-height: 0.6rem;
   }
 
-  .details{
+  .details {
     width: 100%;
     position: absolute;
     top: 1.9rem;
@@ -248,7 +268,7 @@
     background-color: #fff;
   }
 
-  .items{
+  .items {
     width: 100%;
     height: auto;
     line-height: 0.7rem;
@@ -260,18 +280,19 @@
     padding-right: 0.4rem;
     position: relative;
   }
-  .item_title{
+
+  .item_title {
     width: 2.1rem;
     height: 0.7rem;
     font-size: 16px;
     color: rgb(53, 53, 53);
     position: absolute;
-  left: 0.4rem;
-  top: 0;
-  text-align: left;
+    left: 0.4rem;
+    top: 0;
+    text-align: left;
   }
 
-  .basic_info{
+  .basic_info {
     width: 100%;
     height: 1rem;
     border-top: solid 0.2rem #f5f5f5;
@@ -279,11 +300,13 @@
     padding-left: 0.8rem;
     box-sizing: border-box;
   }
-  .info_title{
+
+  .info_title {
     font-size: 20px;
     font-weight: bold;
   }
-  .info_title::after{
+
+  .info_title::after {
     content: '';
     width: 0;
     font-size: 10px;
@@ -294,7 +317,7 @@
     border-radius: 3px;
   }
 
-  .item_input{
+  .item_input {
     border: none;
     outline: 0 none;
     font-size: 16px;
@@ -304,7 +327,7 @@
     text-align: right;
   }
 
-  .blank{
+  .blank {
     width: 100%;
     height: 0.5rem;
   }

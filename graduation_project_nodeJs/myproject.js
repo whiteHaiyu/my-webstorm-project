@@ -6,10 +6,10 @@ const app = express()
 
 // 设置连接数据库信息
 const sql = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'123456',
-    database:'gp'
+    host: 'localhost',
+    user: 'root',
+    password: '123456',
+    database: 'gp'
 })
 
 // 设置邮箱服务器
@@ -38,29 +38,29 @@ app.all('*', function (req, res, next) {
 });
 
 // 接收登录的请求，post方式传输，{user:'user';pwd:'pwd'}
-app.post('/login',function (req,res) {
-    req.on('data',function (data) {
+app.post('/login', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('select * from gp_user where user = ?',[obj.user],function (error,results) {
-            if(error){
+        sql.query('select * from gp_user where user = ?', [obj.user], function (error, results) {
+            if (error) {
                 res.send({
-                    status:'login error'
+                    status: 'login error'
                 })
-            }else{
-                if(results[0] == undefined){
+            } else {
+                if (results[0] == undefined) {
                     res.send({
-                        status:'no user'
+                        status: 'no user'
                     })
-                }else{
-                    if(results[0].pwd == obj.pwd){
-                        console.log('用户'+obj.user+'登录系统成功')
+                } else {
+                    if (results[0].pwd == obj.pwd) {
+                        console.log('用户' + obj.user + '登录系统成功')
                         res.send({
-                            status:'login success',
-                            info:results[0]
+                            status: 'login success',
+                            info: results[0]
                         })
-                    }else{
+                    } else {
                         res.send({
-                            status:'pwd error'
+                            status: 'pwd error'
                         })
                     }
                 }
@@ -71,41 +71,41 @@ app.post('/login',function (req,res) {
 
 // 接收注册请求，post方式传输，{user:'user';pwd:'pwd';mail:'mail';head:'head'}，三条数据非空，user为主键不能重复，后端插入直接返回结果；前端验证邮箱格式
 //其中head为前端随机生成，表示头像
-app.post('/signin',function(req,res) {
-    req.on('data',function(data) {
+app.post('/signin', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        console.log(obj)
-        sql.query('insert into gp_user(user,pwd,mail,head_portrait) values(?,?,?,?)',[obj.user,obj.pwd,obj.mail,obj.head],function(error,results) {
-            if(error){
+        // console.log(obj)
+        sql.query('insert into gp_user(user,pwd,mail,head_portrait) values(?,?,?,?)', [obj.user, obj.pwd, obj.mail, obj.head], function (error, results) {
+            if (error) {
                 res.send('signin error')
-            }else{
-                res.send({info:'signin success',user:obj.user})
+            } else {
+                res.send({info: 'signin success', user: obj.user})
             }
         })
     })
 })
 
 // 忘记密码，post方式接收，{mail:'mail'}，通过邮件方式将账号密码发送到指定邮箱
-app.post('/findpwd',function(req,res) {
-    req.on('data',function(data) {
+app.post('/findpwd', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('select * from gp_user where mail = ?',[obj.mail],function(error,results) {
-            if(error){
+        sql.query('select * from gp_user where mail = ?', [obj.mail], function (error, results) {
+            if (error) {
                 res.send('error')
-            }else{
-                if(results[0].user == ''){
+            } else {
+                if (results[0].user == '') {
                     res.send('no user finded')
-                }else{
+                } else {
                     let mailOptions = {
                         from: '2123147840@qq.com',
                         to: obj.mail,
                         subject: '账号密码找回',
-                        text: '账号：'+results[0].user+' ，密码：'+results[0].pwd
+                        text: '账号：' + results[0].user + ' ，密码：' + results[0].pwd
                     }
-                    transporter.sendMail(mailOptions, function(error, info){
-                        if(error){
+                    transporter.sendMail(mailOptions, function (error, info) {
+                        if (error) {
                             console.log(error);
-                        }else{
+                        } else {
                             res.send('findpwd success')
                         }
                     })
@@ -116,13 +116,13 @@ app.post('/findpwd',function(req,res) {
 })
 
 // 返回当前用户的所有病例记录，post方式接收，{user:'user'}
-app.post('/getinfo',function (req,res) {
-    req.on('data',function (data) {
+app.post('/getinfo', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('select * from gp_info where user = ? order by clinic_time desc',[obj.user],function(error,results) {
-            if(error){
+        sql.query('select * from gp_info where user = ? order by clinic_time desc', [obj.user], function (error, results) {
+            if (error) {
                 res.send('404')
-            }else{
+            } else {
                 // console.log(results)
                 res.send(results)
             }
@@ -131,13 +131,13 @@ app.post('/getinfo',function (req,res) {
 })
 
 // 通过病历id返回信息，post方式接收，{id:'id'}
-app.post('/selectid',function (req,res) {
-    req.on('data',function (data) {
+app.post('/selectid', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('select * from gp_info where id = ?',[obj.id],function(error,results) {
-            if(error){
+        sql.query('select * from gp_info where id = ?', [obj.id], function (error, results) {
+            if (error) {
                 res.send('404')
-            }else{
+            } else {
                 // console.log(results)
                 res.send(results)
             }
@@ -146,13 +146,13 @@ app.post('/selectid',function (req,res) {
 })
 
 // 获取当前用户的全部病历记录中name项
-app.post('/namelist',function(req,res) {
-    req.on('data',function(data) {
+app.post('/namelist', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('select distinct name from gp_info where user = ?',[obj.user],function(error,results) {
-            if(error){
+        sql.query('select distinct name from gp_info where user = ?', [obj.user], function (error, results) {
+            if (error) {
                 res.send('404')
-            }else{
+            } else {
                 res.send(results)
             }
         })
@@ -160,15 +160,15 @@ app.post('/namelist',function(req,res) {
 })
 
 // 创建用户病历，post方式发送数据
-app.post('/create',function(req,res) {
-    req.on('data',function(data) {
+app.post('/create', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        console.log(obj)
-        sql.query('insert into gp_info(id,user,clinic_time,clinic_place,name,sex,birth,nation,marry,job,work_unit,address,allergy_history,division,main_suit,present_illness,history_illness,examine,diagnose,cure,advice,doctor,share,release_time,user_icon) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[obj.id,obj.user,obj.clinic_time,obj.clinic_place,obj.name,obj.sex,obj.birth,obj.nation,obj.marry,obj.job,obj.work_unit,obj.address,obj.allergy_history,obj.division,obj.main_suit,obj.present_illness,obj.history_illness,obj.examine,obj.diagnose,obj.cure,obj.advice,obj.doctor,obj.share,obj.release_time,obj.user_icon],function(error,results) {
-            if(error){
+        // console.log(obj)
+        sql.query('insert into gp_info(id,user,clinic_time,clinic_place,name,sex,birth,nation,marry,job,work_unit,address,allergy_history,division,main_suit,present_illness,history_illness,examine,diagnose,cure,advice,doctor,share,release_time,user_icon) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [obj.id, obj.user, obj.clinic_time, obj.clinic_place, obj.name, obj.sex, obj.birth, obj.nation, obj.marry, obj.job, obj.work_unit, obj.address, obj.allergy_history, obj.division, obj.main_suit, obj.present_illness, obj.history_illness, obj.examine, obj.diagnose, obj.cure, obj.advice, obj.doctor, obj.share, obj.release_time, obj.user_icon], function (error, results) {
+            if (error) {
                 console.log(error)
                 res.send('create record error')
-            }else{
+            } else {
                 res.send('create success')
             }
         })
@@ -176,13 +176,13 @@ app.post('/create',function(req,res) {
 })
 
 //删除用户病历，post方式发送数据
-app.post('/delete',function(req,res) {
-    req.on('data',function(data) {
+app.post('/delete', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('DELETE FROM gp_info where id= ?',[obj.id],function(error,results) {
-            if(error){
+        sql.query('DELETE FROM gp_info where id= ?', [obj.id], function (error, results) {
+            if (error) {
                 res.send('delete info error')
-            }else{
+            } else {
                 res.send('delete success')
             }
         })
@@ -190,13 +190,13 @@ app.post('/delete',function(req,res) {
 })
 
 // 修改用户病历数据，post方式发送
-app.post('/modify',function(req,res) {
-    req.on('data',function (data) {
+app.post('/modify', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('update gp_info set user=?,clinic_time=?,clinic_place=?,name=?,sex=?,birth=?,nation=?,marry=?,job=?,work_unit=?,address=?,allergy_history=?,division=?,main_suit=?,present_illness=?,history_illness=?,examine=?,diagnose=?,cure=?,advice=?,doctor=? where id=?',[obj.user,obj.clinic_time,obj.clinic_place,obj.name,obj.sex,obj.birth,obj.nation,obj.marry,obj.job,obj.work_unit,obj.address,obj.allergy_history,obj.division,obj.main_suit,obj.present_illness,obj.history_illness,obj.examine,obj.diagnose,obj.cure,obj.advice,obj.doctor,obj.id],function(error,results){
-            if(error){
+        sql.query('update gp_info set user=?,clinic_time=?,clinic_place=?,name=?,sex=?,birth=?,nation=?,marry=?,job=?,work_unit=?,address=?,allergy_history=?,division=?,main_suit=?,present_illness=?,history_illness=?,examine=?,diagnose=?,cure=?,advice=?,doctor=? where id=?', [obj.user, obj.clinic_time, obj.clinic_place, obj.name, obj.sex, obj.birth, obj.nation, obj.marry, obj.job, obj.work_unit, obj.address, obj.allergy_history, obj.division, obj.main_suit, obj.present_illness, obj.history_illness, obj.examine, obj.diagnose, obj.cure, obj.advice, obj.doctor, obj.id], function (error, results) {
+            if (error) {
                 res.send('modify error')
-            }else{
+            } else {
                 res.send('modify success')
             }
         })
@@ -204,22 +204,22 @@ app.post('/modify',function(req,res) {
 })
 
 // 是否分享到广场，post接收参数，{id：当前病历id；states：当前分享状态}
-app.post('/share',function(req,res){
-    req.on('data',function(data) {
+app.post('/share', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        if(obj.status == '已分享到广场'){
-            sql.query('update gp_info set share = "未分享到广场" where id = ?',[obj.id],function(error,results) {
-                if(error){
+        if (obj.status == '已分享到广场') {
+            sql.query('update gp_info set share = "未分享到广场" where id = ?', [obj.id], function (error, results) {
+                if (error) {
                     res.send('error')
-                }else{
+                } else {
                     res.send('success')
                 }
             })
-        }else{
-            sql.query('update gp_info set share = "已分享到广场" where id = ?',[obj.id],function(error,results) {
-                if(error){
+        } else {
+            sql.query('update gp_info set share = "已分享到广场" where id = ?', [obj.id], function (error, results) {
+                if (error) {
                     res.send('error')
-                }else{
+                } else {
                     res.send('success')
                 }
             })
@@ -228,26 +228,25 @@ app.post('/share',function(req,res){
 })
 
 // 获取病历广场的内容，post方式接收请求
-app.post('/square',function(req,res) {
-    sql.query('select * from gp_info where share = "已分享到广场"',[],function(error,results) {
-        if(error){
+app.post('/square', function (req, res) {
+    sql.query('select * from gp_info where share = "已分享到广场"', [], function (error, results) {
+        if (error) {
             res.send('askinfo error')
-        }else{
+        } else {
             res.send(results)
         }
     })
 })
 
 
-
 // 查看留言，post方式接收,接收当前用户名
-app.post('/askmsg',function (req,res) {
+app.post('/askmsg', function (req, res) {
     req.on('data', function (data) {
         let obj = JSON.parse(data)
         sql.query('select * from gp_msg where user_to = ?', [obj.user], function (error, results) {
             if (error) {
                 res.send('get msg error')
-            }else{
+            } else {
                 res.send(results)
             }
         })
@@ -255,14 +254,14 @@ app.post('/askmsg',function (req,res) {
 })
 
 // 创建留言，post方式接收,其中留言信息最多200字，前端限制
-app.post('/createmsg',function (req,res) {
+app.post('/createmsg', function (req, res) {
     req.on('data', function (data) {
         let obj = JSON.parse(data)
-        console.log(obj)
-        sql.query('insert into gp_msg(user_from,user_to,msg,time,user_icon) values(?,?,?,?,?)', [obj.user_from,obj.user_to,obj.msg,obj.time,obj.user_icon], function (error, results) {
+        // console.log(obj)
+        sql.query('insert into gp_msg(user_from,user_to,msg,time,user_icon) values(?,?,?,?,?)', [obj.user_from, obj.user_to, obj.msg, obj.time, obj.user_icon], function (error, results) {
             if (error) {
                 res.send('set msg error')
-            }else{
+            } else {
                 res.send('set msg success')
             }
         })
@@ -270,19 +269,34 @@ app.post('/createmsg',function (req,res) {
 })
 
 //删除用户病历，post方式发送数据
-app.post('/deletemsg',function(req,res) {
-    req.on('data',function(data) {
+app.post('/deletemsg', function (req, res) {
+    req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('DELETE FROM gp_msg where id= ?',[obj.id],function(error,results) {
-            if(error){
+        sql.query('DELETE FROM gp_msg where id= ?', [obj.id], function (error, results) {
+            if (error) {
                 res.send('delete info error')
-            }else{
+            } else {
                 res.send('delete success')
             }
         })
     })
 })
 
-app.listen(3000,function () {
+// 获取用户当前名字下的诊断内容，post方式接收，{user:'user',name:'name'}
+app.post('/getsuit', function (req, res) {
+    req.on('data', function (data) {
+        let obj = JSON.parse(data)
+        sql.query('select diagnose from gp_info where user = ? and name = ?', [obj.user, obj.name], function (error, results) {
+            if (error) {
+                res.send('ask info error')
+            } else {
+                res.send(results)
+            }
+        })
+    })
+})
+
+
+app.listen(3000, function () {
     console.log('nodeJs服务启动')
 })

@@ -19,35 +19,33 @@
 
 <script>
 
-    export default {
-      name: "welcome",
-      data(){
-          return{
- 
-          }
+  export default {
+    name: "welcome",
+    data() {
+      return {}
+    },
+
+    methods: {
+      login() {
+        this.$router.push('/login')
       },
 
-      methods:{
-        login(){
-          this.$router.push('/login')
-        },
+      signin() {
+        this.$router.push('/signin')
+      },
 
-        signin(){
-          this.$router.push('/signin')
-        },
-
-      }
     }
+  }
 </script>
 
 <style scoped>
-  .contain{
+  .contain {
     height: 100%;
     background-color: rgb(252, 252, 252);
   }
 
 
-  .login_title{
+  .login_title {
     color: white;
     font-size: 28px;
     position: absolute;
@@ -56,7 +54,7 @@
     z-index: 3;
   }
 
-  .detail_title{
+  .detail_title {
     color: white;
     font-size: 16px;
     position: absolute;
@@ -65,7 +63,7 @@
     z-index: 3;
   }
 
-  .background{
+  .background {
     width: 7.5rem;
     height: 6.2rem;
     position: absolute;
@@ -73,7 +71,7 @@
     left: 0;
   }
 
-  .content{
+  .content {
     height: 4.85rem;
     width: 6.7rem;
     background-color: #fff;
@@ -81,12 +79,12 @@
     left: 0.4rem;
     top: 4.25rem;
     border-radius: 0.1rem;
-    box-shadow: 0px 0px 10px rgba(97,146,255,0.18);
+    box-shadow: 0px 0px 10px rgba(97, 146, 255, 0.18);
     z-index: 2;
   }
 
 
-  .login{
+  .login {
     position: absolute;
     top: 1.5rem;
     left: 0.3rem;
@@ -101,7 +99,7 @@
     color: white;
   }
 
-  .signin{
+  .signin {
     position: absolute;
     top: 2.9rem;
     left: 0.3rem;
@@ -116,7 +114,7 @@
     color: rgb(192, 192, 192);
   }
 
-  .copyright{
+  .copyright {
     font-size: 14px;
     color: rgb(168, 168, 168);
     position: fixed;

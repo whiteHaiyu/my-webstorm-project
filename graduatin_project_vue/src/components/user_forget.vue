@@ -10,7 +10,7 @@
     <img src="../assets/login_bg.png" class="background">
     <div class="content">
       <div class="mail_contain">
-        <input type="text" class="mail" v-model="mail"  placeholder="请输入注册邮箱">
+        <input type="text" class="mail" v-model="mail" placeholder="请输入注册邮箱">
       </div>
       <div class="confirm" @click="submit">确定</div>
     </div>
@@ -23,50 +23,50 @@
 <script>
   import {Toast} from 'mint-ui'
 
-    export default {
-        name: "forget",
-      data(){
-          return{
-            mail:''
-          }
-      },
+  export default {
+    name: "forget",
+    data() {
+      return {
+        mail: ''
+      }
+    },
 
-      methods:{
-          submit(){
-            if(this.mail != ''){
-              this.$axios({
-                method:'post',
-                url:'http://localhost:3000/findpwd',
-                data:{
-                  mail:this.mail
-                }
-              }).then(res => {
-                if(res.data == 'findpwd success'){
-                  Toast({
-                    message:'账号密码已发送到邮箱'
-                  })
-                  this.$router.push('/')
-                }else{
-                  Toast({
-                    message:'当前邮箱未注册',
-                    duration:1000
-                  })
-                }
-              }).catch(err => {
-                console.log(err)
+    methods: {
+      submit() {
+        if (this.mail != '') {
+          this.$axios({
+            method: 'post',
+            url: 'http://localhost:3000/findpwd',
+            data: {
+              mail: this.mail
+            }
+          }).then(res => {
+            if (res.data == 'findpwd success') {
+              Toast({
+                message: '账号密码已发送到邮箱'
+              })
+              this.$router.push('/')
+            } else {
+              Toast({
+                message: '当前邮箱未注册',
+                duration: 1000
               })
             }
-          },
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      },
 
-          back(){
-            this.$router.push('/')
-          }
+      back() {
+        this.$router.push('/')
       }
     }
+  }
 </script>
 
 <style scoped>
-  .close{
+  .close {
     height: 0.6rem;
     width: 0.6rem;
     position: absolute;
@@ -75,7 +75,7 @@
     z-index: 2;
   }
 
-  .login_title{
+  .login_title {
     color: white;
     font-size: 28px;
     position: absolute;
@@ -84,7 +84,7 @@
     z-index: 3;
   }
 
-  .detail_title{
+  .detail_title {
     color: white;
     font-size: 16px;
     position: absolute;
@@ -93,7 +93,7 @@
     z-index: 3;
   }
 
-  .background{
+  .background {
     width: 7.5rem;
     height: 6.2rem;
     position: absolute;
@@ -101,7 +101,7 @@
     left: 0;
   }
 
-  .content{
+  .content {
     height: 4.85rem;
     width: 6.7rem;
     background-color: #fff;
@@ -109,11 +109,11 @@
     left: 0.4rem;
     top: 4.25rem;
     border-radius: 0.1rem;
-    box-shadow: 0px 0px 10px rgba(97,146,255,0.18);
+    box-shadow: 0px 0px 10px rgba(97, 146, 255, 0.18);
     z-index: 2;
   }
 
-  .mail_contain{
+  .mail_contain {
     position: absolute;
     top: 1.25rem;
     left: 0.3rem;
@@ -122,7 +122,8 @@
     height: 0.75rem;
     border-radius: 0.75rem;
   }
-  .mail{
+
+  .mail {
     border: none;
     outline: none;
     position: absolute;
@@ -133,7 +134,7 @@
     width: 5.2rem;
   }
 
-  .confirm{
+  .confirm {
     position: absolute;
     top: 2.85rem;
     left: 0.3rem;
@@ -148,7 +149,7 @@
     color: white;
   }
 
-  .copyright{
+  .copyright {
     font-size: 14px;
     color: rgb(168, 168, 168);
     position: fixed;

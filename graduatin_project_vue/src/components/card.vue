@@ -1,212 +1,219 @@
 <template>
-    <div>
-      <img class="background" src="../assets/card_bg.png">
-      <div class="jump2body">病历模型</div>
-      <div @click="show_dialog = true" class="showname">{{name}}&nbsp;></div>
-      <img :src="'../../static/icon'+this.$store.state.user_icon+'.png'" class="icon">
+  <div>
+    <img class="background" src="../assets/card_bg.png">
+    <div class="jump2body" @click="jump2body">分类统计</div>
+    <div @click="show_dialog = true" class="showname">{{name}}&nbsp;></div>
+    <img :src="'../../static/icon'+this.$store.state.user_icon+'.png'" class="icon">
 
-      <ul class="container">
-        <div class="card" v-if="name == '超级医疗欢迎您'">
-          <p class="remind">点击右下角创建病历~</p>
-        </div>
-        <li :key="index" @click="showDetails(index)" class="card" v-for="(items,index) in showData" v-show="items.name == name">
-          <p class="time">时间：{{items.clinic_time}}</p>
-          <div class="line_top"></div>
-          <p class="suit">主要症状：{{items.main_suit}}</p>
-          <div class="line_mid"></div>
-          <p class="cure">诊断意见：{{items.cure}}</p>
-          <div class="line_bom"></div>
-          <p @click.stop="share(index)" class="share">分享到广场：{{items.share}}&nbsp;></p>
+    <ul class="container">
+      <div class="card" v-if="name == '超级医疗欢迎您'">
+        <p class="remind">点击右下角创建病历~</p>
+      </div>
+      <li :key="index" @click="showDetails(index)" class="card" v-for="(items,index) in showData"
+          v-show="items.name == name">
+        <p class="time">时间：{{items.clinic_time}}</p>
+        <div class="line_top"></div>
+        <p class="suit">主要症状：{{items.main_suit}}</p>
+        <div class="line_mid"></div>
+        <p class="cure">诊断意见：{{items.cure}}</p>
+        <div class="line_bom"></div>
+        <p @click.stop="share(index)" class="share">分享到广场：{{items.share}}&nbsp;></p>
+      </li>
+    </ul>
+
+    <img @click="getinfo" class="refresh" src="../assets/refresh.png">
+    <img @click.stop="add_dialog = true" class="add" src="../assets/add.png">
+
+    <div @click="show_dialog = false" class="dialog" v-show="show_dialog">
+      <ul class="dialog_container">
+        <li :key="index" @click.stop="choose(index)" class="dialog_item" v-for="(items,index) in namelist">
+          {{items.name}}
         </li>
       </ul>
-
-      <img @click="getinfo" class="refresh" src="../assets/refresh.png">
-      <img @click.stop="add_dialog = true" class="add" src="../assets/add.png">
-
-      <div @click="show_dialog = false" class="dialog" v-show="show_dialog">
-        <ul class="dialog_container">
-          <li :key="index" @click.stop="choose(index)" class="dialog_item" v-for="(items,index) in namelist">
-            {{items.name}}
-          </li>
-        </ul>
-      </div>
-
-      <div @click="add_dialog = false" class="dialog" v-show="add_dialog">
-        <div @click.stop class="add_card">
-          <div @click="upload" class="upload">
-            <img class="camera" src="../assets/camera.png">
-            <p class="camera_text">上传病历图片</p>
-          </div>
-          <div @click="fill" class="fill">
-            <img class="font" src="../assets/font.png">
-            <p class="font_text">手动填写病历</p>
-          </div>
-          <img @click="add_dialog = false" class="cancel" src="../assets/cancel.png">
-        </div>
-      </div>
-
-      <div class="black"></div>
     </div>
+
+    <div @click="add_dialog = false" class="dialog" v-show="add_dialog">
+      <div @click.stop class="add_card">
+        <div @click="upload" class="upload">
+          <img class="camera" src="../assets/camera.png">
+          <p class="camera_text">上传病历图片</p>
+        </div>
+        <div @click="fill" class="fill">
+          <img class="font" src="../assets/font.png">
+          <p class="font_text">手动填写病历</p>
+        </div>
+        <img @click="add_dialog = false" class="cancel" src="../assets/cancel.png">
+      </div>
+    </div>
+
+    <div class="black"></div>
+  </div>
 </template>
 
 <script>
   import {Toast} from 'mint-ui'
 
-    export default {
-        name: "card",
-      data(){
-            return{
-              show_dialog:false,
-              add_dialog:false,
-              name:'超级医疗欢迎您',
-              namelist:[],
-              showData:{
-                user:'',
-                id:'',
-                clinic_time:'',
-                clinic_place:'',
-                name:'',
-                sex:'',
-                birth:'',
-                nation:'',
-                marry:'',
-                job:'',
-                work_unit:'',
-                address:'',
-                allergy_history:'',
-                division:'',
-                main_suit:'',
-                present_illness:'',
-                history_illness:'',
-                examine:'',
-                diagnose:'',
-                cure:'',
-                advice:'',
-                doctor:'',
-                share:''
-              },
+  export default {
+    name: "card",
+    data() {
+      return {
+        show_dialog: false,
+        add_dialog: false,
+        name: '超级医疗欢迎您',
+        namelist: [],
+        showData: {
+          user: '',
+          id: '',
+          clinic_time: '',
+          clinic_place: '',
+          name: '',
+          sex: '',
+          birth: '',
+          nation: '',
+          marry: '',
+          job: '',
+          work_unit: '',
+          address: '',
+          allergy_history: '',
+          division: '',
+          main_suit: '',
+          present_illness: '',
+          history_illness: '',
+          examine: '',
+          diagnose: '',
+          cure: '',
+          advice: '',
+          doctor: '',
+          share: ''
+        },
 
-            }
+      }
+    },
+
+    mounted() {
+      this.$axios({
+        method: 'post',
+        url: 'http://localhost:3000/getinfo',
+        data: {
+          user: this.$store.state.loginState
+        }
+      }).then(res => {
+        console.log(res)
+        this.showData = res.data
+        this.name = res.data[0].name
+        this.$store.commit('getName', res.data[0].name)
+      }).catch(err => {
+        console.log(err)
+      })
+
+      this.$axios({
+        method: 'post',
+        url: 'http://localhost:3000/namelist',
+        data: {
+          user: this.$store.state.loginState
+        }
+      }).then(res => {
+        console.log(res)
+        if (res.data != '') {
+          this.namelist = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+
+    methods: {
+
+
+      // 未完成功能
+      upload() {
+        console.log('上传图片')
+        this.add_dialog = false
+      },
+      fill() {
+        console.log('手动录入')
+        this.add_dialog = false
+        this.$router.push('/create')
       },
 
-      mounted(){
+      jump2body() {
+        this.$router.push('/mybody')
+      },
+
+      showDetails(e) {
+        console.log(e)
+        this.$store.commit('getId', this.showData[e].id)
+        this.$router.push('/detail')
+      },
+
+      choose(e) {
+        this.name = this.namelist[e].name
+        this.$store.commit('getName', this.namelist[e].name)
+        this.show_dialog = false
+      },
+
+      getinfo() {
         this.$axios({
-          method:'post',
+          method: 'post',
           url: 'http://localhost:3000/getinfo',
-          data:{
-            user:this.$store.state.loginState
+          data: {
+            user: this.$store.state.loginState
           }
         }).then(res => {
           console.log(res)
+          Toast({
+            message: '刷新数据成功',
+            duration: 1000
+          })
           this.showData = res.data
           this.name = res.data[0].name
         }).catch(err => {
           console.log(err)
         })
-
-        this.$axios({
-          method:'post',
-          url: 'http://localhost:3000/namelist',
-          data:{
-            user:this.$store.state.loginState
-          }
-        }).then(res => {
-          console.log(res)
-          if(res.data != ''){
-            this.namelist = res.data
-          }
-        }).catch(err => {
-          console.log(err)
-        })
       },
 
-      methods:{
-
-
-        // 未完成功能
-        upload(){
-          console.log('上传图片')
-          this.add_dialog = false
-        },
-        fill(){
-          console.log('手动录入')
-          this.add_dialog = false
-          this.$router.push('/create')
-        },
-        showDetails(e){
-          console.log(e)
-          this.$store.commit('getId',this.showData[e].id)
-          this.$router.push('/detail')
-        },
-
-        choose(e){
-          this.name = this.namelist[e].name
-          this.icon_src = '../../static/icon'+e+'.png'
-          this.show_dialog = false
-        },
-
-        getinfo(){
-          this.$axios({
-            method:'post',
-            url: 'http://localhost:3000/getinfo',
-            data:{
-              user:this.$store.state.loginState
-            }
-          }).then(res => {
-            console.log(res)
+      share(e) {
+        // console.log(e)
+        this.$axios({
+          method: 'post',
+          url: 'http://localhost:3000/share',
+          data: {
+            id: this.showData[e].id,
+            status: this.showData[e].share
+          }
+        }).then(res => {
+          if (res.data == 'success') {
+            this.getinfo()
+          } else {
             Toast({
-              message:'刷新数据成功',
-              duration:1000
+              message: '操作失败，稍后再试',
+              duration: 1000
             })
-            this.showData = res.data
-            this.name = res.data[0].name
-          }).catch(err => {
-            console.log(err)
+          }
+        }).catch(err => {
+          Toast({
+            message: 'Network error',
+            duration: 1000
           })
-        },
-
-        share(e){
-          // console.log(e)
-          this.$axios({
-            method:'post',
-            url:'http://localhost:3000/share',
-            data:{
-              id:this.showData[e].id,
-              status:this.showData[e].share
-            }
-          }).then(res => {
-            if(res.data == 'success'){
-              this.getinfo()
-            }else{
-              Toast({
-                message:'操作失败，稍后再试',
-                duration:1000
-              })
-            }
-          }).catch(err => {
-            Toast({
-              message:'Network error',
-              duration:1000
-            })
-          })
-        }
+        })
       }
     }
+  }
 </script>
 
 <style scoped>
-  .time::after,.suit::after,.cure::after,.share::after{
-    content:"";
-    width:0.15rem;
-    height:0.15rem;
+  .time::after, .suit::after, .cure::after, .share::after {
+    content: "";
+    width: 0.15rem;
+    height: 0.15rem;
     border-radius: 100%;
-    position:absolute;
-    top:9px;
-    left:-0.35rem;
-    background:rgb(216, 216, 216);
+    position: absolute;
+    top: 9px;
+    left: -0.35rem;
+    background: rgb(216, 216, 216);
   }
 
-  .line_top{
+  .line_top {
     height: 0.35rem;
     width: 0;
     color: #333333;
@@ -216,7 +223,7 @@
     top: 0.9rem;
   }
 
-  .line_mid{
+  .line_mid {
     height: 0.35rem;
     width: 0;
     color: #333333;
@@ -226,7 +233,7 @@
     top: 1.6rem;
   }
 
-  .line_bom{
+  .line_bom {
     height: 0.35rem;
     width: 0;
     color: #333333;
@@ -236,7 +243,7 @@
     top: 2.3rem;
   }
 
-  .background{
+  .background {
     width: 7.5rem;
     position: absolute;
     top: 0;
@@ -244,14 +251,14 @@
     z-index: 0;
   }
 
-  .jump2body{
+  .jump2body {
     position: absolute;
     top: 0.8rem;
     right: 0.4rem;
     height: 0.7rem;
     width: 1.4rem;
     border-radius: 0.7rem;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     font-size: 14px;
     color: white;
     line-height: 0.7rem;
@@ -259,7 +266,7 @@
     z-index: 3;
   }
 
-  .showname{
+  .showname {
     position: absolute;
     top: 2rem;
     left: 1.8rem;
@@ -267,7 +274,7 @@
     color: white;
   }
 
-  .icon{
+  .icon {
     position: absolute;
     top: 2rem;
     left: 0.4rem;
@@ -275,11 +282,11 @@
     height: 1rem;
   }
 
-  .container{
+  .container {
     margin-top: 3.5rem;
   }
-  
-  .card{
+
+  .card {
     background-color: #fff;
     width: 7.5rem;
     height: 3.5rem;
@@ -287,8 +294,8 @@
     border-radius: 0.3rem;
     margin-bottom: 0.2rem;
   }
-  
-  .time{
+
+  .time {
     font-size: 18px;
     color: rgb(135, 135, 135);
     position: absolute;
@@ -296,7 +303,7 @@
     top: 0.5rem;
   }
 
-  .suit{
+  .suit {
     font-size: 18px;
     color: rgb(135, 135, 135);
     position: absolute;
@@ -304,7 +311,7 @@
     top: 1.2rem;
   }
 
-  .cure{
+  .cure {
     font-size: 18px;
     color: rgb(135, 135, 135);
     position: absolute;
@@ -312,7 +319,7 @@
     top: 1.9rem;
   }
 
-  .share{
+  .share {
     font-size: 18px;
     color: rgb(135, 135, 135);
     position: absolute;
@@ -320,7 +327,7 @@
     top: 2.6rem;
   }
 
-  .refresh{
+  .refresh {
     position: fixed;
     z-index: 100;
     right: 0.5rem;
@@ -329,7 +336,7 @@
     height: 1rem;
   }
 
-  .add{
+  .add {
     position: fixed;
     z-index: 100;
     right: 0.5rem;
@@ -337,21 +344,22 @@
     width: 1rem;
     height: 1rem;
   }
-  
-  .black{
+
+  .black {
     height: 1rem;
   }
 
-  .dialog{
+  .dialog {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 200;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
   }
-  .dialog_container{
+
+  .dialog_container {
     border-radius: 0.2rem 0.2rem 0 0;
     width: 100%;
     height: 5rem;
@@ -362,19 +370,20 @@
     z-index: 300;
     overflow: scroll;
   }
-  .dialog_item{
+
+  .dialog_item {
     margin: 0 auto;
     list-style: none;
     height: 1rem;
     width: 80%;
     line-height: 1rem;
-    border-bottom:gainsboro 1px solid;
+    border-bottom: gainsboro 1px solid;
     font-size: 16px;
     color: darkgrey;
     text-align: center;
   }
 
-  .add_card{
+  .add_card {
     width: 100%;
     height: 6.5rem;
     border-radius: 0.2rem 0.2rem 0 0;
@@ -384,7 +393,7 @@
     left: 0;
   }
 
-  .upload{
+  .upload {
     width: 2.9rem;
     height: 2.3rem;
     position: absolute;
@@ -392,19 +401,21 @@
     left: 0.85rem;
     text-align: center;
   }
-  .camera{
+
+  .camera {
     width: 1.5rem;
     height: 1.5rem;
     position: absolute;
     left: 0.7rem;
     top: 0.4rem;
   }
-  .camera_text{
+
+  .camera_text {
     font-size: 14px;
     margin-top: 2rem;
   }
 
-  .fill{
+  .fill {
     width: 2.9rem;
     height: 2.3rem;
     position: absolute;
@@ -412,19 +423,21 @@
     right: 0.85rem;
     text-align: center;
   }
-  .font{
+
+  .font {
     width: 1.5rem;
     height: 1.5rem;
     position: absolute;
     left: 0.7rem;
     top: 0.4rem;
   }
-  .font_text{
+
+  .font_text {
     font-size: 14px;
     margin-top: 2rem;
   }
 
-  .cancel{
+  .cancel {
     width: 1.1rem;
     height: 1.1rem;
     position: absolute;
@@ -432,7 +445,7 @@
     bottom: 1rem;
   }
 
-  .remind{
+  .remind {
     color: rgb(171, 171, 171);
     font-size: 32px;
     width: 7rem;

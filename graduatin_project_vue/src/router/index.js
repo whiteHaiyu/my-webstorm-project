@@ -10,6 +10,7 @@ import create from '@/components/card_create'
 import modify from '@/components/card_modify'
 import squaredetail from '@/components/square_detail'
 import mymsg from '@/components/mymsg'
+import mybody from '@/components/mybody'
 
 import card from '@/components/card'
 import square from '@/components/square'
@@ -27,14 +28,14 @@ export default new Router({
       component: welcome
     },
     {
-      path:'/login',
-      name:'login',
-      component:login
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
-      path:'/signin',
-      name:'signin',
-      component:signin
+      path: '/signin',
+      name: 'signin',
+      component: signin
     },
     {
       path: '/forget',
@@ -67,22 +68,27 @@ export default new Router({
       component: mymsg
     },
     {
+      path: '/mybody',
+      name: mybody,
+      component: mybody
+    },
+    {
       path: '/guide',
       name: 'guide',
       redirect: '/guide/card',
       component: guide,
-      children:[
+      children: [
         {
-          path:'square',
-          component:square
+          path: 'square',
+          component: square
         },
         {
-          path:'card',
-          component:card
+          path: 'card',
+          component: card
         },
         {
-          path:'mine',
-          component:mine
+          path: 'mine',
+          component: mine
         }
       ]
     }

@@ -1,129 +1,132 @@
 <template>
-    <div>
-      <img src="../assets/square_bg.png" class="background">
-      <p class="title">广场</p>
-      <p class="detail">与大家分享战胜病魔的经历吧</p>
+  <div>
+    <img src="../assets/square_bg.png" class="background">
+    <p class="title">广场</p>
+    <p class="detail">与大家分享战胜病魔的经历吧</p>
 
-      <img src="../assets/refresh.png" class="refresh" @click="refresh">
+    <img src="../assets/refresh.png" class="refresh" @click="refresh">
 
-      <ul class="container">
-        <div class="card" v-if="showData.length == 0">
-          <p class="remind">快去分享第一份病历吧~</p>
-        </div>
-        <li :key="index" @click="showDetails(index)" class="card" v-for="(items,index) in showData">
-          <img :src="'../../static/icon'+items.user_icon+'.png'" class="icon">
-          <p class="user">{{items.name}}</p>
-          <p class="release">创建于{{items.release_time}}</p>
+    <ul class="container">
+      <div class="card" v-if="showData.length == 0">
+        <p class="remind">快去分享第一份病历吧~</p>
+      </div>
+      <li :key="index" @click="showDetails(index)" class="card" v-for="(items,index) in showData">
+        <img :src="'../../static/icon'+items.user_icon+'.png'" class="icon">
+        <p class="user">{{items.name}}</p>
+        <p class="release">创建于{{items.release_time}}</p>
 
-          <p class="time">病历时间：{{items.clinic_time}}</p>
-          <div class="line_top"></div>
-          <p class="suit">主要症状：{{items.main_suit}}</p>
-          <div class="line_mid"></div>
-          <p class="cure">诊断意见：{{items.cure}}</p>
-        </li>
-        <div class="blank"></div>
-      </ul>
-    </div>
+        <p class="time">病历时间：{{items.clinic_time}}</p>
+        <div class="line_top"></div>
+        <p class="suit">主要症状：{{items.main_suit}}</p>
+        <div class="line_mid"></div>
+        <p class="cure">诊断意见：{{items.cure}}</p>
+      </li>
+      <div class="blank"></div>
+    </ul>
+  </div>
 </template>
 
 <script>
   import {Toast} from 'mint-ui'
 
-    export default {
-        name: "square",
-      data(){
-          return{
+  export default {
+    name: "square",
+    data() {
+      return {
 
-            showData:{
-              user:'',
-              id:'',
-              clinic_time:'',
-              clinic_place:'',
-              name:'',
-              sex:'',
-              birth:'',
-              nation:'',
-              marry:'',
-              job:'',
-              work_unit:'',
-              address:'',
-              allergy_history:'',
-              division:'',
-              main_suit:'',
-              present_illness:'',
-              history_illness:'',
-              examine:'',
-              diagnose:'',
-              cure:'',
-              advice:'',
-              doctor:'',
-              share:'',
-              release_time: '',
-              user_icon:''
-            },
-          }
-      },
-
-      mounted(){
-       this.refresh()
-      },
-
-      methods:{
-        refresh(){
-          this.$axios({
-            method:'post',
-            url:'http://localhost:3000/square'
-          }).then(res => {
-            // console.log(res)
-            this.showData = res.data
-            console.log(this.showData.length)
-            console.log(this.showData)
-            Toast({
-              message:'数据刷新成功',
-              duration:1000
-            })
-          }).catch(err => {
-            console.log(err)
-          })
+        showData: {
+          user: '',
+          id: '',
+          clinic_time: '',
+          clinic_place: '',
+          name: '',
+          sex: '',
+          birth: '',
+          nation: '',
+          marry: '',
+          job: '',
+          work_unit: '',
+          address: '',
+          allergy_history: '',
+          division: '',
+          main_suit: '',
+          present_illness: '',
+          history_illness: '',
+          examine: '',
+          diagnose: '',
+          cure: '',
+          advice: '',
+          doctor: '',
+          share: '',
+          release_time: '',
+          user_icon: ''
         },
+      }
+    },
 
-        showDetails(e){
-          console.log(this.showData[e].id)
-          this.$store.commit('getId',this.showData[e].id)
-          this.$router.push('/square_detail')
-        }
+    mounted() {
+      this.refresh()
+    },
+
+    methods: {
+      refresh() {
+        this.$axios({
+          method: 'post',
+          url: 'http://localhost:3000/square'
+        }).then(res => {
+          // console.log(res)
+          this.showData = res.data
+          console.log(this.showData.length)
+          console.log(this.showData)
+          Toast({
+            message: '数据刷新成功',
+            duration: 1000
+          })
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+
+      showDetails(e) {
+        console.log(this.showData[e].id)
+        this.$store.commit('getId', this.showData[e].id)
+        this.$router.push('/square_detail')
       }
     }
+  }
 </script>
 
 <style scoped>
 
-  .background{
+  .background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 0;
   }
-  .title{
+
+  .title {
     position: absolute;
     top: 2rem;
     left: 0.4rem;
     font-size: 32px;
     color: white;
   }
-  .detail{
+
+  .detail {
     position: absolute;
     top: 2.8rem;
     left: 0.4rem;
     font-size: 16px;
     color: white;
   }
-  .container{
+
+  .container {
     margin-top: 3.5rem;
   }
 
-  .card{
+  .card {
     background-color: #fff;
     width: 7.5rem;
     height: 3.5rem;
@@ -132,7 +135,7 @@
     margin-bottom: 0.2rem;
   }
 
-  .refresh{
+  .refresh {
     position: fixed;
     z-index: 100;
     right: 0.5rem;
@@ -141,7 +144,7 @@
     height: 1rem;
   }
 
-  .remind{
+  .remind {
     color: rgb(171, 171, 171);
     font-size: 32px;
     width: 7rem;
@@ -157,7 +160,7 @@
     font-weight: bolder;
   }
 
-  .line_top{
+  .line_top {
     height: 0.35rem;
     width: 0;
     color: #333333;
@@ -167,7 +170,7 @@
     top: 1.9rem;
   }
 
-  .line_mid{
+  .line_mid {
     height: 0.35rem;
     width: 0;
     color: #333333;
@@ -177,7 +180,7 @@
     top: 2.6rem;
   }
 
-  .time{
+  .time {
     font-size: 18px;
     color: rgb(135, 135, 135);
     position: absolute;
@@ -185,7 +188,7 @@
     top: 1.5rem;
   }
 
-  .suit{
+  .suit {
     font-size: 18px;
     color: rgb(135, 135, 135);
     position: absolute;
@@ -193,7 +196,7 @@
     top: 2.2rem;
   }
 
-  .cure{
+  .cure {
     font-size: 18px;
     color: rgb(135, 135, 135);
     position: absolute;
@@ -201,18 +204,18 @@
     top: 2.9rem;
   }
 
-  .time::after,.suit::after,.cure::after{
-    content:"";
-    width:0.15rem;
-    height:0.15rem;
+  .time::after, .suit::after, .cure::after {
+    content: "";
+    width: 0.15rem;
+    height: 0.15rem;
     border-radius: 100%;
-    position:absolute;
-    top:9px;
-    left:-0.35rem;
-    background:rgb(216, 216, 216);
+    position: absolute;
+    top: 9px;
+    left: -0.35rem;
+    background: rgb(216, 216, 216);
   }
 
-  .icon{
+  .icon {
     width: 1rem;
     height: 1rem;
     position: absolute;
@@ -220,7 +223,7 @@
     top: 0.2rem;
   }
 
-  .user{
+  .user {
     position: absolute;
     top: 0.3rem;
     left: 1.6rem;
@@ -228,7 +231,8 @@
     font-weight: bold;
     color: black;
   }
-  .release{
+
+  .release {
     position: absolute;
     top: 0.8rem;
     left: 1.6rem;
@@ -236,7 +240,7 @@
     color: rgb(135, 135, 135);
   }
 
-  .blank{
+  .blank {
     width: 100%;
     height: 1rem;
   }

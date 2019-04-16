@@ -2,106 +2,105 @@
 <!--账号不能重复，每个邮箱只能使用一次-->
 
 <template>
-    <div>
-      <div class="contain">
-        <img src="../assets/close.png" class="close" @click="back">
+  <div>
+    <div class="contain">
+      <img src="../assets/close.png" class="close" @click="back">
 
-        <p class="login_title">注册</p>
-        <p class="detail_title">最了解您身体状况的健康管家</p>
+      <p class="login_title">注册</p>
+      <p class="detail_title">最了解您身体状况的健康管家</p>
 
-        <img src="../assets/login_bg.png" class="background">
-        <div class="content">
-          <div class="user_contain">
-            <input type="text" class="user" v-model="user"  placeholder="请输入用户名">
-          </div>
-          <div class="pwd_contain">
-            <input type="password" ref="pwd" class="pwd" v-model="pwd" placeholder="请输入密码">
-          </div>
-          <div class="repwd_contain">
-            <input type="password" ref="pwd" class="repwd" v-model="repwd" placeholder="请再次确认密码">
-          </div>
-          <div class="mail_contain">
-            <input type="text" ref="pwd" class="mail" v-model="mail" placeholder="请输入邮箱">
-          </div>
-          <div class="login" @click="submit">注册</div>
+      <img src="../assets/login_bg.png" class="background">
+      <div class="content">
+        <div class="user_contain">
+          <input type="text" class="user" v-model="user" placeholder="请输入用户名">
         </div>
-
-        <p class="copyright">copyright © w_haiyu</p>
+        <div class="pwd_contain">
+          <input type="password" ref="pwd" class="pwd" v-model="pwd" placeholder="请输入密码">
+        </div>
+        <div class="repwd_contain">
+          <input type="password" ref="pwd" class="repwd" v-model="repwd" placeholder="请再次确认密码">
+        </div>
+        <div class="mail_contain">
+          <input type="text" ref="pwd" class="mail" v-model="mail" placeholder="请输入邮箱">
+        </div>
+        <div class="login" @click="submit">注册</div>
       </div>
 
+      <p class="copyright">copyright © w_haiyu</p>
     </div>
+
+  </div>
 </template>
 
 <script>
   import {Toast} from 'mint-ui'
 
-    export default {
-        name: "signin",
-      data(){
-          return{
-            user:'',
-            pwd:'',
-            repwd:'',
-            mail:''
-          }
-      },
-      methods:{
-          submit(){
-            let randomNum = Math.floor(Math.random()*8)
-            if(this.user != '' && this.pwd != '' && this.repwd != '' && this.mail != '')
-            {
-              if(this.pwd !== this.repwd){
+  export default {
+    name: "signin",
+    data() {
+      return {
+        user: '',
+        pwd: '',
+        repwd: '',
+        mail: ''
+      }
+    },
+    methods: {
+      submit() {
+        let randomNum = Math.floor(Math.random() * 8)
+        if (this.user != '' && this.pwd != '' && this.repwd != '' && this.mail != '') {
+          if (this.pwd !== this.repwd) {
+            Toast({
+              message: '两次密码不一致',
+              duration: 1000
+            })
+          } else {
+            this.$axios({
+              method: 'post',
+              url: 'http://localhost:3000/signin',
+              data: {
+                user: this.user,
+                pwd: this.pwd,
+                mail: this.mail,
+                head: randomNum
+              }
+            }).then(res => {
+              console.log(res)
+              if (res.data.info == 'signin success') {
+                this.$store.commit('change', this.user)
+                this.$store.commit('getIcon', randomNum)
+                this.$router.push('/guide')
                 Toast({
-                  message:'两次密码不一致',
-                  duration:1000
+                  message: '注册成功',
+                  duration: 1000
                 })
-              }else {
-                this.$axios({
-                  method: 'post',
-                  url: 'http://localhost:3000/signin',
-                  data: {
-                    user: this.user,
-                    pwd: this.pwd,
-                    mail: this.mail,
-                    head: randomNum
-                  }
-                }).then(res => {
-                  console.log(res)
-                  if (res.data.info == 'signin success') {
-                    this.$store.commit('change', this.user)
-                    this.$store.commit('getIcon',randomNum)
-                    this.$router.push('/guide')
-                    Toast({
-                      message:'注册成功',
-                      duration:1000
-                    })
-                  } else {
-                    Toast({
-                      message:'账号/邮箱已被注册',
-                      duration:1000
-                    })
-                  }
-                }).catch(err => {
-                  console.log(err)
+              } else {
+                Toast({
+                  message: '账号/邮箱已被注册',
+                  duration: 1000
                 })
               }
-            }else{
-              Toast({
-                message:'请输入完整信息',
-                duration:1000
-              })
-            }
-          },
-
-          back(){
-            this.$router.push('/')
+            }).catch(err => {
+              console.log(err)
+            })
           }
+        } else {
+          Toast({
+            message: '请输入完整信息',
+            duration: 1000
+          })
+        }
+      },
+
+      back() {
+        this.$router.push('/')
       }
     }
+  }
 </script>
 
 <style scoped>
-  .close{
+  .close {
     height: 0.6rem;
     width: 0.6rem;
     position: absolute;
@@ -110,7 +109,7 @@
     z-index: 2;
   }
 
-  .login_title{
+  .login_title {
     color: white;
     font-size: 28px;
     position: absolute;
@@ -119,7 +118,7 @@
     z-index: 3;
   }
 
-  .detail_title{
+  .detail_title {
     color: white;
     font-size: 16px;
     position: absolute;
@@ -128,7 +127,7 @@
     z-index: 3;
   }
 
-  .background{
+  .background {
     width: 7.5rem;
     height: 6.2rem;
     position: absolute;
@@ -136,7 +135,7 @@
     left: 0;
   }
 
-  .content{
+  .content {
     height: 8rem;
     width: 6.7rem;
     background-color: #fff;
@@ -144,11 +143,11 @@
     left: 0.4rem;
     top: 3.8rem;
     border-radius: 0.1rem;
-    box-shadow: 0px 0px 10px rgba(97,146,255,0.18);
+    box-shadow: 0px 0px 10px rgba(97, 146, 255, 0.18);
     z-index: 2;
   }
 
-  .user_contain{
+  .user_contain {
     position: absolute;
     top: 0.8rem;
     left: 0.3rem;
@@ -157,7 +156,8 @@
     height: 0.75rem;
     border-radius: 0.75rem;
   }
-  .user{
+
+  .user {
     border: none;
     outline: none;
     position: absolute;
@@ -168,7 +168,7 @@
     width: 5.2rem;
   }
 
-  .pwd_contain{
+  .pwd_contain {
     position: absolute;
     top: 2.2rem;
     left: 0.3rem;
@@ -177,7 +177,8 @@
     height: 0.75rem;
     border-radius: 0.75rem;
   }
-  .pwd{
+
+  .pwd {
     border: none;
     outline: none;
     position: absolute;
@@ -188,7 +189,7 @@
     width: 5.2rem;
   }
 
-  .repwd_contain{
+  .repwd_contain {
     position: absolute;
     top: 3.6rem;
     left: 0.3rem;
@@ -197,7 +198,8 @@
     height: 0.75rem;
     border-radius: 0.75rem;
   }
-  .repwd{
+
+  .repwd {
     border: none;
     outline: none;
     position: absolute;
@@ -208,7 +210,7 @@
     width: 5.2rem;
   }
 
-  .mail_contain{
+  .mail_contain {
     position: absolute;
     top: 5rem;
     left: 0.3rem;
@@ -217,7 +219,8 @@
     height: 0.75rem;
     border-radius: 0.75rem;
   }
-  .mail{
+
+  .mail {
     border: none;
     outline: none;
     position: absolute;
@@ -229,8 +232,7 @@
   }
 
 
-
-  .login{
+  .login {
     position: absolute;
     top: 6.4rem;
     left: 0.3rem;
@@ -245,7 +247,7 @@
     color: white;
   }
 
-  .copyright{
+  .copyright {
     font-size: 14px;
     color: rgb(168, 168, 168);
     position: fixed;
