@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../apiTest/src/components/2333.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../apiTest/src/components/2333.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apiTest/src/components/HelloWorld.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../apiTest/src/components/HelloWorld.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mine.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mine.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create_auto.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create_auto.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/myproject.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+              <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -128,15 +125,15 @@
       <workItem from="1555403619005" duration="2631000" />
       <workItem from="1555418948936" duration="1736000" />
       <workItem from="1555461590439" duration="1856000" />
+      <workItem from="1555487593875" duration="1434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47966000" />
+    <option name="totallyTimeSpent" value="49400000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07060063" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -164,7 +161,7 @@
     <entry file="file://$PROJECT_DIR$/myproject.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
         </state>
       </provider>
     </entry>

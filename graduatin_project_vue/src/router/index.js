@@ -70,12 +70,12 @@ export default new Router({
     },
     {
       path: '/mymsg',
-      name: mymsg,
+      name: 'mymsg',
       component: mymsg
     },
     {
       path: '/mybody',
-      name: mybody,
+      name: 'mybody',
       component: mybody
     },
     {

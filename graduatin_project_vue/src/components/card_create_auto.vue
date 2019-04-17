@@ -148,6 +148,23 @@
     mounted() {
       this.addData.user = this.$store.state.loginState
       this.addData.id = this.randomString()
+
+      this.$axios({
+        method: 'post',
+        url:'http://localhost:3000/img',
+        data:{
+          img:sessionStorage.getItem('img_base64')
+        }
+      }).then(res => {
+        console.log(res)
+        Toast({
+          message:'图片识别失败，请手动录入信息',
+          duration:1000
+        })
+      }).catch(err => {
+        console.log(err)
+      })
+
     },
 
     methods: {

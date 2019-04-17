@@ -13,6 +13,22 @@ const app = express()
 // 创建百度api对象
 const client = new AipOcrClient(APP_ID, API_KEY, SECRET_KEY);
 
+// 获取文字识别转换结果
+app.post('/img', function (req, res) {
+    req.on('data', function (data) {
+        let obj = JSON.parse(data)
+        console.log(obj.img)
+        client.generalBasic(obj.img).then(function(result) {
+            console.log(JSON.stringify(result));
+            res.send(JSON.stringify(result))
+        }).catch(function(err) {
+            // 如果发生网络错误
+            console.log(err);
+            res.send('识别失败')
+        })
+    })
+})
+
 // 设置连接数据库信息
 const sql = mysql.createConnection({
     host: 'localhost',

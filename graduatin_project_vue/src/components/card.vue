@@ -151,6 +151,7 @@
 
       // 上传图片，canvas压缩
       changeImg(e){
+        console.log(e)
         this.imgName = e.target.value
         let imgLimit = 1024
         let files = e.target.files
