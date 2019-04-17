@@ -37,6 +37,7 @@
       return {}
     },
     methods: {
+
       back() {
         this.$router.push('/')
         Toast({

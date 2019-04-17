@@ -45,6 +45,16 @@
         <img @click="add_dialog = false" class="cancel" src="../assets/cancel.png">
       </div>
     </div>
+    
+    <div class="dialog" v-show="update_dialog">
+      <div class="upload_dialog">
+        <div class="upload_content">点击上传图片</div>
+        <input type="file" accept="image/*" @change="changeImg($event)" class="upload_input">
+        <p class="upload_name">{{imgName}}</p>
+        <p class="upload_confirm" @click="autocreate">确定</p>
+        <p class="upload_cancel" @click="update_dialog = false">取消</p>
+      </div>
+    </div>
 
     <div class="black"></div>
   </div>
@@ -57,6 +67,8 @@
     name: "card",
     data() {
       return {
+        imgName:'',
+        update_dialog: false,
         show_dialog: false,
         add_dialog: false,
         name: '超级医疗欢迎您',
@@ -124,10 +136,80 @@
 
     methods: {
 
+      autocreate(){
+        if( sessionStorage.getItem("img_base64") != ''){
+          this.$router.push('/autocreate')
+        }else{
+          Toast({
+            message:'未选择图片',
+            duration:1000
+          })
+          this.update_dialog = false
+        }
 
-      // 未完成功能
+      },
+
+      // 上传图片，canvas压缩
+      changeImg(e){
+        this.imgName = e.target.value
+        let imgLimit = 1024
+        let files = e.target.files
+        let image = new Image()
+        if (files.length > 0) {
+          let dd = 0;
+
+          if (files.item(dd).type != 'image/png' && files.item(dd).type != 'image/jpeg' && files.item(dd).type != 'image/gif') {
+            this.update_dialog = false
+            Toast({
+              message:'图片格式无法识别',
+              duration:1000
+            })
+            return false
+          }
+
+          if (files.item(dd).size > imgLimit * 102400) {
+            this.update_dialog = false
+            Toast({
+              message:'图片太大',
+              duration:1000
+            })
+            return false
+          } else {
+            image.src = window.URL.createObjectURL(files.item(dd));
+            image.onload = function () {
+              // 默认按比例压缩
+              let w = image.width,
+                h = image.height,
+                scale = w / h;
+              w = 200;
+              h = w / scale;
+              // 默认图片质量为0.7，quality值越小，所绘制出的图像越模糊
+              let quality = 0.7;
+              //生成canvas
+              let canvas = document.createElement('canvas');
+              let ctx = canvas.getContext('2d');
+              // 创建属性节点
+              let anw = document.createAttribute("width");
+              anw.nodeValue = w;
+              let anh = document.createAttribute("height");
+              anh.nodeValue = h;
+              canvas.setAttributeNode(anw);
+              canvas.setAttributeNode(anh);
+              ctx.drawImage(image, 0, 0, w, h);
+              let ext = image.src.substring(image.src.lastIndexOf(".") + 1).toLowerCase();//图片格式
+              // let base64 = canvas.toDataURL("image/" + ext, quality);
+              sessionStorage.setItem('img_base64', canvas.toDataURL("image/" + ext, quality))
+              // 回调函数返回base64的值
+            }
+          }
+
+
+        }
+      },
+
+
       upload() {
-        console.log('上传图片')
+        this.update_dialog = true
         this.add_dialog = false
       },
       fill() {
@@ -202,6 +284,81 @@
 </script>
 
 <style scoped>
+  .upload_name{
+    width: 5rem;
+    height: 0.5rem;
+    font-size: 8px;
+    line-height: 0.5rem;
+    text-align: center;
+    position: absolute;
+    top: 3.2rem;
+    left: 0.25rem;
+    overflow: hidden;
+  }
+
+  .upload_confirm{
+    width: 1.5rem;
+    height: 0.8rem;
+    color: white;
+    background-color: rgb(129, 163, 234);
+    font-size: 20px;
+    line-height: 0.8rem;
+    text-align: center;
+    border-radius: 0.1rem;
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .upload_cancel{
+    width: 1.5rem;
+    height: 0.8rem;
+    color: white;
+    background-color: rgb(168,168,168);
+    font-size: 20px;
+    line-height: 0.8rem;
+    text-align: center;
+    border-radius: 0.1rem;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .upload_input{
+    position: absolute;
+    top: 1rem;
+    left: 0.75rem;
+    width: 4rem;
+    height: 2rem;
+    opacity: 0;
+  }
+
+  .upload_content{
+    width: 4rem;
+    height: 2.5rem;
+    border: 0.1rem dashed rgb(135,135,135);
+    color: rgb(135,135,135);
+    box-sizing: border-box;
+    position: absolute;
+    top: 0.6rem;
+    left: 0.75rem;
+    border-radius: 0.2rem;
+    font-size: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.3rem;
+  }
+
+  .upload_dialog{
+    width: 5.5rem;
+    height: 5.5rem;
+    position: fixed;
+    top: 3rem;
+    left: 1rem;
+    border-radius: 0.3rem;
+    background-color: #fff;
+  }
+  
   .time::after, .suit::after, .cure::after, .share::after {
     content: "";
     width: 0.15rem;
@@ -352,7 +509,7 @@
   .dialog {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 200;

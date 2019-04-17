@@ -11,6 +11,7 @@ import modify from '@/components/card_modify'
 import squaredetail from '@/components/square_detail'
 import mymsg from '@/components/mymsg'
 import mybody from '@/components/mybody'
+import autocreate from '@/components/card_create_auto'
 
 import card from '@/components/card'
 import square from '@/components/square'
@@ -46,6 +47,11 @@ export default new Router({
       path: '/detail',
       name: 'detail',
       component: detail
+    },
+    {
+      path: '/autocreate',
+      name: 'autocreate',
+      component: autocreate
     },
     {
       path: '/create',

@@ -1,8 +1,17 @@
 const express = require('express')
 const mysql = require('mysql')
 const nodemailer = require('nodemailer')
+const AipOcrClient = require("baidu-aip-sdk").ocr
+
+const APP_ID = "16039629"
+const API_KEY = "HMf7GPeq5CnlWNR5QRpugiSv"
+const SECRET_KEY = "qiUGFYQmUklGsaqm9we2sGMFrfspz2Nb"
+
 
 const app = express()
+
+// 创建百度api对象
+const client = new AipOcrClient(APP_ID, API_KEY, SECRET_KEY);
 
 // 设置连接数据库信息
 const sql = mysql.createConnection({

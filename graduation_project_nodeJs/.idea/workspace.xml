@@ -2,24 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/src/components/2333.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../apiTest/src/components/2333.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/src/components/HelloWorld.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../apiTest/src/components/HelloWorld.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_modify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_modify.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/guide.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/guide.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mine.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mine.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mymsg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mymsg.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square_detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square_detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_forget.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_forget.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_signin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_signin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/welcome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/welcome.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myproject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="140" column="30" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="30" />
+            <state relative-caret-position="418">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -77,6 +66,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -88,7 +78,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -138,11 +127,12 @@
       <workItem from="1555374092821" duration="7880000" />
       <workItem from="1555403619005" duration="2631000" />
       <workItem from="1555418948936" duration="1736000" />
+      <workItem from="1555461590439" duration="1856000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46110000" />
+    <option name="totallyTimeSpent" value="47966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -173,8 +163,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myproject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="140" column="30" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="30" />
+        <state relative-caret-position="418">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
