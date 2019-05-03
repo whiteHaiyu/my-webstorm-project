@@ -10,10 +10,12 @@ import md5 from 'js-md5'
 import store from './store'
 import axios from 'axios'
 
+import util from '@/util/util'
 
 Vue.prototype.$md5 = md5
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
+Vue.prototype.util = util
 
 Vue.use(ElementUI)
 

@@ -7,7 +7,6 @@ const APP_ID = "16039629"
 const API_KEY = "HMf7GPeq5CnlWNR5QRpugiSv"
 const SECRET_KEY = "qiUGFYQmUklGsaqm9we2sGMFrfspz2Nb"
 
-
 const app = express()
 
 // 创建百度api对象
@@ -320,7 +319,6 @@ app.post('/getsuit', function (req, res) {
         })
     })
 })
-
 
 app.listen(3000, function () {
     console.log('nodeJs服务启动')
