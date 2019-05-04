@@ -46,7 +46,7 @@
                   type: 'success'
                 })
                 // console.log(res.data.userInfo)
-                this.$store.commit('loginStatus',res.data.userInfo.username)
+                this.$store.commit('setUsername',res.data.userInfo.username)
                 this.$store.commit('setToken',res.data.userInfo.token)
                 // console.log(this.$store.state.loginState)
                 this.$router.push('/admin')

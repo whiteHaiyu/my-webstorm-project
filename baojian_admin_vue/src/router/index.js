@@ -5,6 +5,7 @@ import home from '@/components/home'
 import user_admin from '@/components/user_admin'
 import log_admin from '@/components/log_admin'
 import login from '@/components/login'
+import dotinfo_admin from '@/components/dotinfo_admin'
 
 Vue.use(Router)
 
@@ -22,23 +23,28 @@ export default new Router({
     {
       path: '/admin',
       name: 'homepage',
-      redirect: './home',
+      redirect: '/admin/home',
       component: homepage,
       children:[
         {
-          path: '/home',
+          path: '/admin/home',
           name: 'home',
           component: home
         },
         {
-          path: '/user_admin',
+          path: '/admin/user_admin',
           name: 'user_admin',
           component: user_admin
         },
         {
-          path: '/log_admin',
+          path: '/admin/log_admin',
           name: 'log_admin',
           component: log_admin
+        },
+        {
+          path: '/admin/dotinfo_admin',
+          name: 'dotinfo_admin',
+          component: dotinfo_admin
         }
       ]
     }

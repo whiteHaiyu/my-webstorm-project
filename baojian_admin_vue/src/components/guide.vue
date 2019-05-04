@@ -67,6 +67,7 @@
         </el-menu>
     </div>
     <div class="content">
+      <p class="username">欢迎您！&nbsp;&nbsp;<span class="username-n">{{this.$store.state.username}}</span></p>
       <img src="../assets/icon.png" class="icon">
       <div class="router">{{router_title}}</div>
       <div class="info"><el-button type="warning" size="mini">通知</el-button>
@@ -93,15 +94,15 @@
           switch (index) {
             case '1':
               this.router_title = '首页'
-              this.$router.replace('/home')
+              this.$router.replace('/admin/home')
               break
             case '2-1':
               this.router_title = '系统管理 - 用户管理'
-              this.$router.replace('/user_admin')
+              this.$router.replace('/admin/user_admin')
               break
             case '2-2':
               this.router_title = '系统管理 - 日志管理'
-              this.$router.replace('/log_admin')
+              this.$router.replace('/admin/log_admin')
               break
             case '3-1':
               this.router_title = '车辆管理 - 租赁中车辆管理'
@@ -126,6 +127,7 @@
               break
             case '5-1':
               this.router_title = '网点管理 - 网点信息'
+              this.$router.replace('/admin/dotinfo_admin')
               break
             case '6-1':
               this.router_title = '运维人员管理 - 人员信息'
@@ -187,6 +189,17 @@
     right: 240px;
     top: 5px;
     border-radius: 5px;
+  }
+
+  .username{
+    position: absolute;
+    right: 300px;
+    top: 10px;
+    font-size: 14px;
+  }
+
+  .username-n{
+    font-weight: bolder;
   }
 
   .router{

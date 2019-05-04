@@ -33,11 +33,15 @@
         name: "home",
       data(){
           return{
-            user_count:380,
-            car_count:1000,
-            visit:15924,
-            flow:3423
-
+            user_count:0,
+            car_count:0,
+            visit:0,
+            flow:0,
+            postData:{
+              username:'',
+              token:'',
+              timestamp:''
+            }
           }
       },
 
@@ -50,10 +54,36 @@
       },
 
       mounted() {
+        this.initInfo()
         this.drawLine()
       },
 
       methods: {
+
+        initInfo(){
+          this.postData.username = this.$store.state.username
+          this.postData.token = this.$store.state.token
+          this.postData.timestamp = new Date().getTime()
+          let sign = this.$md5(this.util.sortData(this.postData))
+          let url='https://bms.gamewan.top/api/getindexinfo'
+          let data=this.util.getString(this.postData)+'&sign='+sign
+          this.$axios.post(url,data).then(res => {
+            // console.log(res)
+            if(res.data.code == 1000) {
+              this.user_count = res.data.indexInfo.userCount
+              this.car_count = res.data.indexInfo.carCount
+              this.visit = res.data.indexInfo.todayUserCarCount
+              this.flow = res.data.indexInfo.todaywelcomeCount
+            }else{
+              this.$message({
+                message: '服务器挂了，稍后再试~',
+                type: 'warning'
+              })
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        },
 
         drawLine(){
           // 基于准备好的dom，初始化echarts实例
