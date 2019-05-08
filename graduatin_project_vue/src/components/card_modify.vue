@@ -79,8 +79,12 @@
                                                   v-model="addData.history_illness">
       </div>
       <div class="items">
-        <span class="item_title">辅助检查结果</span><input class="item_input" placeholder="请输入辅助检查结果" type="textarea"
+        <span class="item_title">辅助检查</span><input class="item_input" placeholder="请输入辅助检查结果" type="textarea"
                                                      v-model="addData.examine">
+      </div>
+      <div class="items">
+        <span class="item_title">其他</span><input class="item_input" placeholder="请输入其他内容" type="textarea"
+                                                     v-model="addData.others">
       </div>
 
       <div class="basic_info">
@@ -135,7 +139,8 @@
           diagnose: '',
           cure: '',
           advice: '',
-          doctor: ''
+          doctor: '',
+          others: ''
         },
       }
     },
@@ -184,7 +189,8 @@
             diagnose: this.addData.diagnose,
             cure: this.addData.cure,
             advice: this.addData.advice,
-            doctor: this.addData.doctor
+            doctor: this.addData.doctor,
+            others: this.addData.others
           }
         }).then(res => {
           console.log(res)

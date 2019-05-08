@@ -12,21 +12,6 @@ const app = express()
 // 创建百度api对象
 const client = new AipOcrClient(APP_ID, API_KEY, SECRET_KEY);
 
-// 获取文字识别转换结果
-app.post('/img', function (req, res) {
-    req.on('data', function (data) {
-        let obj = JSON.parse(data)
-        console.log(obj.img)
-        client.generalBasic(obj.img).then(function(result) {
-            console.log(JSON.stringify(result));
-            res.send(JSON.stringify(result))
-        }).catch(function(err) {
-            // 如果发生网络错误
-            console.log(err);
-            res.send('识别失败')
-        })
-    })
-})
 
 // 设置连接数据库信息
 const sql = mysql.createConnection({
@@ -57,13 +42,14 @@ app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     res.header("Access-Control-Allow-Credentials", true);
-    res.header("X-Powered-By", ' 3.2.1')
+    res.header("X-Powered-By", '3.2.1')
     next();
 });
 
 // 接收登录的请求，post方式传输，{user:'user';pwd:'pwd'}
 app.post('/login', function (req, res) {
     req.on('data', function (data) {
+        // console.log(data)
         let obj = JSON.parse(data)
         sql.query('select * from gp_user where user = ?', [obj.user], function (error, results) {
             if (error) {
@@ -188,7 +174,7 @@ app.post('/create', function (req, res) {
     req.on('data', function (data) {
         let obj = JSON.parse(data)
         // console.log(obj)
-        sql.query('insert into gp_info(id,user,clinic_time,clinic_place,name,sex,birth,nation,marry,job,work_unit,address,allergy_history,division,main_suit,present_illness,history_illness,examine,diagnose,cure,advice,doctor,share,release_time,user_icon) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [obj.id, obj.user, obj.clinic_time, obj.clinic_place, obj.name, obj.sex, obj.birth, obj.nation, obj.marry, obj.job, obj.work_unit, obj.address, obj.allergy_history, obj.division, obj.main_suit, obj.present_illness, obj.history_illness, obj.examine, obj.diagnose, obj.cure, obj.advice, obj.doctor, obj.share, obj.release_time, obj.user_icon], function (error, results) {
+        sql.query('insert into gp_info(id,user,clinic_time,clinic_place,name,sex,birth,nation,marry,job,work_unit,address,allergy_history,division,main_suit,present_illness,history_illness,examine,diagnose,cure,advice,doctor,others,share,release_time,user_icon) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [obj.id, obj.user, obj.clinic_time, obj.clinic_place, obj.name, obj.sex, obj.birth, obj.nation, obj.marry, obj.job, obj.work_unit, obj.address, obj.allergy_history, obj.division, obj.main_suit, obj.present_illness, obj.history_illness, obj.examine, obj.diagnose, obj.cure, obj.advice, obj.doctor, obj.others,obj.share, obj.release_time, obj.user_icon], function (error, results) {
             if (error) {
                 console.log(error)
                 res.send('create record error')
@@ -217,7 +203,7 @@ app.post('/delete', function (req, res) {
 app.post('/modify', function (req, res) {
     req.on('data', function (data) {
         let obj = JSON.parse(data)
-        sql.query('update gp_info set user=?,clinic_time=?,clinic_place=?,name=?,sex=?,birth=?,nation=?,marry=?,job=?,work_unit=?,address=?,allergy_history=?,division=?,main_suit=?,present_illness=?,history_illness=?,examine=?,diagnose=?,cure=?,advice=?,doctor=? where id=?', [obj.user, obj.clinic_time, obj.clinic_place, obj.name, obj.sex, obj.birth, obj.nation, obj.marry, obj.job, obj.work_unit, obj.address, obj.allergy_history, obj.division, obj.main_suit, obj.present_illness, obj.history_illness, obj.examine, obj.diagnose, obj.cure, obj.advice, obj.doctor, obj.id], function (error, results) {
+        sql.query('update gp_info set user=?,clinic_time=?,clinic_place=?,name=?,sex=?,birth=?,nation=?,marry=?,job=?,work_unit=?,address=?,allergy_history=?,division=?,main_suit=?,present_illness=?,history_illness=?,examine=?,diagnose=?,cure=?,advice=?,doctor=?,others=? where id=?', [obj.user, obj.clinic_time, obj.clinic_place, obj.name, obj.sex, obj.birth, obj.nation, obj.marry, obj.job, obj.work_unit, obj.address, obj.allergy_history, obj.division, obj.main_suit, obj.present_illness, obj.history_illness, obj.examine, obj.diagnose, obj.cure, obj.advice, obj.doctor, obj.others, obj.id], function (error, results) {
             if (error) {
                 res.send('modify error')
             } else {
@@ -259,6 +245,23 @@ app.post('/square', function (req, res) {
         } else {
             res.send(results)
         }
+    })
+})
+
+// 从广场中查询特定的病历数据，post方式接收请求
+app.post('/find', function (req, res) {
+    req.on('data',function (data) {
+        let obj = JSON.parse(data)
+        console.log(obj.searchInfo)
+        sql.query('select * from gp_info where share = "已分享到广场" and diagnose like ? ', [obj.searchInfo], function (error, results) {
+            if (error) {
+                console.log(error)
+                res.send('askinfo error')
+            } else {
+                console.log(results)
+                res.send(results)
+            }
+        })
     })
 })
 
@@ -316,6 +319,26 @@ app.post('/getsuit', function (req, res) {
             } else {
                 res.send(results)
             }
+        })
+    })
+})
+
+// 获取文字识别转换结果
+app.post('/img', function (req, res) {
+    let mydata = ''
+    req.on('data', function (chunk) {
+        mydata += chunk
+    })
+    req.on('end', function () {
+        // let obj = JSON.parse(mydata)
+        console.log(mydata)
+        client.generalBasic(mydata.replace(/^.*?,/, '')).then(function (result) {
+            console.log(JSON.stringify(result));
+            res.send(JSON.stringify(result))
+        }).catch(function (err) {
+            // 如果发生网络错误
+            console.log(err);
+            res.send('识别失败')
         })
     })
 })

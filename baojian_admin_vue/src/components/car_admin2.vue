@@ -1,30 +1,48 @@
-<!--网点管理，done-->
 <template>
   <div class="container">
-    <el-button type="info" class="add_user" @click="dialogVisible = true">新建网点</el-button>
+    <el-button type="info" class="add_user" @click="dialogVisible = true">新增车辆</el-button>
 
     <el-dialog
-      title="新建网点"
+      title="新增车辆"
       :visible.sync="dialogVisible"
       width="30%"
       :append-to-body='true'
       :before-close="handleClose">
       <el-form label-width="110px">
-        <el-form-item label="网点名称：">
-          <el-input v-model="newDot.name"></el-input>
+        <el-form-item label="车牌号：">
+          <el-input v-model="newDot.numberplate"></el-input>
         </el-form-item>
-        <el-form-item label="网点地点：">
-          <el-input v-model="newDot.place"></el-input>
+        <el-form-item label="车型：">
+          <el-input v-model="newDot.model"></el-input>
         </el-form-item>
-        <el-form-item label="网点类型：">
-          <el-radio v-model="newDot.type" label="合作">合作</el-radio>
-          <el-radio v-model="newDot.type" label="非合作">非合作</el-radio>
+        <el-form-item label="颜色：">
+          <el-input v-model="newDot.color"></el-input>
         </el-form-item>
-        <el-form-item label="网点内车数量：">
-          <el-input v-model="newDot.count"></el-input>
+        <el-form-item label="状态：">
+          <el-select v-model="newDot.status" placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="网点日流量：">
-          <el-input v-model="newDot.flow"></el-input>
+        <el-form-item label="可续航里程：">
+          <el-input v-model="newDot.endurancemail"></el-input>
+        </el-form-item>
+        <el-form-item label="状态时长：">
+          <el-input v-model="newDot.statustime"></el-input>
+        </el-form-item>
+        <el-form-item label="租赁状态：">
+          <el-radio v-model="newDot.lease" label=1>租赁状态</el-radio>
+          <el-radio v-model="newDot.lease" label=2>未租赁状态</el-radio>
+        </el-form-item>
+        <el-form-item label="停车位置：">
+          <el-input v-model="newDot.parkplace"></el-input>
+        </el-form-item>
+        <el-form-item label="停车费：">
+          <el-input v-model="newDot.parkmoney"></el-input>
         </el-form-item>
       </el-form>
 
@@ -42,31 +60,31 @@
         <el-table-column
           prop="name"
           align="center"
-          label="网点名称"
+          label="员工名字"
           width="200">
         </el-table-column>
         <el-table-column
-          prop="place"
+          prop="idcard"
           align="center"
-          label="网点位置"
+          label="身份证号"
           width="320">
         </el-table-column>
         <el-table-column
-          prop="type"
+          prop="phone"
           align="center"
-          label="网点类型"
+          label="手机号"
           width="280">
         </el-table-column>
         <el-table-column
-          prop="count"
+          prop="status"
           align="center"
-          label="网点车辆数"
+          label="人员状态"
           width="180">
         </el-table-column>
         <el-table-column
-          prop="flow"
+          prop="permission"
           align="center"
-          label="网点日流量"
+          label="人员身份"
           width="180">
         </el-table-column>
         <el-table-column
@@ -98,7 +116,7 @@
 
 <script>
   export default {
-    name: "dotinfo_admin",
+    name: "car_admin",
     data() {
       return {
         dialogVisible: false,
@@ -109,18 +127,23 @@
           token: '',
           page: 1,
           count: 10,
-          timestamp: ''
+          timestamp: '',
+          type:2
         },
 
         newDot:{
           username:'',
           token:'',
           timestamp:'',
-          name:'',
-          type:'合作',
-          place:'',
-          count:'',
-          flow:''
+          numberplate:'',
+          model:'',
+          color:'',
+          status:'',
+          endurancemail:'',
+          statustime:'',
+          parkplace:'',
+          parkmoney:'',
+          lease:''
         },
 
         delDot:{
@@ -128,7 +151,24 @@
           token:'',
           timestamp:'',
           id:''
-        }
+        },
+
+        options: [{
+          value: '空闲中',
+          label: '空闲中'
+        }, {
+          value: '租赁中',
+          label: '租赁中'
+        }, {
+          value: '保养中',
+          label: '保养中'
+        }, {
+          value: '加油中',
+          label: '加油中'
+        }, {
+          value: '维修中',
+          label: '维修中'
+        }],
       }
     },
 
@@ -161,13 +201,13 @@
         this.postData.token = this.$store.state.token
         this.postData.timestamp = new Date().getTime()
         let sign = this.$md5(this.util.sortData(this.postData))
-        let url = 'https://bms.gamewan.top/api/getbranch'
+        let url = 'https://bms.gamewan.top/api/getcars'
         let data = this.util.getString(this.postData) + '&sign=' + sign
 
         this.$axios.post(url, data).then(res => {
           console.log(res)
-          this.tableData = res.data.branchInfoList
-          this.pageCount = res.data.branchcount
+          this.tableData = res.data.workerInfos
+          this.pageCount = res.data.workerscount
         }).catch(err => {
           console.log(err)
         })
@@ -179,10 +219,9 @@
         this.delDot.timestamp = new Date().getTime()
         this.delDot.id = val
         let sign = this.$md5(this.util.sortData(this.delDot))
-        let url = 'https://bms.gamewan.top/api/deletebranch'
+        let url = 'https://bms.gamewan.top/api/deleteworker'
         let data = this.util.getString(this.delDot) + '&sign=' + sign
         this.$axios.post(url, data).then(res => {
-          this.initData()
           this.$message({
             message: '删除网点成功',
             type: 'success'
@@ -203,14 +242,14 @@
         this.newDot.token = this.$store.state.token
         this.newDot.timestamp = new Date().getTime()
         let sign = this.$md5(this.util.sortData(this.newDot))
-        let url = 'https://bms.gamewan.top/api/insertbranch'
+        let url = 'https://bms.gamewan.top/api/insertcar'
         let data = this.util.getString(this.newDot) + '&sign=' + sign
 
         this.$axios.post(url,data).then(res => {
-          // console.log(res)
+          console.log(res)
           if(res.data.code == 1000){
             this.$message({
-              message: '新建网点成功',
+              message: '添加人员成功',
               type: 'success'
             })
             this.initData()

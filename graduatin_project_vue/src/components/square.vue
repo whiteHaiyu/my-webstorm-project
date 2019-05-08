@@ -4,6 +4,12 @@
     <p class="title">广场</p>
     <p class="detail">与大家分享战胜病魔的经历吧</p>
 
+    <div class="search">
+      <img src="../assets/search.png" class="search_icon">
+      <input type="text" v-model="searchInfo" placeholder="请输入查询内容" class="search_info">
+    </div>
+    <div class="search_button" @click="search">搜索</div>
+
     <img src="../assets/refresh.png" class="refresh" @click="refresh">
 
     <ul class="container">
@@ -33,6 +39,7 @@
     name: "square",
     data() {
       return {
+        searchInfo:'',
 
         showData: {
           user: '',
@@ -59,7 +66,8 @@
           doctor: '',
           share: '',
           release_time: '',
-          user_icon: ''
+          user_icon: '',
+          others:''
         },
       }
     },
@@ -85,6 +93,29 @@
         }).catch(err => {
           console.log(err)
         })
+      },
+
+      search() {
+        if(this.searchInfo != ''){
+          this.$axios({
+            method: 'post',
+            url: 'http://localhost:3000/find',
+            data:{
+              searchInfo:'%'+this.searchInfo+'%'
+            }
+          }).then(res => {
+            // console.log(res)
+            this.showData = res.data
+            console.log(this.showData.length)
+            console.log(this.showData)
+            Toast({
+              message: '数据查询成功',
+              duration: 1000
+            })
+          }).catch(err => {
+            console.log(err)
+          })
+        }
       },
 
       showDetails(e) {
@@ -243,5 +274,49 @@
   .blank {
     width: 100%;
     height: 1rem;
+  }
+
+  .search{
+    width: 5.3rem;
+    height: 0.5rem;
+    position: absolute;
+    left: 0.4rem;
+    top: 0.7rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+  }
+
+  .search_button{
+    width: 1rem;
+    height: 0.55rem;
+    background-color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 0.6rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0.7rem;
+    left: 6rem;
+    color: rgb(105, 152, 252);
+    border: 1px solid rgb(105, 152, 252);
+    border-radius: 5px;
+  }
+
+  .search_icon{
+    width: 0.3rem;
+    height: 0.3rem;
+    position: absolute;
+    top: 0.1rem;
+    left: 0.1rem;
+  }
+
+  .search_info{
+    width: 4rem;
+    height: 0.5rem;
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    border: none;
+    outline: none;
   }
 </style>

@@ -140,7 +140,8 @@
           diagnose: '',
           cure: '',
           advice: '',
-          doctor: ''
+          doctor: '',
+          others:''
         },
       }
     },
@@ -170,7 +171,13 @@
       // 创建病历记录，使用ajax将数据发送到后端记录
       createRecord() {
         let mydate = new Date()
-        if (this.addData.clinic_place != '' && this.addData.clinic_time != '' && this.addData.name != '' && this.addData.birth != '') {
+        if (this.addData.clinic_place != '' && this.addData.clinic_time != '' && this.addData.name != '') {
+          for(let i in this.addData){
+            if(this.addData[i] == ''){
+              this.addData[i] = '未知'
+            }
+          }
+
           this.$axios({
             method: 'post',
             url: 'http://localhost:3000/create',
@@ -197,6 +204,7 @@
               cure: this.addData.cure,
               advice: this.addData.advice,
               doctor: this.addData.doctor,
+              others: this.addData.others,
               share: '未分享到广场',
               release_time: mydate.toLocaleDateString(),
               user_icon: this.$store.state.user_icon
@@ -216,7 +224,7 @@
           })
         } else {
           Toast({
-            message: '请输入完整信息',
+            message: '就诊时间地点与患者姓名不能为空',
             duration: 1000
           })
         }

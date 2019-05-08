@@ -1,3 +1,4 @@
+<!--首页展示，done-->
 <template>
     <div class="container">
       <div class="data_list">
@@ -41,7 +42,7 @@
               username:'',
               token:'',
               timestamp:''
-            }
+            },
           }
       },
 
@@ -68,7 +69,7 @@
           let url='https://bms.gamewan.top/api/getindexinfo'
           let data=this.util.getString(this.postData)+'&sign='+sign
           this.$axios.post(url,data).then(res => {
-            // console.log(res)
+            console.log(res)
             if(res.data.code == 1000) {
               this.user_count = res.data.indexInfo.userCount
               this.car_count = res.data.indexInfo.carCount
@@ -118,7 +119,7 @@
               },
               {
                 name:'actual',
-                data: [620, 532, 901,  1290, 1330, 1320, 820],
+                data: [620, 532, 901, 1290, 1330, 1320, 820],
                 type: 'line',
                 smooth: true
               }

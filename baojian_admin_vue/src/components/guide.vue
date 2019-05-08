@@ -1,3 +1,4 @@
+<!--导航栏-->
 <template>
   <div class="app">
     <div class="navigation">
@@ -28,7 +29,7 @@
               <span slot="title">车辆管理</span>
             </template>
             <el-menu-item index="3-1">租赁中车辆列表</el-menu-item>
-            <el-menu-item index="3-2">非租赁车辆列表</el-menu-item>
+            <el-menu-item index="3-2">未租赁车辆列表</el-menu-item>
           </el-submenu>
           <el-submenu index="4">
             <template slot="title">
@@ -54,15 +55,6 @@
               <span slot="title">运维人员管理</span>
             </template>
             <el-menu-item index="6-1">人员信息</el-menu-item>
-          </el-submenu>
-          <el-submenu index="7">
-            <template slot="title">
-              <i class="el-icon-location-outline"></i>
-              <span slot="title">基础信息管理</span>
-            </template>
-            <el-menu-item index="7-1">车辆信息管理</el-menu-item>
-            <el-menu-item index="7-2">网点信息管理</el-menu-item>
-            <el-menu-item index="7-3">运维人员管理</el-menu-item>
           </el-submenu>
         </el-menu>
     </div>
@@ -106,9 +98,11 @@
               break
             case '3-1':
               this.router_title = '车辆管理 - 租赁中车辆管理'
+              this.$router.replace('/admin/car_admin')
               break
             case '3-2':
-              this.router_title = '车辆管理 - 非租赁车辆管理'
+              this.router_title = '车辆管理 - 未租赁车辆管理'
+              this.$router.replace('/admin/car_admin2')
               break
             case '4-1':
               this.router_title = '工单管理 - 加油工单'
@@ -131,15 +125,7 @@
               break
             case '6-1':
               this.router_title = '运维人员管理 - 人员信息'
-              break
-            case '7-1':
-              this.router_title = '基础信息管理 - 车辆信息管理'
-              break
-            case '7-2':
-              this.router_title = '基础信息管理 - 网点信息管理'
-              break
-            case '7-3':
-              this.router_title = '基础信息管理 - 运维人员管理'
+              this.$router.replace('/admin/hr_admin')
               break
             default:
               console.log('click error')

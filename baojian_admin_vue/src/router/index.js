@@ -6,6 +6,9 @@ import user_admin from '@/components/user_admin'
 import log_admin from '@/components/log_admin'
 import login from '@/components/login'
 import dotinfo_admin from '@/components/dotinfo_admin'
+import hr_admin from '@/components/hr_admin'
+import car_admin from '@/components/car_admin'
+import car_admin2 from '@/components/car_admin2'
 
 Vue.use(Router)
 
@@ -45,6 +48,21 @@ export default new Router({
           path: '/admin/dotinfo_admin',
           name: 'dotinfo_admin',
           component: dotinfo_admin
+        },
+        {
+          path: '/admin/hr_admin',
+          name: 'hr_admin',
+          component: hr_admin
+        },
+        {
+          path: '/admin/car_admin',
+          name: 'car_admin',
+          component: car_admin
+        },
+        {
+          path: '/admin/car_admin2',
+          name: 'car_admin2',
+          component: car_admin2
         }
       ]
     }

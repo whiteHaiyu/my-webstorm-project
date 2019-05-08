@@ -84,6 +84,10 @@
         <span class="item_title">辅助检查结果</span><input type="textarea" v-model="addData.examine" class="item_input"
                                                      placeholder="请输入辅助检查结果">
       </div>
+      <div class="items">
+        <span class="item_title">其他</span><input type="textarea" v-model="addData.others" class="item_input"
+                                                     placeholder="其他结果">
+      </div>
 
       <div class="basic_info">
         <p class="info_title">医师诊断</p>
@@ -113,6 +117,7 @@
 
 <script>
   import {Toast} from 'mint-ui'
+  import {Indicator} from 'mint-ui'
 
   export default {
     name: "create",
@@ -140,29 +145,49 @@
           diagnose: '',
           cure: '',
           advice: '',
-          doctor: ''
+          doctor: '',
+          others:''
         },
+        getResponse:[]
       }
     },
 
     mounted() {
+
+      Indicator.open({
+        text: 'Loading...',
+        spinnerType: 'fading-circle'
+      })
+
       this.addData.user = this.$store.state.loginState
       this.addData.id = this.randomString()
 
+      console.log('postdata：'+ sessionStorage.getItem('img_base64'))
+
       this.$axios({
         method: 'post',
-        url:'http://localhost:3000/img',
-        data:{
-          img:sessionStorage.getItem('img_base64')
-        }
+        url: 'http://localhost:3000/img',
+        data: sessionStorage.getItem('img_base64')
       }).then(res => {
         console.log(res)
-        Toast({
-          message:'图片识别失败，请手动录入信息',
-          duration:1000
-        })
+        this.getResponse = res.data.words_result
+        console.log(this.getResponse)
+        Indicator.close()
+        if(res.data.words_result != ''){
+          this.fillBlanks(res.data.words_result)
+          Toast({
+            message: '图片识别成功',
+            duration: 1000
+          })
+        }
+
       }).catch(err => {
         console.log(err)
+        Indicator.close()
+        Toast({
+          message: '图片识别失败，请手动录入信息',
+          duration: 1000
+        })
       })
 
     },
@@ -187,7 +212,12 @@
       // 创建病历记录，使用ajax将数据发送到后端记录
       createRecord() {
         let mydate = new Date()
-        if (this.addData.clinic_place != '' && this.addData.clinic_time != '' && this.addData.name != '' && this.addData.birth != '') {
+        if (this.addData.clinic_place != '' && this.addData.clinic_time != '' && this.addData.name != '') {
+          for(let i in this.addData){
+            if(this.addData[i] == ''){
+              this.addData[i] = '未知'
+            }
+          }
           this.$axios({
             method: 'post',
             url: 'http://localhost:3000/create',
@@ -216,7 +246,8 @@
               doctor: this.addData.doctor,
               share: '未分享到广场',
               release_time: mydate.toLocaleDateString(),
-              user_icon: this.$store.state.user_icon
+              user_icon: this.$store.state.user_icon,
+              others:this.addData.others
 
             }
           }).then(res => {
@@ -233,11 +264,113 @@
           })
         } else {
           Toast({
-            message: '请输入完整信息',
+            message: '就诊时间地点与患者姓名不能为空',
             duration: 1000
           })
         }
+      },
 
+      fillBlanks(mystring){
+        for(let i in mystring){
+          // if(JSON.stringify(mystring[i]).indexOf('姓名') != -1){
+          //   this.addData.name = mystring[i+1].words
+          // }
+          console.log(mystring[i])
+          let str = ''
+          let index = Number(i)+1
+          if(mystring[i] != ''){
+            str = mystring[i].words
+          }
+
+          if(str.indexOf('姓名') != -1)
+          {
+            this.addData.name = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('性别') != -1) {
+            this.addData.sex = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('生日') != -1)
+          {
+            this.addData.birth = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('民族') != -1)
+          {
+            this.addData.nation = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('婚姻') != -1)
+          {
+            this.addData.marry = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('工作') != -1)
+          {
+            this.addData.job = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('地址') != -1)
+          {
+            this.addData.address = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('主诉') != -1)
+          {
+            this.addData.main_suit = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('诊断') != -1)
+          {
+            this.addData.diagnose = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('医嘱') != -1)
+          {
+            this.addData.adivice = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('治疗') != -1)
+          {
+            this.addData.cure = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('医师') != -1)
+          {
+            this.addData.doctor = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }else if(str.indexOf('检查') != -1)
+          {
+            this.addData.examine = mystring[index].words
+            mystring[i] = ''
+            mystring[index] = ''
+            console.log(index)
+          }
+        }
+
+        let otherInfo = ''
+        for(let j in mystring){
+          if(mystring[j] != ''){
+            otherInfo += mystring[j].words
+          }
+        }
+
+        this.addData.others = otherInfo
+        console.log(this.addData.others)
       }
     }
   }

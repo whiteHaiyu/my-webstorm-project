@@ -73,7 +73,10 @@
         <span class="item_title">既往史</span>{{showData.history_illness}}
       </div>
       <div class="items">
-        <span class="item_title">辅助检查结果</span>{{showData.examine}}
+        <span class="item_title">辅助检查</span>{{showData.examine}}
+      </div>
+      <div class="items">
+        <span class="item_title">其他</span>{{showData.others}}
       </div>
 
       <div class="basic_info">

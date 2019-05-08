@@ -1,4 +1,4 @@
-<!--登录界面-->
+<!--登录界面，done-->
 <!--测试账号：test-->
 <!--测试密码：123-->
 
@@ -39,7 +39,7 @@
             let data=this.util.getString(this.postData)+'&sign='+sign
             // console.log(data)
             this.$axios.post(url,data).then(res => {
-              // console.log(res)
+              console.log(res)
               if(res.data.code == 1000){
                 this.$message({
                   message: '登录成功',
