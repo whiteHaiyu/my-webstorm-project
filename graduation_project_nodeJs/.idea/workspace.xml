@@ -3,29 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create_auto.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create_auto.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mybody.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mybody.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mymsg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mymsg.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/arm0.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/arm0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/arm1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/arm1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/arm2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/arm2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/arm3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body_border.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/head0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/head1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/head2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/head3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/leg0.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/leg0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/leg1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/leg1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/leg2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/leg2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/leg3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />

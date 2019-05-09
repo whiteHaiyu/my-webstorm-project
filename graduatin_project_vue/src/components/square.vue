@@ -23,9 +23,9 @@
 
         <p class="time">病历时间：{{items.clinic_time}}</p>
         <div class="line_top"></div>
-        <p class="suit">主要症状：{{items.main_suit}}</p>
+        <p class="suit">主要症状：{{items.main_suit |componentFilter}}</p>
         <div class="line_mid"></div>
-        <p class="cure">诊断意见：{{items.cure}}</p>
+        <p class="cure">诊断意见：{{items.cure |componentFilter}}</p>
       </li>
       <div class="blank"></div>
     </ul>
@@ -69,6 +69,16 @@
           user_icon: '',
           others:''
         },
+      }
+    },
+
+    filters: {
+      componentFilter: function (value) {
+        if (value.length >= 10) {
+          return value.slice(0, 9) + "..."
+        } else {
+          return value
+        }
       }
     },
 
