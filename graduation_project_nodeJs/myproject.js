@@ -265,7 +265,6 @@ app.post('/find', function (req, res) {
     })
 })
 
-
 // 查看留言，post方式接收,接收当前用户名
 app.post('/askmsg', function (req, res) {
     req.on('data', function (data) {

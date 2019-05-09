@@ -6,22 +6,28 @@
     <img :src="'../../static/icon'+this.$store.state.user_icon+'.png'" class="icon">
 
     <div class="container">
-      <img src="../../static/body_border.png" class="body_pic">
-      <img :src="'../../static/head'+head+'.png'" class="body_pic">
-      <img :src="'../../static/arm'+arm+'.png'" class="body_pic">
-      <img :src="'../../static/body'+body+'.png'" class="body_pic">
-      <img :src="'../../static/leg'+leg+'.png'" class="body_pic">
+      <img src="../../static/body.png" class="body_pic">
+      <img :src="'../../static/arm'+arm_f+'.png'" class="body_pic">
+      <img :src="'../../static/blood'+blood_f+'.png'" class="body_pic">
+      <img :src="'../../static/brain'+brain_f+'.png'" class="body_pic">
+      <img :src="'../../static/breathe'+breathe_f+'.png'" class="body_pic">
+      <img :src="'../../static/digestion'+digestion_f+'.png'" class="body_pic">
+      <img :src="'../../static/heart'+heart_f+'.png'" class="body_pic">
+      <img :src="'../../static/leg'+leg_f+'.png'" class="body_pic">
+      <img :src="'../../static/nerve'+nerve_f+'.png'" class="body_pic">
+      <img :src="'../../static/urinary'+urinary_f+'.png'" class="body_pic">
 
       <div class="content">
-        <br>
-        <p class="head">头部：{{head}}次</p>
-        <br>
-        <p class="arm">上肢：{{arm}}次</p>
-        <br>
-        <p class="body">躯干：{{body}}次</p>
-        <br>
-        <p class="leg">下肢：{{leg}}次</p>
-        <br>
+        <p class="body_tip">脑部：{{brain}}次</p>
+        <p class="body_tip">心脏：{{heart}}次</p>
+        <p class="body_tip">呼吸系统：{{breathe}}次</p>
+        <p class="body_tip">消化系统：{{digestion}}次</p>
+        <p class="body_tip">神经系统：{{nerve}}次</p>
+        <p class="body_tip">血液系统：{{blood}}次</p>
+        <p class="body_tip">泌尿系统：{{urinary}}次</p>
+        <p class="body_tip">上肢骨骼：{{arm}}次</p>
+        <p class="body_tip">下肢骨骼：{{leg}}次</p>
+        <p class="body_tip">其他：{{others}}次</p>
       </div>
     </div>
   </div>
@@ -33,10 +39,25 @@
     data() {
       return {
         mydata: {},
-        body: 0,
-        head: 0,
         arm: 0,
-        leg: 0
+        arm_f: 0,
+        blood: 0,
+        blood_f: 0,
+        brain: 0,
+        brain_f: 0,
+        breathe: 0,
+        breathe_f: 0,
+        digestion: 0,
+        digestion_f: 0,
+        heart: 0,
+        heart_f: 0,
+        leg: 0,
+        leg_f: 0,
+        nerve: 0,
+        nerve_f: 0,
+        urinary: 0,
+        urinary_f: 0,
+        others: 0,
       }
     },
 
@@ -57,19 +78,56 @@
           this.mydata = res.data
           this.mydata.forEach((item) => {
             console.log(item.diagnose)
-            if (item.diagnose.includes('头') || item.diagnose.includes('精神') || item.diagnose.includes('脑')) {
-              this.head++
-            } else if (item.diagnose.includes('手') || item.diagnose.includes('胳膊')) {
+
+            if (item.diagnose.includes('心')) {
+              this.heart++
+              if (this.heart_f < 2) {
+                this.heart_f++
+              }
+            } else if (item.diagnose.includes('胳膊') && item.diagnose.includes('骨')) {
               this.arm++
-            } else if (item.diagnose.includes('腿') || item.diagnose.includes('脚')) {
+              if (this.arm_f < 2) {
+                this.arm_f++
+              }
+            } else if (item.diagnose.includes('血液')) {
+              this.blood++
+              if (this.blood_f < 2) {
+                this.blood_f++
+              }
+            } else if (item.diagnose.includes('脑')) {
+              this.brain++
+              if (this.brain_f < 2) {
+                this.brain_f++
+              }
+            } else if (item.diagnose.includes('肺') || item.diagnose.includes('气管')) {
+              this.breathe++
+              if (this.breathe_f < 2) {
+                this.breathe_f++
+              }
+            } else if (item.diagnose.includes('消化') || item.diagnose.includes('胃') || item.diagnose.includes('肝')) {
+              this.digestion++
+              if (this.digestion_f < 2) {
+                this.digestion_f++
+              }
+            } else if (item.diagnose.includes('腿')) {
               this.leg++
-            } else {
-              this.body++
+              if (this.leg_f < 2) {
+                this.leg_f++
+              }
+            } else if (item.diagnose.includes('神经')) {
+              this.nerve++
+              if (this.nerve_f < 2) {
+                this.nerve_f++
+              }
+            } else if (item.diagnose.includes('肾') || item.diagnose.includes('生殖')) {
+              this.urinary++
+              if (this.urinary_f < 2) {
+                this.urinary_f++
+              }
+            }else {
+              this.others++
             }
           })
-
-          console.log(this.head, this.arm, this.leg, this.body)
-          // console.log(this.mydata)
         }).catch(err => {
           console.log(err)
         })
@@ -126,7 +184,7 @@
 
   .container {
     width: 100%;
-    height: 10.4rem;
+    height: 9rem;
     background-color: #fff;
     position: absolute;
     top: 3.5rem;
@@ -141,15 +199,16 @@
     top: 0.4rem;
   }
 
-  .body, .head, .arm, .leg {
+  .body_tip {
     font-size: 16px;
   }
 
   .content {
     position: absolute;
-    top: 1rem;
-    right: 0.8rem;
-    width: 2rem;
+    top: 0.75rem;
+    right: 0.5rem;
+    width: 2.5rem;
+    line-height: 0.75rem;
     text-align: center;
     border-radius: 0.2rem;
     box-shadow: 0 0 0.1rem 0.1rem rgba(179, 179, 179, 0.13);

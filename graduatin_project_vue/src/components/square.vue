@@ -78,6 +78,7 @@
 
     methods: {
       refresh() {
+        this.searchInfo = ''
         this.$axios({
           method: 'post',
           url: 'http://localhost:3000/square'
@@ -177,11 +178,11 @@
 
   .remind {
     color: rgb(171, 171, 171);
-    font-size: 32px;
+    font-size: 24px;
     width: 7rem;
     height: 3rem;
     text-align: center;
-    border: 0.1rem dashed rgb(171, 171, 171);
+    /*border: 0.1rem dashed rgb(171, 171, 171);*/
     border-radius: 0.5rem;
     line-height: 2.8rem;
     position: absolute;
@@ -292,7 +293,7 @@
     background-color: #fff;
     font-size: 14px;
     text-align: center;
-    line-height: 0.6rem;
+    line-height: 0.55rem;
     box-sizing: border-box;
     position: absolute;
     top: 0.7rem;

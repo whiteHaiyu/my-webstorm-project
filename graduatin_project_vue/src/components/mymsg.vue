@@ -210,11 +210,11 @@
 
   .remind {
     color: rgb(171, 171, 171);
-    font-size: 32px;
+    font-size: 24px;
     width: 7rem;
     height: 2.5rem;
     text-align: center;
-    border: 0.1rem dashed rgb(171, 171, 171);
+    /*border: 0.1rem dashed rgb(171, 171, 171);*/
     border-radius: 0.5rem;
     line-height: 2.3rem;
     position: absolute;

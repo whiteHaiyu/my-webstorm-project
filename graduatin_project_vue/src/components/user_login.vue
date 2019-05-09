@@ -57,14 +57,14 @@
                 message: '登录成功',
                 duration: 1000
               })
-            } else if (res.data == 'no user') {
+            } else if (res.data.status == 'no user') {
               Toast({
                 message: '当前账户不存在',
                 duration: 1000
               })
               this.user = ''
               this.pwd = ''
-            } else if (res.data == 'pwd error') {
+            } else if (res.data.status == 'pwd error') {
               Toast({
                 message: '密码输入错误',
                 duration: 1000

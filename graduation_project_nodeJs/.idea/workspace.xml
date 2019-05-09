@@ -2,19 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/dotinfo_admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/dotinfo_admin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/guide.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/guide.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create_auto.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_create_auto.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_modify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/card_modify.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mybody.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mybody.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mymsg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/mymsg.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/square.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/src/components/user_login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/arm0.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/arm0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/arm1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/arm1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/arm2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/arm2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/arm3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/body_border.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/head0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/head1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/head2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/head3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/leg0.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/leg0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/leg1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/leg1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/leg2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../graduatin_project_vue/static/leg2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../graduatin_project_vue/static/leg3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -31,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myproject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1451">
-              <caret line="257" column="34" lean-forward="true" selection-start-line="257" selection-start-column="34" selection-end-line="257" selection-end-column="34" />
+            <state relative-caret-position="471">
+              <caret line="343" lean-forward="true" selection-start-line="343" selection-end-line="343" />
             </state>
           </provider>
         </entry>
@@ -61,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -73,6 +83,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -84,7 +95,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -150,14 +160,16 @@
       <workItem from="1557219021880" duration="936000" />
       <workItem from="1557282645148" duration="5104000" />
       <workItem from="1557318964501" duration="4001000" />
+      <workItem from="1557365619532" duration="2425000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66729000" />
+    <option name="totallyTimeSpent" value="69154000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07850369" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -184,8 +196,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myproject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1451">
-          <caret line="257" column="34" lean-forward="true" selection-start-line="257" selection-start-column="34" selection-end-line="257" selection-end-column="34" />
+        <state relative-caret-position="471">
+          <caret line="343" lean-forward="true" selection-start-line="343" selection-end-line="343" />
         </state>
       </provider>
     </entry>
