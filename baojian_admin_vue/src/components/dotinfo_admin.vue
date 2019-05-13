@@ -76,6 +76,7 @@
             <el-button
               size="mini"
               type="danger"
+              :disabled="$store.state.username == 'admin' ? false:true"
               @click="handleDelete(scope.$index, scope.row)">删除
             </el-button>
           </template>

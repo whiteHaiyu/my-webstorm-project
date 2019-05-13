@@ -82,6 +82,7 @@
             <el-button
               size="mini"
               type="danger"
+              :disabled="$store.state.username == 'admin' ? false:true"
               @click="handleDelete(scope.$index, scope.row)">删除
             </el-button>
           </template>
@@ -209,7 +210,7 @@
         let data = this.util.getString(this.delDot) + '&sign=' + sign
         this.$axios.post(url, data).then(res => {
           this.$message({
-            message: '删除网点成功',
+            message: '删除人员成功',
             type: 'success'
           })
           this.initData()

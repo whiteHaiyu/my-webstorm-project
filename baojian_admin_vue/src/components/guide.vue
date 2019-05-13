@@ -29,7 +29,7 @@
               <span slot="title">车辆管理</span>
             </template>
             <el-menu-item index="3-1">租赁中车辆列表</el-menu-item>
-            <el-menu-item index="3-2">未租赁车辆列表</el-menu-item>
+            <el-menu-item index="3-2">非租赁车辆列表</el-menu-item>
           </el-submenu>
           <el-submenu index="4">
             <template slot="title">
@@ -101,23 +101,28 @@
               this.$router.replace('/admin/car_admin')
               break
             case '3-2':
-              this.router_title = '车辆管理 - 未租赁车辆管理'
+              this.router_title = '车辆管理 - 非租赁车辆管理'
               this.$router.replace('/admin/car_admin2')
               break
             case '4-1':
               this.router_title = '工单管理 - 加油工单'
+              this.$router.replace('/admin/jiayou_form')
               break
             case '4-2':
               this.router_title = '工单管理 - 保养工单'
+              this.$router.replace('/admin/baoyang_form')
               break
             case '4-3':
               this.router_title = '工单管理 - 维修工单'
+              this.$router.replace('/admin/weixiu_form')
               break
             case '4-4':
               this.router_title = '工单管理 - 调度工单'
+              this.$router.replace('/admin/diaodu_form')
               break
             case '4-5':
               this.router_title = '工单管理 - 预警工单'
+              this.$router.replace('/admin/yujing_form')
               break
             case '5-1':
               this.router_title = '网点管理 - 网点信息'

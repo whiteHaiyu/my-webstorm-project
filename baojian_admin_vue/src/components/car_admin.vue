@@ -58,33 +58,33 @@
         border
       >
         <el-table-column
-          prop="name"
+          prop="model"
           align="center"
-          label="员工名字"
+          label="车辆型号"
           width="200">
         </el-table-column>
         <el-table-column
-          prop="idcard"
+          prop="color"
           align="center"
-          label="身份证号"
+          label="车辆颜色"
           width="320">
         </el-table-column>
         <el-table-column
-          prop="phone"
+          prop="endurancemail"
           align="center"
-          label="手机号"
+          label="可续航里程"
           width="280">
         </el-table-column>
         <el-table-column
           prop="status"
           align="center"
-          label="人员状态"
+          label="车辆状态"
           width="180">
         </el-table-column>
         <el-table-column
-          prop="permission"
+          prop="statustime"
           align="center"
-          label="人员身份"
+          label="状态时长"
           width="180">
         </el-table-column>
         <el-table-column
@@ -94,6 +94,7 @@
             <el-button
               size="mini"
               type="danger"
+              :disabled="$store.state.username == 'admin' ? false:true"
               @click="handleDelete(scope.$index, scope.row)">删除
             </el-button>
           </template>
@@ -203,11 +204,10 @@
         let sign = this.$md5(this.util.sortData(this.postData))
         let url = 'https://bms.gamewan.top/api/getcars'
         let data = this.util.getString(this.postData) + '&sign=' + sign
-
         this.$axios.post(url, data).then(res => {
           console.log(res)
-          this.tableData = res.data.workerInfos
-          this.pageCount = res.data.workerscount
+          this.tableData = res.data.carInfos
+          this.pageCount = res.data.carCount
         }).catch(err => {
           console.log(err)
         })
@@ -219,13 +219,23 @@
         this.delDot.timestamp = new Date().getTime()
         this.delDot.id = val
         let sign = this.$md5(this.util.sortData(this.delDot))
-        let url = 'https://bms.gamewan.top/api/deleteworker'
+        let url = 'https://bms.gamewan.top/api/deletecar'
         let data = this.util.getString(this.delDot) + '&sign=' + sign
+        console.log(data)
         this.$axios.post(url, data).then(res => {
-          this.$message({
-            message: '删除网点成功',
-            type: 'success'
-          })
+          console.log(res)
+          if(res.data.code == 1000){
+            this.$message({
+              message: '删除汽车成功',
+              type: 'success'
+            })
+            this.initData()
+          }else{
+            this.$message({
+              message: '删除汽车失败',
+              type: 'error'
+            })
+          }
         }).catch(err => {
           console.log(err)
           this.$message({
@@ -245,11 +255,12 @@
         let url = 'https://bms.gamewan.top/api/insertcar'
         let data = this.util.getString(this.newDot) + '&sign=' + sign
 
+        // console.log(data)
         this.$axios.post(url,data).then(res => {
           console.log(res)
           if(res.data.code == 1000){
             this.$message({
-              message: '添加人员成功',
+              message: '添加车辆成功',
               type: 'success'
             })
             this.initData()

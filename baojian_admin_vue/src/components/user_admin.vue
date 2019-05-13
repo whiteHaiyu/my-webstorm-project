@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-button type="info" class="add_user">新增用户</el-button>
+<!--    <el-button type="info" class="add_user">新增用户</el-button>-->
 
     <div class="table">
       <el-table
@@ -8,56 +8,25 @@
         border
       >
         <el-table-column
-          prop="user"
+          prop="username"
           align="center"
           label="用户名"
-          width="200">
+          :width="500">
         </el-table-column>
         <el-table-column
-          prop="id"
+          prop="email"
           align="center"
-          label="身份证"
-          width="320">
-        </el-table-column>
-        <el-table-column
-          prop="tel"
-          align="center"
-          label="手机号"
-          width="280">
-        </el-table-column>
-        <el-table-column
-          prop="last_time"
-          align="center"
-          label="上次用车时间"
-          width="320">
-        </el-table-column>
-        <el-table-column
-          prop="count"
-          align="center"
-          label="总用车次数"
-          width="180">
-        </el-table-column>
-        <el-table-column
-          label="操作"
-          align="center">
-          <template slot-scope="scope">
-            <el-button
-              size="mini"
-              type="danger"
-              :disabled="scope.row.tel=='1231231'?false:true"
-              @click="handleDelete(scope.$index, scope.row)">删除
-            </el-button>
-          </template>
+          label="邮箱">
         </el-table-column>
       </el-table>
-      <el-pagination
-        small
-        layout="prev, pager, next"
-        @current-change="handleCurrentChange"
-        :total="50"
-        class="page"
-      >
-      </el-pagination>
+<!--      <el-pagination-->
+<!--        small-->
+<!--        layout="prev, pager, next"-->
+<!--        @current-change="handleCurrentChange"-->
+<!--        :total="50"-->
+<!--        class="page"-->
+<!--      >-->
+<!--      </el-pagination>-->
 
     </div>
 
@@ -70,21 +39,7 @@
     name: "user_admin",
     data() {
       return {
-        tableData: [
-          {
-            user: '王小虎',
-            id: 1234567891011,
-            tel: 123123,
-            last_time: '1990/1/1  23:58',
-            count: 12
-          }, {
-            user: '王小虎',
-            id: 1234567891011,
-            tel: 1231231,
-            last_time: '1990/1/1  23:58',
-            count: 12
-          }
-        ],
+        tableData: [],
         postData: {
           username: '',
           token: '',
@@ -116,6 +71,7 @@
 
         this.$axios.post(url,data).then(res => {
           console.log(res)
+          this.tableData = res.data.userInfos
         }).catch(err => {
           console.log(err)
         })
