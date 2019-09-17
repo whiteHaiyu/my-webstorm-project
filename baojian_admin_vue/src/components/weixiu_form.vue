@@ -90,7 +90,6 @@
             <el-button
               size="mini"
               type="success"
-              :disabled="$store.state.username == 'admin' ? false:true"
               @click="handleModify(scope.$index, scope.row)">修改
             </el-button>
 
