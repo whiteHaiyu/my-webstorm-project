@@ -2,12 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4730a18e-c8ba-4d22-b219-acacc508c031" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/baoyang_form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/baoyang_form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/diaodu_form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/diaodu_form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/jiayou_form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/jiayou_form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/weixiu_form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/weixiu_form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baojian_admin_vue/src/components/yujing_form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../baojian_admin_vue/src/components/yujing_form.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../apiTest/.idea/APItest.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/api/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/components/Breadcrumb/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/components/Hamburger/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/components/SvgIcon/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/AppMain.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/Navbar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/Sidebar/FixiOSBug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/Sidebar/Item.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/Sidebar/Link.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/Sidebar/Logo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/Sidebar/SidebarItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/Sidebar/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/layout/mixin/ResizeHandler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/store/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/store/modules/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/store/modules/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/styles/element-ui.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/styles/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/styles/mixin.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/styles/sidebar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/styles/transition.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/styles/variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/utils/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/utils/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/utils/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/utils/validate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/views/dashboard/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/views/login/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/.babelrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/.postcssrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/build/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/build/check-versions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/build/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/build/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/build/vue-loader.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/build/webpack.base.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/build/webpack.dev.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/build/webpack.prod.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/config/dev.env.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/config/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/config/prod.env.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../apiTest/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/src/components/2333.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apiTest/static/.gitkeep" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue+elementUI-Demo/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue+elementUI-Demo/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue+elementUI-Demo/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue+elementUI-Demo/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue+elementUI-Demo/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue+elementUI-Demo/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue+elementUI-Demo/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue+elementUI-Demo/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue+elementUI-Demo/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myproject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="343" selection-start-line="343" selection-end-line="343" />
+            <state relative-caret-position="-5767">
+              <caret line="59" column="46" lean-forward="true" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -82,7 +143,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../graduatin_project_vue" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -146,16 +207,18 @@
       <workItem from="1557447789286" duration="12000" />
       <workItem from="1560436233087" duration="599000" />
       <workItem from="1560578970927" duration="795000" />
+      <workItem from="1568854258844" duration="2989000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70562000" />
+    <option name="totallyTimeSpent" value="73551000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07850369" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.05584826" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -167,7 +230,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.18112798" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17028199" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -180,8 +243,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myproject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="343" selection-start-line="343" selection-end-line="343" />
+        <state relative-caret-position="-5767">
+          <caret line="59" column="46" lean-forward="true" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
         </state>
       </provider>
     </entry>
