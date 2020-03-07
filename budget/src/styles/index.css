@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+
+.container{
+    font-size: 16px;
+    padding: 16px 10px 55px 10px;
+    box-sizing: border-box;
+    /* min-height: 100vh; */
+}
+
+.el-progress{
+  width:100%;
+}
+
+/* 去除number输入框上下箭头 */
+input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    input[type="number"]{
+      -moz-appearance: textfield;
+    }
+
+/* 修改element-ui的进度条颜色 */
+.el-progress.is-exception .el-progress-bar__inner{
+  background-color: #E58B37 !important;
+}
+.el-progress.is-warning .el-progress-bar__inner{
+  background-color: #CED6E5 !important;
+}
+.el-progress.is-success .el-progress-bar__inner{
+  background-color: #344D99 !important;
+}
+
+/* 修改vant导航栏按钮颜色 */
+.van-nav-bar__text{
+  font-size: 16px !important;
+  color:#E58B37 !important;
+}
+.van-nav-bar .van-icon{
+  color:#E58B37 !important;
+}
+.van-tabs__line{
+  background-color:#E58B37 !important;
+  width: 20px !important;
+}
+.van-tab{
+  color: #344D99 !important;
+}
+.van-tab--active{
+  color:#E58B37 !important;
+}
+
+/* 修改vant底部弹出选择器按钮颜色 */
+.van-picker__cancel, .van-picker__confirm{
+  color:#E58B37 !important;
+}
+
+/* 修改vant按钮颜色 */
+.van-button--danger{
+  background-color:#E58B37 !important;
+  border-color:#E58B37 !important;
+}
+
+/* vant日历颜色 */
+.van-calendar__selected-day{
+  background-color:#E58B37 !important;
+}
+
+/* 修改vant单选框颜色 */
+.van-radio__icon--checked .van-icon{
+  background-color:#E58B37 !important;
+  border-color:#E58B37 !important;
+}
+
+/* vant弹出框确认按钮 */
+.van-dialog__confirm, .van-dialog__confirm:active{
+  color:#E58B37 !important;
+}
+/* 修改vant弹出框头部样式 */
+.van-dialog__header{
+  padding: 3px !important;
+  text-align:left !important;
+  background-color:#CED6E5 !important;
+}
+
+/* 修改输入框字号 */
+.van-cell{
+  padding: 13px 25px !important;
+  font-size: 16px !important;
+}

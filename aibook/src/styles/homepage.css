@@ -1,0 +1,246 @@
+.homepage_banner {
+    width: 100%;
+    max-width: 1800px;
+    min-width: 300px;
+    margin: 0 auto;
+    background: url('../assets/homepage/banner.png') no-repeat content-box center;
+    height: calc(35vh);
+    position: relative;
+}
+
+.homepage_banner_title {
+    font-size: 25px;
+    font-weight: bolder;
+    color: white;
+    width: 100%;
+    text-align: center;
+    height: 35px;
+}
+
+.homepage_banner_button {
+    width: 100px;
+    height: 45px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 30px;
+    border: 3px solid white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 500;
+    position: absolute;
+    bottom: 25px;
+}
+
+.homepage_banner_button:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0px 0px 12px white;
+}
+
+.homepage_createbook_container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 15px;
+    margin-bottom: 18px;
+}
+
+.homepage_createbook_item {
+    margin: 15px 5px 8px 5px;
+    flex-grow: 1;
+    width: 33%;
+    border-radius: 5px;
+    height: 260px;
+    text-align: center;
+    position: relative;
+}
+
+.homepage_createbook_item_describe {
+    margin-top: 35px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.homepage_createbook_item_title {
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.homepage_createbook_item_button {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.homepage_describebook_container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.homepage_describebook_item {
+    flex-grow: 1;
+    position: relative;
+    margin-top: 10px;
+}
+
+.homepage_describebook_item>img {
+    width: 25%;
+}
+
+.homepage_describebook_item_title {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.homepage_describebook_item_detail {
+    position: absolute;
+    top: 25px;
+    left: 30%;
+}
+
+.homepage_booklist_separate {
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+    color: gray;
+    margin-top: 25px;
+}
+
+
+.homepage_bestselling_container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 15px;
+    margin-bottom: 18px;
+
+}
+
+.homepage_bestselling_content {
+    background-color: white;
+}
+
+.homepage_bestselling_item {
+    margin: 15px 15px 8px 15px;
+    flex-grow: 1;
+    width: 33%;
+    height: fit-content;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    box-shadow: 0 0 2px #808080;
+    overflow: hidden;
+}
+
+.homepage_bestselling_item_describe {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.homepage_bestselling_item_title {
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.homepage_bestselling_background {
+    width: 100%;
+    height: 150px;
+}
+
+@media only screen and (max-width: 768px) {
+    .homepage_createbook_container {
+        flex-wrap: wrap;
+    }
+
+    .homepage_createbook_item {
+        margin: 5px;
+        min-width: 80%;
+        height: 200px;
+    }
+
+    .homepage_describebook_container {
+        flex-wrap: wrap;
+    }
+
+    .homepage_describebook_item {
+        min-width: 50%;
+    }
+
+    .homepage_describebook_item_detail {
+        font-size: 15px;
+        color: gray;
+        font-weight: lighter;
+    }
+
+    .hide_ipad {
+        display: none;
+    }
+}
+
+.homepage_story {
+    min-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.homepage_story_img {
+    width: 50%;
+    background: url("../assets/homepage/homepage_story.jpg") center center;
+}
+
+.homepage_story_container {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 25px 40px;
+    position: relative;
+    background-color: rgb(242, 242, 242);
+}
+
+.homepage_story_container_title {
+    color: #3a4d5f;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.homepage_story_container_detail {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.homepage_story_container_button {
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    line-height: 36px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 415px) {
+    .homepage_describebook_item_title {
+        top: 20%;
+    }
+
+    .homepage_describebook_item_detail {
+        display: none;
+    }
+
+    .homepage_story_img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .homepage_story_container {
+        width: 100%;
+    }
+}

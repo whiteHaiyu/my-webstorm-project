@@ -1,0 +1,20 @@
+/* params.stylus （参数配置）*/
+// 配置页头的相关参数
+$header-height = 65px
+$header-li-width = 80px
+
+// 导航栏菜单激活颜色
+$menu-active-color = $googleYellow
+$headerBg = #282C34
+$headerTextColor = #ffffff
+
+// 页脚相关颜色参数
+$footerBg = #282C34
+$footerTextColor = #ffffff
+$footerTextHover = rgba(255,255,255,0.3)
+$footerCopyrightBg = #282C34
+/* color.stylus （颜色配置） */
+$googleRed = #f4433c
+$googleBlue = #2d85f0
+$googleGreen = #0aa858
+$googleYellow = #ffbc32
