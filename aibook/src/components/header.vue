@@ -17,6 +17,20 @@
           v-for="(item, index) in rightMenuList" :key="index">
           {{ item.titleName }}
         </li>
+
+        <li class='container-right-li' >
+          <el-dropdown trigger="click" szie="medium" placement='bottom' @command="handleCommand">
+            <span class="el-dropdown-link">
+              <i class="fa fa-user"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item v-if="!$store.getters.login" command='login' >{{ $t('user.login') }}</el-dropdown-item>
+              <el-dropdown-item v-if="$store.getters.login" command='personal' >{{ $t('user.personal') }}</el-dropdown-item>
+              <el-dropdown-item v-if="$store.getters.login" command='dropout' >{{ $t('user.dropOut') }}</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </li>
+
         <li id="bars" @click="dropDownShow = !dropDownShow">
           <i class="fa fa-bars fa-lg"/>
         </li>
@@ -40,6 +54,7 @@
 
 
 <script>
+import { userLogout } from '@/api/user'
 export default {
   name: 'Header',
   data:() => ({
@@ -59,6 +74,40 @@ export default {
       this.activeName = item.titleName
       this.$router.push(item.activeUrl)
       this.dropDownShow = false
+    },
+
+    //处理下拉菜单的点击事件
+    handleCommand(command){
+      switch(command){
+        case 'login':
+          this.$router.push('/login')
+          break
+        case 'personal':
+          this.$router.push('/myspace')
+          break
+        case 'dropout':
+          this.doDropout()
+          break
+        default:
+          return
+      }
+    },
+
+    // 用户注销
+    doDropout(){
+      let data = {
+        token: this.$getToken()
+      }
+      userLogout(data).then(res => {
+        console.log(res)
+        if(res.status == 'succeed'){
+          this.$removeToken()
+          this.$store.commit("SET_LOGIN", false)
+          this.$message.success( i18n.t('tips.dropout') )
+        }
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }

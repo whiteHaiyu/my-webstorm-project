@@ -10,14 +10,20 @@ const routes = [
     path: '/',
     name: 'layout',
     component: layout,
-    redirect: 'homepage',
+    redirect: 'welcome',
     children:[{
-      path:'homepage',
-      component: () => import('@/views/homepage')
-    },{
-      path:'booksdetail',
-      component: () => import('@/views/booksdetail')
-    }]
+      path:'welcome',
+      component: () => import('@/views/welcome')
+    },
+    // {
+    //   path:'booksdetail',
+    //   component: () => import('@/views/booksdetail')
+    // },
+    // {
+    //   path:'myspace',
+    //   component: () => import('@/views/myspace')
+    // }
+  ]
   },
   {
     path:'/login',
@@ -27,6 +33,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode:'history',
   routes
 })
 

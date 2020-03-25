@@ -9,10 +9,14 @@
       <el-input style="width:200px" v-model="user"></el-input>
       <el-button style="margin-left:15px" type="primary" @click="refreshBook">submit</el-button>
     </div>
+    <div style="text-align: center; margin-top: 20px;">
+      <el-button type="warning" @click="makeOrder">makeOrder</el-button>
+    </div>
   </div>
   <!-- http://3.137.32.201:8010/HttpService/GetPage?book_id=5c96bc2fd51e8ae6d773f8ff709765a8&page=1&width=1000&height=800 -->
 </template>
 <script>
+import { orderMakeOrder } from "@/api/order"
 import { GenBook, GetPage } from "@/api/book";
 import bookReader from "../components/bookreader";
 export default {
@@ -71,6 +75,22 @@ export default {
 
     closeLoading(){
       this.loading = false
+    },
+
+    makeOrder(){
+      let data = {
+          token:this.$getToken(),// 登陆时返回的字符串
+          book_id: this.$store.getters.book_id,//GenBook返回的书籍编号
+          address:'string',// 收货地址
+          receiver:'string',// 收货人姓名
+          zipcode:'123123',// 邮编
+          phone:'123123'// 收货人电话
+      }
+      orderMakeOrder(data).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
     }
 
   }

@@ -6,5 +6,6 @@
 
 <style>
 @import "./styles/index.css";
+@import "./common/font/font.css";
 
 </style>

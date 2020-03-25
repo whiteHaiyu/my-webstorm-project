@@ -8,7 +8,7 @@
           <div class="menu-head-total">{{ totalFee }}</div>
           <van-icon class="menu-head-icon" v-show="list.details" :name="showDetails ? 'arrow-down':'arrow'" />
       </div>
-      <div class="menu-item" v-for="(item, index) in list.details" :key="index" v-show="showDetails">
+      <div class="menu-item" v-for="(item, index) in list.details" :key="index" v-show="showDetails" @click="$router.push('/optionsDetail')">
           <div class="menu-item-date">{{ $moment(item.date).format("MMMDo dddd") }}</div>
           <div class="menu-item-total">{{ item.total }}</div>
           <div class="menu-item-details" v-for="(item2, index2) in item.dailyDetail" :key="index2">

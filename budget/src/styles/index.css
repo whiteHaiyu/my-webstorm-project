@@ -91,3 +91,8 @@ input::-webkit-outer-spin-button,
   padding: 13px 25px !important;
   font-size: 16px !important;
 }
+
+/* 修改输入框字号 */
+.mine-container .van-cell{
+  padding: 23px 25px !important;
+}

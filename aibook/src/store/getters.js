@@ -1,5 +1,5 @@
 const getters = {
-    uuid: state => state.user.uuid,
+    login: state => state.user.login,
     book_id: state => state.books.book_id,
 }
 

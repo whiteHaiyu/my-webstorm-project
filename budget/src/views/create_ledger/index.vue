@@ -49,6 +49,7 @@
     <div class="childBudget" v-for="(item,index) in childBudgetList" :key="index">
         <div class="childBudget_name">{{item.name}}</div>
         <div class="childBudget_budget">{{item.budget | moneyCompletion}}</div>
+        <div class="childBudget_delete" @click="removeChild(index)">删除</div>
     </div>
         
     <van-dialog v-model="addChild" title="设置子预算" show-cancel-button @confirm="addChildConfirm" @cancel="addChildCancel">
@@ -56,6 +57,9 @@
         <van-field readonly clickable v-model="childData.type" label="子预算类型" placeholder="请选择" input-align="right"/>
         <van-field clickable v-model="childData.budget" label="子预算金额" placeholder="请输入金额￥" type="number" input-align="right"/>
     </van-dialog>
+
+    <van-field clickable v-model="invitationCode" v-show="formData.scenes == '共享账本'" label="我的邀请码" readonly input-align="right"/>
+
 
     <div style="margin: 26px ;text-align:center">
         <van-button size="small" round color="#E58B37" style="margin:20px; width:100px;" @click="$router.go(-1)">删除</van-button>
@@ -81,6 +85,9 @@ export default {
                 carryOver:'0',
             },
 
+            // 我的邀请码
+            invitationCode:"",
+
             scenesPicker: false,
             scenesList:["个人账本","共享账本"],
 
@@ -100,11 +107,25 @@ export default {
         }
     },
     created(){
-        
+        this.invitationCode = this.createCode()
+        this.formData.scenes = this.$route.params.type == 'personal' ? '个人账本' : '共享账本'
     },
     methods:{
+        removeChild(idx){
+            this.childBudgetList = this.childBudgetList.filter((ele, index) =>  index != idx)
+            console.log(this.childBudgetList)
+        },
+
         saveForm(){
             console.log(this.formData)
+        },
+
+        // 生成邀请码
+        createCode(){
+            return 'xxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                return v.toString(16).toUpperCase();
+            });
         },
 
         addChildConfirm(){
@@ -169,7 +190,14 @@ export default {
 }
 .childBudget_budget{
     position: absolute;
-    right: 25px;
+    right: 75px;
     top: 15px;
+}
+.childBudget_delete{
+    position: absolute;
+    right: 25px;
+    top:15px;
+    text-decoration: underline;
+    color: #E58B37;
 }
 </style>

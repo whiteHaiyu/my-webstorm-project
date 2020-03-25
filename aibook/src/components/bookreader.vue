@@ -27,7 +27,7 @@ export default {
     preaprePic(data) {
       this.booklist = [];
       for (let i = 0; i < data.page_count; i++) {
-        this.booklist.push(this.$myStore.base_url + "/HttpService/GetPage?book_id=" + data.book_id + "&page=" + i + "&width=500&height=400");
+        this.booklist.push("/api/HttpService/GetPage?book_id=" + data.book_id + "&page=" + i + "&width=500&height=400");
       }
       this.$nextTick(() => {
         this.createBook();

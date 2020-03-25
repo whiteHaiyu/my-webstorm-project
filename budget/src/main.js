@@ -23,6 +23,9 @@ import moment from 'moment'
 moment.locale('zh-cn')
 Vue.prototype.$moment = moment
 
+import echarts from "echarts";
+Vue.prototype.$echarts = echarts;
+
 Vue.config.productionTip = false
 
 new Vue({

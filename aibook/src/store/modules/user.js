@@ -1,11 +1,11 @@
 const user = {
     state: {
-        uuid: '',
+        login: false,
     },
 
     mutations: {
-        SET_UUID: (state, uuid) => {
-            state.uuid = uuid
+        SET_LOGIN: (state, login) => {
+            state.login = login
         },
     },
 

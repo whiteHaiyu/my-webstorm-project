@@ -3,7 +3,7 @@
     <div class="addBudget" @click="$router.push('create_budget')"></div>
 
     <div class="budget_basic_info">
-      <img class="budget_basic_info_statistics" src="../assets/budget/statistics.png">
+      <img class="budget_basic_info_statistics" src="../assets/budget/statistics.png" @click="$router.push('/analysis')">
       <div class="budget_basic_info_day">{{ day }}</div>
       <div class="budget_basic_info_week">{{ week }}</div>
       <div class="budget_basic_info_getData">{{ getData }}</div>
@@ -22,7 +22,7 @@
       </div>
       <div class="budget_card" style="background-color:white; overfloat:hidden" v-for="(item, index) in ledgerList" :key="index">
         <div class="budget_card_main"  @click="item.autoShow = !item.autoShow">
-          <van-icon class="budget_card_modify" name="edit" />
+          <van-icon class="budget_card_modify" @click="$router.push('create_ledger/personal')" name="edit" />
           <div class="budget_card_title">{{ item.name }}</div>
           <div class="budget_card_dailyLeft">日均剩余<span class="tips">{{item.dailyRemain}}</span></div>
           <div class="budget_card_settlement">距结算日<span class="tips">{{item.settlementDate}}天</span></div>
@@ -34,8 +34,8 @@
         <transition name="sub-comments">
           <div class="budget_card_details" v-show="item.autoShow">
             <div class="budget_card_details_btn">
-              <div class="budget_card_details_btn_left">调整预算</div>
-              <div class="budget_card_details_btn_right">消费详单</div>
+              <div class="budget_card_details_btn_left" @click="$router.push('create_ledger/personal')">调整预算</div>
+              <div class="budget_card_details_btn_right" @click="$router.push('/budgetDetail')">消费详单</div>
             </div>
             <div class="budget_card_details_lsititem" v-for="(item2, index2) in item.budgetDetail" :key="index2">
               <div class="budget_card_details_lsititem_used">{{item2.used}}</div>
@@ -53,14 +53,14 @@
     <div class="budget_mybudget">
       <div class="budget_mybudget_header">
         <div class="budget_mybudget_kind">共享账本</div>
-        <div class="budget_mybudget_add" @click="$router.push('create_ledger/shared')">+</div>
+        <div class="budget_mybudget_add" @click="show = true">+</div>
       </div>
       <div class="budget_card" v-if="sharedLedgerList.length == 0">
         <div class="budget_card_tips">暂无账本</div>
       </div>
       <div class="budget_card" style="background-color:white; overfloat:hidden" v-for="(item, index) in sharedLedgerList" :key="index">
         <div class="budget_card_main"  @click="item.autoShow = !item.autoShow">
-          <van-icon class="budget_card_modify" v-if="item.created" name="edit" />
+          <van-icon class="budget_card_modify" @click="$router.push('create_ledger/personal')" v-if="item.created" name="edit" />
           <div class="budget_card_title">{{ item.name }}</div>
           <div class="budget_card_dailyLeft">日均剩余<span class="tips">{{item.dailyRemain}}</span></div>
           <div class="budget_card_settlement">距结算日<span class="tips">{{item.settlementDate}}天</span></div>
@@ -69,15 +69,15 @@
           </div>
           <div class="budget_card_cooperation">
             <div class="budget_card_cooperation_item" v-for="(item3, index3) in item.cooperation" :key="index3">{{ item3.slice(0,1).toUpperCase() }}</div>
-            <div class="budget_card_cooperation_item" style="background-color:#FFF;border 3px solid #5d5d5d" v-if="item.created"><van-icon name="plus" color="#d5d5d5" style="font-wight:1000"/></div>
+            <div class="budget_card_cooperation_item" style="background-color:#FFF;border: 3px solid #5d5d5d" v-if="item.created" @click.stop="invite(item.ledgerId)"><van-icon name="plus" color="#d5d5d5" style="font-wight:1000"/></div>
           </div>
         </div>
           
         <transition name="sub-comments">
           <div class="budget_card_details" v-show="item.autoShow">
             <div class="budget_card_details_btn">
-              <div class="budget_card_details_btn_left">调整预算</div>
-              <div class="budget_card_details_btn_right">消费详单</div>
+              <div class="budget_card_details_btn_left" v-if="item.created" @click="$router.push('create_ledger/personal')">调整预算</div>
+              <div class="budget_card_details_btn_right" @click="$router.push('/budgetDetail')">消费详单</div>
             </div>
             <div class="budget_card_details_lsititem" v-for="(item2, index2) in item.budgetDetail" :key="index2">
               <div class="budget_card_details_lsititem_used">{{item2.used}}</div>
@@ -91,6 +91,23 @@
         </transition>
       </div>
     </div>
+
+    <!-- 共享账本新建按钮 -->
+    <van-action-sheet
+      v-model="show"
+      :actions="actions"
+      cancel-text="取消"
+      @select="onSelect"
+      @cancel="onCancel"
+    />
+    <div class="join-budget" v-show="join">
+      <div class="join-budget-title">请输入邀请码</div>
+      <input class="join-budget-input" type="text">
+      <div class="join-budget-btn">
+          <div class="join-budget-btn-item" style="background-color:#E58B37">确定</div>
+          <div class="join-budget-btn-item" style="background-color:#CED6E5" @click="join = false">取消</div>
+      </div>
+    </div>
   
   </div>
 </template>
@@ -100,6 +117,9 @@ export default {
   name: "budget",
   data:() => {
     return{
+      show: false,
+      join: false,
+      actions:[{name:"新建共享账本", id:1},{name:"加入共享账本", id:2}],
       day: new Date().getDate(),
       week:'星期'+'日一二三四五六'.charAt(new Date().getDay()),
       userInfo:{
@@ -215,6 +235,29 @@ export default {
 
   },
   methods:{
+    onSelect(item){
+      switch(item.id){
+        case 1:
+          this.$router.push('create_ledger/shared')
+          break
+        case 2:
+          this.join = true
+          break
+      }
+      this.show = false
+    },
+
+    onCancel(){
+      this.show = false;
+    },
+
+    invite(id){
+      this.$dialog.alert({
+        title:"我的邀请码",
+        message: id
+      });
+    },
+
     getPercentage:(used, total) => {
       if(used >= total){
         return 100
@@ -249,7 +292,7 @@ export default {
     background url("../assets/budget/addBudget.png") center center
     background-size 85%
     background-color #FFFFFF
-    z-index 9999
+    z-index 2
   .budget_basic_info
     padding 36px 20px 10px 20px
     position relative
@@ -355,8 +398,9 @@ export default {
           width 100%
         .budget_card_cooperation
           width 100%
-          height 45px
+          height 40px
           padding 5px
+          display flex
           .budget_card_cooperation_item
             display inline-block
             width 30px
@@ -364,10 +408,11 @@ export default {
             line-height 30px
             margin-right 10px
             font-size 16px
-            background-color red
-            // border 1px dashed #d5d5d5
+            background-color #EED6C6
+            box-sizing border-box
             text-align center
             border-radius 50%
+            position relative
     .budget_card_details
       .budget_card_details_btn
         width 100%
@@ -406,6 +451,35 @@ export default {
         width 80%
         min-height 10px 
         display inline-block
+  .join-budget
+    position fixed
+    top 30%
+    left 10%
+    width 80%
+    height 120px
+    // border 1px solid #000
+    box-shadow 0 0 2px #000
+    border-radius 3px
+    font-size 16px
+    text-align center
+    padding-top 5%
+    background-color rgb(238, 241, 247)
+    .join-budget-title
+      margin-bottom 10px
+      font-weight 600
+    .join-budget-input
+      width 80%
+    .join-budget-btn
+      display flex
+      align-items center
+      justify-content center
+      .join-budget-btn-item
+        margin 20px
+        // border 1px solid black
+        padding 5px 20px
+        border-radius 20px
+        color #fff
+    
       
 
 

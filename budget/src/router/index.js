@@ -41,6 +41,14 @@ const routes = [
     ]
   },
   {
+    path: '/analysis',
+    component: () => import('@/views/analysis/index.vue')
+  },
+  {
+    path: '/optionsDetail',
+    component: () => import('@/views/optionDetail.vue')
+  },
+  {
     path: '/login',
     component: () => import('@/views/login.vue')
   },
@@ -63,7 +71,33 @@ const routes = [
   {
     path: '/accountDetail',
     component: () => import('@/views/detail_account/index')
-  }
+  },
+  {
+    path: '/budgetDetail',
+    component: () => import('@/views/detail_budget/index')
+  },
+
+
+  {
+    path: '/myspace-about',
+    component: () => import('@/views/myspace/about')
+  },
+  {
+    path: '/myspace-accountNum',
+    component: () => import('@/views/myspace/accountNum')
+  },
+  {
+    path: '/myspace-help',
+    component: () => import('@/views/myspace/help')
+  },
+  {
+    path: '/myspace-personal',
+    component: () => import('@/views/myspace/personal')
+  },
+  {
+    path: '/myspace-setting',
+    component: () => import('@/views/myspace/setting')
+  },
 ]
 
 const router = new VueRouter({
